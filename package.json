@@ -1,7 +1,14 @@
 {
   "name": "finance-manager",
+  "description": "Personal Finance Manager Frontend  for Managing Personal Finances",
   "version": "0.1.1-0",
-  "private": true,
+  "private": false,
+  "license": "GPL-3.0",
+  "author": {
+    "email": "hello@sudharshan.dev",
+    "name": "Sudharshan TK",
+    "url": "https://sudharshan.dev"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
