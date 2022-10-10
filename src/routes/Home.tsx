@@ -1,5 +1,9 @@
-function Home() {
-  return <h2>Home</h2>;
-}
+import { Typography } from '@mui/material';
 
-export default Home;
+export function Home() {
+  return (
+    <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }} variant="h1">
+      Home
+    </Typography>
+  );
+}

@@ -1,13 +1,12 @@
+import { Typography } from '@mui/material';
 import { useNavigate } from '@tanstack/react-location';
 import { ReactElement } from 'react';
 
-function About(): ReactElement {
+export function About(): ReactElement {
   const navigate = useNavigate();
   return (
-    <>
-      <h2 onClick={() => navigate({ to: '/' })}>About</h2>
-    </>
+    <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }} variant="h1">
+      <span onClick={() => navigate({ to: '/' })}>About</span>
+    </Typography>
   );
 }
-
-export default About;
