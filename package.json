@@ -12,6 +12,7 @@
     "@tanstack/react-location": "^3.7.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "@craco/craco": "^6.4.5",
     "react-scripts": "5.0.1",
     "sass": "^1.55.0",
     "styled-components": "^5.3.6",
@@ -26,9 +27,9 @@
     "release:patch": "standard-version --release-as patch --sign",
     "release:minor": "standard-version --release-as minor --sign",
     "release:major": "standard-version --release-as major --sign",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
