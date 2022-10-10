@@ -1,18 +1,13 @@
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
-import { routes } from '../router';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Router, ReactLocation, Outlet } from '@tanstack/react-location';
+import { routes } from '@router';
+import { theme } from './theme';
 
 const location = new ReactLocation();
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
-
-function App() {
+export function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
       <Router location={location} routes={routes}>
         <Outlet />
@@ -20,5 +15,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;
