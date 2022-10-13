@@ -26,6 +26,8 @@
       "@routes": ["src/routes/index.tsx"],
       "@router/*": ["src/router/*"],
       "@router": ["src/router/index.tsx"],
+      "@plugins/*": ["src/plugins/*"],
+      "@plugins": ["src/plugins/index.ts"],
       "@styles/*": ["src/styles/*"],
       "@styles": ["src/styles/index.scss"],
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]

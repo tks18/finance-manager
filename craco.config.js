@@ -11,6 +11,7 @@ module.exports = {
       '@router': path.join(BASEPATH, 'router'),
       '@routes': path.join(BASEPATH, 'routes'),
       '@styles': path.join(BASEPATH, 'styles', 'index.scss'),
+      '@plugins': path.join(BASEPATH, 'plugins'),
     },
   },
 };
