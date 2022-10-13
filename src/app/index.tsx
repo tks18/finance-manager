@@ -1,17 +1,26 @@
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { Router, ReactLocation, Outlet } from '@tanstack/react-location';
-import { routes } from '@router';
-import { theme } from './theme';
-
-const location = new ReactLocation();
+import {
+  StoreProvider,
+  ThemeProvider,
+  RouterProvider,
+  NavBar,
+  NavDrawer,
+} from '@components';
 
 export function App() {
+  const RouterPrependComponents = () => {
+    return (
+      <>
+        <NavBar />
+        <NavDrawer />
+      </>
+    );
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline enableColorScheme />
-      <Router location={location} routes={routes}>
-        <Outlet />
-      </Router>
-    </ThemeProvider>
+    <StoreProvider>
+      <ThemeProvider>
+        <RouterProvider prependChildren={<RouterPrependComponents />} />
+      </ThemeProvider>
+    </StoreProvider>
   );
 }
