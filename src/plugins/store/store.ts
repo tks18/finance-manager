@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './reducers';
 import {
   persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,24 +9,12 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import { createLogger } from 'redux-logger';
-
-const config = {
-  key: 'root',
-  storage,
-  whitelist: ['theme'],
-};
 
 const middlewares = [createLogger()];
 
-const reducer = persistReducer<ReturnType<typeof rootReducer>>(
-  config,
-  rootReducer,
-);
-
 export const store = configureStore({
-  reducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares({
       serializableCheck: {
