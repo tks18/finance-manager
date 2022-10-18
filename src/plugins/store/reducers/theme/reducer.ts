@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import common from '@mui/material/colors/common';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 
 interface IThemeState {
   palette: {
@@ -47,5 +49,12 @@ const themeSlice = createSlice({
   },
 });
 
+const persistConfig = {
+  key: 'theme',
+  storage,
+};
+
 export const themeActions = themeSlice.actions;
-export const themeReducer = themeSlice.reducer;
+export const themeReducer = persistReducer<
+  ReturnType<typeof themeSlice.reducer>
+>(persistConfig, themeSlice.reducer);
