@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/tks18/finance-manager/compare/v0.1.1...v0.1.2) (2022-10-18)
+
+
+### Build System 🏗
+
+* **package:** add babel package and config ([f8fc0d8](https://github.com/tks18/finance-manager/commit/f8fc0d8449b6820716f2508e224aee61e1d01575))
+
+
+### Others 🔧
+
+* **.gitignore:** add build folder to gitignore file ([073e623](https://github.com/tks18/finance-manager/commit/073e623c893aac2e78f8c22b771f9c8d6da76ab2))
+
+
+### Features 🔥
+
+* **plugins/backend/setup:** add input, output and response types for setup api ([5e25395](https://github.com/tks18/finance-manager/commit/5e2539567cfd502c73b1047078a5abf7a5e1a97e))
+* **plugins/backend/setup:** add setup api methods - build-calendar ([18ac625](https://github.com/tks18/finance-manager/commit/18ac625f9a098e505e9e02235f2d9286915ebf25))
+* **plugins/backend/user:** add all the input, output and response types for user api ([9265242](https://github.com/tks18/finance-manager/commit/92652421fff18f3d0a294c42e9c97a1a36cb66cf))
+* **plugins/backend/user:** add user api method functions - add, get, login, verify ([0734f6b](https://github.com/tks18/finance-manager/commit/0734f6b77cd1b638e08ad43792e7113912ee9f91))
+* **plugins/backend:** write a api endpoint config for backend endpoints ([14392f3](https://github.com/tks18/finance-manager/commit/14392f3c5dae869083907bef2cb59ef1e56fafe0))
+* **plugins/backend:** write a backend requester function to use in all api calls ([7df719b](https://github.com/tks18/finance-manager/commit/7df719bb448ee7264ccebac390a6314aaf27523f))
+* **plugins/store/user:** add async thunks for user api ([c109e36](https://github.com/tks18/finance-manager/commit/c109e361c4b34a737a3a38ad26bc0de87f5049c7))
+* **plugins/store/user:** add selectors for user state ([952405b](https://github.com/tks18/finance-manager/commit/952405bdfacf8b1681907f9045b2c2a2c1a60f96))
+* **plugins/store/user:** write the reducer function for user state ([9b34d42](https://github.com/tks18/finance-manager/commit/9b34d42b59b909cf84bfd851dbc67c1171d29694))
+* **plugins/store:** remove the persist config from the global store file ([5fc8307](https://github.com/tks18/finance-manager/commit/5fc83079aa07494825bf20324f72a4cd068e5dab))
+* **plugins/store:** use a nested persist reducer for settings reducer ([0ef07ba](https://github.com/tks18/finance-manager/commit/0ef07bac6b0a0cd291cfac88f3fead9f2a9382d8))
+* **plugins/store:** use a nested persist reducer for theme reducer ([0ebfbad](https://github.com/tks18/finance-manager/commit/0ebfbad5b67117e4d84bcf4e4a48eb67397ca2b0))
+* **plugins/store:** write a custom asyncthunk creator to be used async functions ([41ae74d](https://github.com/tks18/finance-manager/commit/41ae74d47e13be26e66e5580d63047f16f13f458))
+* **plugins/store:** write the persist config inside rootreducer file ([de707c5](https://github.com/tks18/finance-manager/commit/de707c5ceb13fde514056d3e61d4d784f7296a6a))
+* **plugins:** write a custom axios interceptor plugin ([2143bc7](https://github.com/tks18/finance-manager/commit/2143bc7df64a8e60101f7a268cb8f053c2086086))
+* **routes:** use dynamic import for components for code-splitting ([12ad11b](https://github.com/tks18/finance-manager/commit/12ad11b5c52ddf72cfeb6c348f350e5a084c6ee8))
+
 ### [0.1.1](https://github.com/tks18/finance-manager/compare/v0.1.1-0...v0.1.1) (2022-10-13)
 
 
