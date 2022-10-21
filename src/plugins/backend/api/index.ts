@@ -8,3 +8,4 @@ export const api = {
 
 export * from './user';
 export * from './setup';
+export * from './data';
