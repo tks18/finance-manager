@@ -1,22 +1,13 @@
-import { Router, ReactLocation, Outlet } from '@tanstack/react-location';
-import { routes } from '@router';
+import { RouterProvider as RP } from 'react-router-dom';
+import { router } from '@router';
 
-import { RouterProps } from '@tanstack/react-location';
+import { RouterProviderProps } from 'react-router-dom';
 
-const location = new ReactLocation();
-
-type TRouterProps = Omit<RouterProps, 'location' | 'routes'> & {
+type TRouterProps = Omit<RouterProviderProps, 'router'> & {
   prependChildren?: React.ReactNode;
   appendChildren?: React.ReactNode;
 };
 
 export function RouterProvider(props: TRouterProps) {
-  const { prependChildren, appendChildren } = props;
-  return (
-    <Router location={location} routes={routes}>
-      {prependChildren}
-      <Outlet />
-      {appendChildren}
-    </Router>
-  );
+  return <RP router={router} {...props} />;
 }
