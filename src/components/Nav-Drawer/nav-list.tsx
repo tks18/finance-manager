@@ -1,4 +1,6 @@
 import {
+  CalendarViewDay as CalendarViewDayIcon,
+  CalendarMonth as CalendarMonthIcon,
   ReceiptLong as ReceiptLongIcon,
   CurrencyExchange as CurrencyExchangeIcon,
   PointOfSale as PointOfSaleIcon,
@@ -27,6 +29,18 @@ export interface INavigationList {
 
 export const navigationList: INavigationList[] = [
   {
+    name: 'Calendar Analysis',
+    icon: <CalendarViewDayIcon />,
+    path: '/transactions',
+    list: [
+      {
+        name: 'Combined Analysis',
+        icon: <CalendarMonthIcon />,
+        path: '/transactions/calendar',
+      },
+    ],
+  },
+  {
     name: 'Manage Transactions',
     icon: <ReceiptLongIcon />,
     path: '/transactions',
@@ -34,17 +48,17 @@ export const navigationList: INavigationList[] = [
       {
         name: 'Income',
         icon: <CurrencyExchangeIcon />,
-        path: '/transactions/income',
+        path: '/transactions/incomes',
       },
       {
         name: 'Expense',
         icon: <PointOfSaleIcon />,
-        path: '/transactions/expense',
+        path: '/transactions/expenses',
       },
       {
         name: 'Investments',
         icon: <ShowChartIcon />,
-        path: '/transactions/investment',
+        path: '/transactions/investments',
       },
     ],
   },
@@ -56,51 +70,51 @@ export const navigationList: INavigationList[] = [
       {
         name: 'Income',
         icon: <CurrencyExchangeIcon />,
-        path: '/masters/income',
+        path: '/masters/incomes',
         list: [
           {
             name: 'Income Categories',
             icon: <CategoryIcon />,
-            path: '/masters/income/categories',
+            path: '/masters/incomes/categories',
           },
           {
             name: 'Income Master',
             icon: <StorageIcon />,
-            path: '/masters/income/master',
+            path: '/masters/incomes/master',
           },
         ],
       },
       {
         name: 'Expense',
         icon: <PointOfSaleIcon />,
-        path: '/masters/expense',
+        path: '/masters/expenses',
         list: [
           {
             name: 'Expense Categories',
             icon: <CategoryIcon />,
-            path: '/masters/expense/categories',
+            path: '/masters/expenses/categories',
           },
           {
             name: 'Expense Master',
             icon: <StorageIcon />,
-            path: '/masters/expense/master',
+            path: '/masters/expenses/master',
           },
         ],
       },
       {
         name: 'Investment',
         icon: <ShowChartIcon />,
-        path: '/masters/investment',
+        path: '/masters/investments',
         list: [
           {
             name: 'Investment Categories',
             icon: <CategoryIcon />,
-            path: '/masters/investment/categories',
+            path: '/masters/investments/categories',
           },
           {
             name: 'Investment Master',
             icon: <StorageIcon />,
-            path: '/masters/investment/master',
+            path: '/masters/investments/master',
           },
         ],
       },
@@ -112,12 +126,12 @@ export const navigationList: INavigationList[] = [
           {
             name: 'Asset Categories',
             icon: <CategoryIcon />,
-            path: '/masters/asset/categories',
+            path: '/masters/assets/categories',
           },
           {
             name: 'Asset Master',
             icon: <StorageIcon />,
-            path: '/masters/asset/master',
+            path: '/masters/assets/master',
           },
         ],
       },
@@ -131,7 +145,7 @@ export const navigationList: INavigationList[] = [
       {
         name: 'Banks',
         icon: <AccountBalanceWalletIcon />,
-        path: '/masters/bank',
+        path: '/masters/banks',
       },
       {
         name: 'Credit Cards',
@@ -146,7 +160,7 @@ export const navigationList: INavigationList[] = [
       {
         name: 'EMIs',
         icon: <LocalAtmIcon />,
-        path: '/masters/emis',
+        path: '/masters/emi',
       },
       {
         name: 'Insurances',

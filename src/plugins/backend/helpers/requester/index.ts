@@ -1,12 +1,12 @@
 import { axios } from '@plugins/axios';
 
 import type { RawAxiosRequestHeaders, AxiosResponse } from 'axios';
-import type { IRequestOptions } from '@plugins/backend/types';
+import type { IRequestOptions, IRequestResponse } from './types';
 
-export async function requester<T, U>(
+export async function requester<T = any, U = any>(
   type: 'get' | 'post' | 'patch' | 'delete',
   options: IRequestOptions<T>,
-): Promise<U> {
+): Promise<IRequestResponse<U>> {
   let headers: RawAxiosRequestHeaders & {
     'x-session-token'?: string;
   };
@@ -22,12 +22,12 @@ export async function requester<T, U>(
     params: options.config?.params,
     ...options.config,
   };
-  console.log(config);
   try {
-    const response = await axios<U, AxiosResponse<U, T>, T>(
-      options.url,
-      config,
-    );
+    const response = await axios<
+      IRequestResponse<U>,
+      AxiosResponse<IRequestResponse<U>, T>,
+      T
+    >(options.url, config);
     return response.data;
   } catch (e) {
     throw e;

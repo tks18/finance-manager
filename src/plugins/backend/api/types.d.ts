@@ -1,2 +1,2 @@
-export type * from './user/types';
-export type * from './setup/types';
+export * from './user/types';
+export * from './setup/types';

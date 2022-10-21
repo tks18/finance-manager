@@ -1,2 +1,3 @@
-export * from './About';
+export * from './Root';
 export * from './Home';
+export * from './templates';

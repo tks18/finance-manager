@@ -2,19 +2,14 @@ import { routes } from '@plugins/backend';
 import { requester } from '@plugins/backend';
 
 import type {
-  TUserAuthResponse,
+  IUserAuth,
   IUserRegisterInput,
 } from '@plugins/backend/api/user/types';
 
-export async function addUser(
-  user: IUserRegisterInput,
-): Promise<TUserAuthResponse> {
-  const userAuthDoc = await requester<IUserRegisterInput, TUserAuthResponse>(
-    'post',
-    {
-      url: routes.api.user.register,
-      data: user,
-    },
-  );
+export async function addUser(user: IUserRegisterInput) {
+  const userAuthDoc = await requester<IUserRegisterInput, IUserAuth>('post', {
+    url: routes.api.user.register,
+    data: user,
+  });
   return userAuthDoc;
 }

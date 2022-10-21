@@ -7,6 +7,7 @@ import { App } from '@app';
 
 // Import All the SCSS
 import '@styles';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

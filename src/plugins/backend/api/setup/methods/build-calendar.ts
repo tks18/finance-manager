@@ -3,13 +3,11 @@ import { requester } from '@plugins/backend';
 
 import {
   IBuildCalendarInput,
-  TBuildCalendarResponse,
+  IBuildCalendar,
 } from '@plugins/backend/api/setup/types';
 
-export async function buildCalendarTable(
-  data: IBuildCalendarInput,
-): Promise<TBuildCalendarResponse> {
-  const response = await requester<IBuildCalendarInput, TBuildCalendarResponse>(
+export async function buildCalendarTable(data: IBuildCalendarInput) {
+  const response = await requester<IBuildCalendarInput, IBuildCalendar>(
     'post',
     {
       url: routes.api.setup.buildCalendar,
