@@ -30,7 +30,7 @@ export function createCustomAsyncThunk<T, U>(
           } else {
             const error: IRequestError = {
               status: 500,
-              message: `Unknown Error in Dispatch Handler ${String(e)}`,
+              message: `Unknown Error in Async Thunk Handler ${String(e)}`,
               errorname: 'InternalError',
             };
             return thunkApi.rejectWithValue(error);
@@ -38,7 +38,7 @@ export function createCustomAsyncThunk<T, U>(
         } else {
           const error: IRequestError = {
             status: 500,
-            message: `Unknown Error in Dispatch Handler ${String(e)}`,
+            message: `Unknown Error in Async Thunk Handler ${String(e)}`,
             errorname: 'InternalError',
           };
           return thunkApi.rejectWithValue(error);
