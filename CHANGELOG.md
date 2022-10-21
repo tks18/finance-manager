@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/tks18/finance-manager/compare/v0.1.2...v0.1.3) (2022-10-21)
+
+
+### Build System 🏗
+
+* **packages:** replace react-location with react-router, add react-toastify for notifications ([37b0aed](https://github.com/tks18/finance-manager/commit/37b0aed40e67bb3a7e6a287ee6cfa695419162e6))
+
+
+### Bug Fixes 🛠
+
+* **components:** rewrite the linkbutton component to use react-router ([eac759f](https://github.com/tks18/finance-manager/commit/eac759f81c4f68a489e8f00c9aa32bc3dee5c887))
+* **components:** use the react-router's hooks instead of react-location ([9596522](https://github.com/tks18/finance-manager/commit/95965221e6f9505a513fc660ca201813689c845c))
+* **plugins/backend/routes:** fix the api route string for each data route ([97e6be1](https://github.com/tks18/finance-manager/commit/97e6be109b542e105c5d22fc21751fdb153f595f))
+* **plugins/backend/setup:** use proper type in the requester function ([cb59226](https://github.com/tks18/finance-manager/commit/cb59226b01e14fae06c835cd3567f01d403ff588))
+* **plugins/backend/user:** use proper types in the requester function ([bb46f46](https://github.com/tks18/finance-manager/commit/bb46f46697289d5a74d9a7ebbd74a945b42e7b46))
+* **plugins/store:** properly describe error in thunk creator ([5005539](https://github.com/tks18/finance-manager/commit/50055395e3648d7a8387ef6c991723deef7ad25d))
+
+
+### Code Refactoring 🖌
+
+* **app:** properly setup app for react-router and move all contents to root routes file ([04873f1](https://github.com/tks18/finance-manager/commit/04873f1e889ec3c17467c64843e2feba21589ac0))
+* **plugins/backend/helpers:** move requester to its own folder and maintain types inside that ([34d61f4](https://github.com/tks18/finance-manager/commit/34d61f4b843a1f16960ddcac9844b3627c9e7d56))
+* **plugins/backend/setup:** remove redundant types ([7952a91](https://github.com/tks18/finance-manager/commit/7952a916638f16985e2c51e62d82d2c0f31b9f86))
+* **plugins/backend/types:** export all the types from the sub folders ([21aea42](https://github.com/tks18/finance-manager/commit/21aea42667af977bf5dd10055bab17259d599fae))
+* **plugins/backend/user:** remove all the redundant types ([8d81fdf](https://github.com/tks18/finance-manager/commit/8d81fdfdd5fd8fdb46d2d35f25bd17613de93df9))
+* **plugins/backend:** properly export all the helper functions ([4b396d1](https://github.com/tks18/finance-manager/commit/4b396d17deba91cf70f93db0b7e65023db2a1454))
+* **plugins/backend:** write all the exports for function as well as types ([4accfce](https://github.com/tks18/finance-manager/commit/4accfce1153e5c6b4fa8385e9be392373d1c5e78))
+* **routes/home:** move the home to a seperate folder ([c3d422c](https://github.com/tks18/finance-manager/commit/c3d422c7a9ee280acf23a382568d8c9b8590fc50))
+* **routes/root:** move all the contents of app to root routes file ([4e2b2b3](https://github.com/tks18/finance-manager/commit/4e2b2b3a217765b07de3ac4455727db4ea3131f4))
+* **routes:** properly export all the files ([b116a58](https://github.com/tks18/finance-manager/commit/b116a58f847f3f57ddb5d7887ee7a6ab7628ba09))
+* **routes:** remove about and home from routes folder ([8245b92](https://github.com/tks18/finance-manager/commit/8245b9251119187a079db3ed92497e47a0f13e12))
+
+
+### Features 🔥
+
+* **components:** add new items to navigation list ([f9ff743](https://github.com/tks18/finance-manager/commit/f9ff7432d9c72f95dc7eaae90e7e7bd6bb56ffd1))
+* **components:** write a new router provider component for react-router ([ae18bb9](https://github.com/tks18/finance-manager/commit/ae18bb98dd57978162158ae2de121d2bb7ce0241))
+* **main:** import react-toastify's css file ([ad8b7d8](https://github.com/tks18/finance-manager/commit/ad8b7d8910aa025cce40362d8cb50c1d605dcd25))
+* **plugins/backend/data:** write a common type for api config array ([866fc6b](https://github.com/tks18/finance-manager/commit/866fc6b74682dac7701db67bb0fff901c63937ca))
+* **plugins/backend/data:** write all the model creation, document types for all the master tables ([dcb5b88](https://github.com/tks18/finance-manager/commit/dcb5b88923154f0b4712f60e14f5c602313fca41))
+* **plugins/backend/data:** write all the model creation, document types for transaction tables ([0445d8b](https://github.com/tks18/finance-manager/commit/0445d8b36078a3fae0caa1fe941db3557437a0ba))
+* **plugins/backend/data:** write the config for all the data api paths ([76917cf](https://github.com/tks18/finance-manager/commit/76917cfa1291f4463b3116870763eb26ac9c3fad))
+* **plugins/backend/helpers:** write all the types for database handler function ([83a4693](https://github.com/tks18/finance-manager/commit/83a4693bc85704892d509fe05559783f195f0ca4))
+* **plugins/backend:** write a custom hook to automatically get the api config for the route ([874f8e8](https://github.com/tks18/finance-manager/commit/874f8e82768023587bfc3fa4b7062211cc4f5ec8))
+* **plugins/backend:** write the database handler class for managing db routes ([4be28f0](https://github.com/tks18/finance-manager/commit/4be28f09da232adde77984c202633fe0774f4828))
+* **plugins/store:** add usertoken selector to user selectors ([5d15ff1](https://github.com/tks18/finance-manager/commit/5d15ff1de692b9c214157f7d306edada2f6cfd3c))
+* **router:** properly setup router for react-router ([9a21953](https://github.com/tks18/finance-manager/commit/9a2195385d4488558da4c3a9cf86466b23e52c08))
+* **routes:** add a template for handling master data ([93a6145](https://github.com/tks18/finance-manager/commit/93a61456cd6083173757b5e23edef75839ad141f))
+* **routes:** write a template for handle transactional data ([3d041d0](https://github.com/tks18/finance-manager/commit/3d041d0614675a54c17ec936c8cc7fdd9a060915))
+
 ### [0.1.2](https://github.com/tks18/finance-manager/compare/v0.1.1...v0.1.2) (2022-10-18)
 
 
