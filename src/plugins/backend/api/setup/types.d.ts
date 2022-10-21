@@ -1,5 +1,3 @@
-import { IRequestResponse } from '@plugins/backend/types';
-
 export interface IBuildCalendarInput {
   date: string;
 }
@@ -39,5 +37,3 @@ export interface IBuildCalendar {
     assesment_year: string;
   };
 }
-
-export type TBuildCalendarResponse = IRequestResponse<IBuildCalendar>;
