@@ -5,7 +5,7 @@ import { ListItemButton, ListItemIcon } from '@mui/material';
 import { Collapse, ListItemText, Typography } from '@mui/material';
 import { settingsSelectors, settingsActions } from '@plugins/store';
 import { useAppSelector, useAppDispatch } from '@plugins/store';
-import { useNavigate } from '@tanstack/react-location';
+import { useNavigate } from 'react-router-dom';
 import { navigationList } from './nav-list';
 
 // Icons
@@ -114,7 +114,7 @@ export function NavDrawer() {
       dispatch(settingsActions.toggleNavBar(toggle));
     };
 
-  const navigateToString = (path: string) => navigate({ to: path });
+  const navigateToString = (path: string) => navigate(path);
 
   return (
     <Drawer
