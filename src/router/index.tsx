@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
-import { Root, Home, MasterRoute, TransactionRoute } from '@routes';
+import { dbApiConfig } from '@plugins/backend/api';
+import { Root, Home, MasterRoot, MasterHome, TransactionRoute } from '@routes';
 
 export const routes: RouteObject[] = [
   {
@@ -14,14 +15,25 @@ export const routes: RouteObject[] = [
         path: '/transactions/calendar',
         element: <Home />,
       },
-      {
-        path: '/transactions/*',
-        element: <TransactionRoute />,
-      },
-      {
-        path: '/masters/*',
-        element: <MasterRoute />,
-      },
+      ...dbApiConfig
+        .filter((config) => config.tableType === 'master')
+        .map((config) => ({
+          path: config.path,
+          element: <MasterRoot />,
+          children: [
+            {
+              path: `${config.path}/`,
+              element: <MasterHome />,
+            },
+          ],
+        })),
+      ...dbApiConfig
+        .filter((config) => config.tableType === 'transaction')
+        .filter((config) => config.modelName !== 'CalendarMaster')
+        .map((config) => ({
+          path: config.path,
+          element: <TransactionRoute />,
+        })),
     ],
   },
 ];
