@@ -10,9 +10,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IAssetCategoryMasterCreationAttributes,
       DataTypes.IAssetCategoryMasterDocument
     >(routes.api.data.masters.assets.categories),
+    tableType: 'master',
     modelName: 'AssetCategoryMaster',
     componentOptions: {
-      title: 'Asset Category Master',
+      title: 'Asset Category Masters',
     },
   },
   {
@@ -21,9 +22,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IAssetMasterCreationAttributes,
       DataTypes.IAssetMasterDocument
     >(routes.api.data.masters.assets.master),
+    tableType: 'master',
     modelName: 'AssetMaster',
     componentOptions: {
-      title: 'Asset Master',
+      title: 'Asset Masters',
     },
   },
   {
@@ -32,9 +34,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IBankMasterCreationAttributes,
       DataTypes.IBankMasterDocument
     >(routes.api.data.masters.banks),
+    tableType: 'master',
     modelName: 'BankMaster',
     componentOptions: {
-      title: 'Bank Master',
+      title: 'Bank Masters',
     },
   },
   {
@@ -43,9 +46,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.ICreditCardMasterCreationAttributes,
       DataTypes.ICreditCardMasterDocument
     >(routes.api.data.masters.creditCards),
+    tableType: 'master',
     modelName: 'CreditCardMaster',
     componentOptions: {
-      title: 'Credit Card Master',
+      title: 'Credit Card Masters',
     },
   },
   {
@@ -54,9 +58,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IDebitCardMasterCreationAttributes,
       DataTypes.IDebitCardMasterDocument
     >(routes.api.data.masters.debitCards),
+    tableType: 'master',
     modelName: 'DebitCardMaster',
     componentOptions: {
-      title: 'Debit Card Master',
+      title: 'Debit Card Masters',
     },
   },
   {
@@ -65,9 +70,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IEMIMasterCreationAttributes,
       DataTypes.IEMIMasterDocument
     >(routes.api.data.masters.emi),
+    tableType: 'master',
     modelName: 'EMIMaster',
     componentOptions: {
-      title: 'EMI Master',
+      title: 'EMI Masters',
     },
   },
   {
@@ -75,10 +81,11 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
     api: new DatabaseHandler<
       DataTypes.IExpenseCategoryMasterCreationAttributes,
       DataTypes.IExpenseCategoryMasterDocument
-    >(routes.api.data.masters.expenses.categories),
+    >(routes.api.data.transactions.calendar),
+    tableType: 'master',
     modelName: 'ExpenseCategoryMaster',
     componentOptions: {
-      title: 'Expense Category Master',
+      title: 'Expense Category Masters',
     },
   },
   {
@@ -87,9 +94,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IExpenseMasterCreationAttributes,
       DataTypes.IExpenseMasterDocument
     >(routes.api.data.masters.expenses.master),
+    tableType: 'master',
     modelName: 'ExpenseMaster',
     componentOptions: {
-      title: 'Expense Master',
+      title: 'Expense Masters',
     },
   },
   {
@@ -98,9 +106,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IIncomeCategoryMasterCreationAttributes,
       DataTypes.IIncomeCategoryMasterDocument
     >(routes.api.data.masters.incomes.categories),
+    tableType: 'master',
     modelName: 'IncomeCategoryMaster',
     componentOptions: {
-      title: 'Income Category Master',
+      title: 'Income Category Masters',
     },
   },
   {
@@ -109,9 +118,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IIncomeMasterCreationAttributes,
       DataTypes.IIncomeMasterDocument
     >(routes.api.data.masters.incomes.master),
+    tableType: 'master',
     modelName: 'IncomeMaster',
     componentOptions: {
-      title: 'Income Master',
+      title: 'Income Masters',
     },
   },
   {
@@ -120,9 +130,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IInsuranceMasterCreationAttributes,
       DataTypes.IInsuranceMasterDocument
     >(routes.api.data.masters.insurances),
+    tableType: 'master',
     modelName: 'InsuranceMaster',
     componentOptions: {
-      title: 'Insurance Master',
+      title: 'Insurance Masters',
     },
   },
   {
@@ -131,9 +142,10 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IInvestmentCategoryMasterCreationAttributes,
       DataTypes.IInvestmentCategoryMasterDocument
     >(routes.api.data.masters.investments.categories),
+    tableType: 'master',
     modelName: 'InvestmentCategoryMaster',
     componentOptions: {
-      title: 'Investment Category Master',
+      title: 'Investment Category Masters',
     },
   },
   {
@@ -142,6 +154,7 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IInvestmentMasterCreationAttributes,
       DataTypes.IInvestmentMasterDocument
     >(routes.api.data.masters.investments.master),
+    tableType: 'master',
     modelName: 'InvestmentMaster',
     componentOptions: {
       title: 'Investment Master',
@@ -153,6 +166,7 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.ICalendarMasterCreationAttributes,
       DataTypes.ICalendarMasterDocument
     >(routes.api.data.transactions.calendar),
+    tableType: 'transaction',
     modelName: 'CalendarMaster',
     componentOptions: {
       title: 'Calendar Analysis',
@@ -164,6 +178,7 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IExpenseTransactionCreationAttributes,
       DataTypes.IExpenseTransactionDocument
     >(routes.api.data.transactions.expenses),
+    tableType: 'transaction',
     modelName: 'Expenses',
     componentOptions: {
       title: 'Expense Transactions',
@@ -175,6 +190,7 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IIncomeTransactionCreationAttributes,
       DataTypes.IIncomeTransactionDocument
     >(routes.api.data.transactions.incomes),
+    tableType: 'transaction',
     modelName: 'Incomes',
     componentOptions: {
       title: 'Income Transactions',
@@ -186,6 +202,7 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IInvestmentTransactionCreationAttributes,
       DataTypes.IInvestmentTransactionDocument
     >(routes.api.data.transactions.investments),
+    tableType: 'transaction',
     modelName: 'Investments',
     componentOptions: {
       title: 'Investment Transactions',
@@ -197,6 +214,7 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
       DataTypes.IOpeningBalanceTransactionCreationAttributes,
       DataTypes.IOpeningBalanceTransactionDocument
     >(routes.api.data.transactions.openingBalances),
+    tableType: 'transaction',
     modelName: 'OpeningBalances',
     componentOptions: {
       title: 'Opening Balance Transactions',
