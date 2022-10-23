@@ -9,9 +9,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { createLogger } from 'redux-logger';
-
-const middlewares = [createLogger()];
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -20,7 +17,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(middlewares),
+    }),
 });
 
 export const persistor = persistStore(store);

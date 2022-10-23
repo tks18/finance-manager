@@ -20,7 +20,7 @@
       "@/*": ["src/*"],
       "@app": ["src/app/index.tsx"],
       "@app/*": ["src/app/*"],
-      "@components": ["src/components"],
+      "@components": ["src/components/index.tsx"],
       "@components/*": ["src/components/*"],
       "@routes/*": ["src/routes/*"],
       "@routes": ["src/routes/index.tsx"],
@@ -30,6 +30,8 @@
       "@plugins": ["src/plugins/index.ts"],
       "@styles/*": ["src/styles/*"],
       "@styles": ["src/styles/index.scss"],
+      "@helpers/*": ["src/helpers/*"],
+      "@helpers": ["src/helpers/index.ts"],
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
     }
   },

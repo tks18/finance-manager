@@ -43,6 +43,7 @@ export interface IBaseDBApiConfig {
     | TransactionTypes.IOpeningBalanceTransactionDocument
   >;
   modelName: string;
+  tableType: 'master' | 'transaction';
   componentOptions: {
     title: string;
   };
