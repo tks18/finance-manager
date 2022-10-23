@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/tks18/finance-manager/compare/v0.1.3...v0.1.4) (2022-10-23)
+
+
+### Build System 🏗
+
+* **config:** add helper folder to alias list ([7de26fa](https://github.com/tks18/finance-manager/commit/7de26faf1b87dbda6815c76bbd82cefec9e823a1))
+* **package:** add react-data-grid component ([81d12dc](https://github.com/tks18/finance-manager/commit/81d12dcd7bc387d9f0d6bb08309eb97de8e4d7b4))
+
+
+### Code Refactoring 🖌
+
+* **app:** refactor all the providers before the router to provide context to router ([8d8761d](https://github.com/tks18/finance-manager/commit/8d8761d2c4590727de19d2224e2c79fd2a4c3e35))
+* **exports:** export the data-grid component ([6a673de](https://github.com/tks18/finance-manager/commit/6a673def05672c36a76bb661c2c275c6d0bd7a01))
+* **routes/master:** remove error and main file and refactor it to a folder ([7117416](https://github.com/tks18/finance-manager/commit/7117416dc2868b46b0dd6a2cd857f142e61baa25))
+
+
+### Features 🔥
+
+* **components:** create a data-grid component for rendering table data from api ([271992d](https://github.com/tks18/finance-manager/commit/271992d924f0a136f0a0c56f246483eb0c62d1b7))
+* **helpers:** create a data-grid helper function to prepare data for grid ([f9959aa](https://github.com/tks18/finance-manager/commit/f9959aad3d779a393d9348bcdf08cc3f1946a918))
+* **plugins/backend:** add more config options to db routes ([ef35404](https://github.com/tks18/finance-manager/commit/ef35404b76ea562049c05cff28b8b9d55a433b48))
+* **plugins/store:** remove logger middleware ([55d9f1e](https://github.com/tks18/finance-manager/commit/55d9f1ee7579e913bfaf5008039e84e2d514af0c))
+* **router:** map all the db routes using config instead of wildcard matching ([700ece2](https://github.com/tks18/finance-manager/commit/700ece2fb228cd8f911057692e5734b55260680c))
+* **routes/master:** create a basic skeleton loader ([67d184d](https://github.com/tks18/finance-manager/commit/67d184d9374cbc1176f681cde4f75dcae250000a))
+* **routes/master:** create a custom typed hook for outletcontext ([ec5797a](https://github.com/tks18/finance-manager/commit/ec5797ac75c9b87476e7c0e78f271dc60cc92506))
+* **routes/master:** create a root file for master template and pass context ([9c5e3b7](https://github.com/tks18/finance-manager/commit/9c5e3b7f4f67eb5efc4a9dd6be98ff29adea1226))
+* **routes/master:** create the main page for master template route & display grid ([8bb5c19](https://github.com/tks18/finance-manager/commit/8bb5c190c926ae710511163bbbf9be186a7ba992))
+* **routes/master:** export everything from sub-folder and remove previous component ([05c6998](https://github.com/tks18/finance-manager/commit/05c6998d9a26406bc6313383a810ce5a4fc884d4))
+
 ### [0.1.3](https://github.com/tks18/finance-manager/compare/v0.1.2...v0.1.3) (2022-10-21)
 
 
