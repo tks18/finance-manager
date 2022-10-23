@@ -1,16 +1,17 @@
 import { Outlet } from 'react-router-dom';
-import { StoreProvider, ThemeProvider, NavBar, NavDrawer } from '@components';
 import { ToastContainer } from 'react-toastify';
+import { Container } from '@mui/material';
+import { NavBar, NavDrawer } from '@components';
 
 export function Root() {
   return (
-    <StoreProvider>
-      <ThemeProvider>
-        <NavBar />
-        <NavDrawer />
+    <>
+      <NavBar />
+      <NavDrawer />
+      <Container maxWidth={false} disableGutters sx={{ px: 0.5, py: 0.5 }}>
         <Outlet />
-        <ToastContainer />
-      </ThemeProvider>
-    </StoreProvider>
+      </Container>
+      <ToastContainer />
+    </>
   );
 }
