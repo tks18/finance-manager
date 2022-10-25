@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/tks18/finance-manager/compare/v0.1.4...v0.1.5) (2022-10-25)
+
+
+### Bug Fixes 🛠
+
+* **helpers/data-grid:** fix column and row sort function ([c95aadb](https://github.com/tks18/finance-manager/commit/c95aadb970fdd9bcbf18b480ad69e9fa0eb5ee59))
+
+
+### Features 🔥
+
+* **components:** completely process data in the data grid component ([accad6a](https://github.com/tks18/finance-manager/commit/accad6a343d58d4d410337ad889b7d786c5e547b))
+* **components:** render different navigation list when user is logged out ([3789bfa](https://github.com/tks18/finance-manager/commit/3789bfa2a8fad73678668b3040a8772eb86c8539))
+* **components:** write a loader component ([ea276a6](https://github.com/tks18/finance-manager/commit/ea276a612f48677d292f197cb1189814b8731e0d))
+* **routes/master:** use the custom loader component ([9e518e2](https://github.com/tks18/finance-manager/commit/9e518e2dd59484bdc956a4d33e6dfe3da5758044))
+
+
+### Code Refactoring 🖌
+
+* **plugins/backend:** revert back to original url ([ee81549](https://github.com/tks18/finance-manager/commit/ee815496fe183611b800f64cb40de8474b29201a))
+* **routes/master:** refactor the home to reflect all the other changes ([74ef6e7](https://github.com/tks18/finance-manager/commit/74ef6e7abdac44f07a39b6ca8a6471f1098120bd))
+
 ### [0.1.4](https://github.com/tks18/finance-manager/compare/v0.1.3...v0.1.4) (2022-10-23)
 
 
