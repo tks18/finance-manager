@@ -1,14 +1,14 @@
-import { LinkButton, DataGrid } from '@components';
-import { Typography, Unstable_Grid2 as Grid } from '@mui/material';
-import { Loader } from '../Loader';
 import { useState, useEffect } from 'react';
+import { Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useMasterOutletContext } from '../hooks';
+
+import { LinkButton, DataGrid } from '@components';
 import { useAppSelector, userSelectors } from '@plugins/store';
-import { prepareDataforGrid } from '@helpers';
+import { MasterLoader } from '../Loader';
+import { useMasterOutletContext } from '../hooks';
 
 // Types
-import { IGridRow, IGridColumn } from '@helpers/types';
+import { TGeneriCDocument } from '@plugins/backend/types';
 
 export function MasterHome() {
   const navigate = useNavigate();
@@ -19,14 +19,7 @@ export function MasterHome() {
   const { title } = componentOptions;
 
   const [isMasterDataLoading, setMasterDataLoading] = useState<boolean>(false);
-
-  const [gridConfig, setGridConfig] = useState<{
-    rows: IGridRow[];
-    cols: IGridColumn[];
-  }>({
-    rows: [],
-    cols: [],
-  });
+  const [masterData, setMasterData] = useState<TGeneriCDocument[]>([]);
 
   useEffect(() => {
     const getMasterData = async () => {
@@ -34,15 +27,8 @@ export function MasterHome() {
       if (userToken) {
         const masterDocsResponse = await api.get(userToken, {
           options: {
-            filter: {
-              date: {
-                between: ['2020-01-01', '2020-02-28'],
-              },
-            },
-            include: [
-              'masterTables.calendar.expenses',
-              'masterTables.calendar.incomes',
-            ],
+            filter: {},
+            include: [],
           },
         });
 
@@ -50,9 +36,7 @@ export function MasterHome() {
           data: { docs },
         } = masterDocsResponse;
 
-        const gridConf = prepareDataforGrid(docs);
-        setGridConfig(gridConf);
-
+        setMasterData(docs);
         setMasterDataLoading(false);
       } else {
         navigate('/');
@@ -110,8 +94,20 @@ export function MasterHome() {
             {title} Table
           </Typography>
         </Grid>
-        <Grid xs={12} sx={{ display: 'flex', height: '80vh', my: 1, mx: 1 }}>
-          {isMasterDataLoading ? <Loader /> : <DataGrid config={gridConfig} />}
+        <Grid
+          xs={12}
+          sx={{
+            display: 'flex',
+            height: isMasterDataLoading ? '' : '80vh',
+            my: 1,
+            mx: 1,
+          }}
+        >
+          {isMasterDataLoading ? (
+            <MasterLoader />
+          ) : (
+            <DataGrid data={masterData} />
+          )}
         </Grid>
       </Grid>
     </Grid>
