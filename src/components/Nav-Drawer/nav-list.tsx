@@ -14,6 +14,11 @@ import {
   Healing as HealingIcon,
   Category as CategoryIcon,
   Storage as StorageIcon,
+  PhonelinkSetup as PhonelinkSetupIcon,
+  EventRepeat as EventRepeatIcon,
+  Person as PersonIcon,
+  Login as LoginIcon,
+  VpnKey as VpnKeyIcon,
 } from '@mui/icons-material';
 
 // Types
@@ -27,7 +32,7 @@ export interface INavigationList {
   description?: string;
 }
 
-export const navigationList: INavigationList[] = [
+export const authNavigationList: INavigationList[] = [
   {
     name: 'Calendar Analysis',
     icon: <CalendarViewDayIcon />,
@@ -166,6 +171,38 @@ export const navigationList: INavigationList[] = [
         name: 'Insurances',
         icon: <HealingIcon />,
         path: '/masters/insurances',
+      },
+    ],
+  },
+  {
+    name: 'Manage Setup',
+    icon: <PhonelinkSetupIcon />,
+    path: '/auth/setup',
+    list: [
+      {
+        name: 'Extend / Build Calendar Table',
+        icon: <EventRepeatIcon />,
+        path: '/auth/setup/calendar',
+      },
+    ],
+  },
+];
+
+export const nonAuthNavigationList: INavigationList[] = [
+  {
+    name: 'Login / Register',
+    path: '/auth',
+    icon: <PersonIcon />,
+    list: [
+      {
+        name: 'Login',
+        icon: <LoginIcon />,
+        path: '/auth/login',
+      },
+      {
+        name: 'Register',
+        icon: <VpnKeyIcon />,
+        path: '/auth/register',
       },
     ],
   },

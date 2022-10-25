@@ -4,9 +4,10 @@ import { List, ListItem, ListSubheader } from '@mui/material';
 import { ListItemButton, ListItemIcon } from '@mui/material';
 import { Collapse, ListItemText, Typography } from '@mui/material';
 import { settingsSelectors, settingsActions } from '@plugins/store';
+import { userSelectors } from '@plugins/store';
 import { useAppSelector, useAppDispatch } from '@plugins/store';
 import { useNavigate } from 'react-router-dom';
-import { navigationList } from './nav-list';
+import { authNavigationList, nonAuthNavigationList } from './nav-list';
 
 // Icons
 import { AccountBalanceRounded as AppIcon } from '@mui/icons-material';
@@ -18,18 +19,18 @@ import type { ReactNode } from 'react';
 import type { ListProps } from '@mui/material';
 import type { INavigationList } from './nav-list';
 
-export function RenderNestedList(
-  props: ListProps & {
-    title: string;
-    path: string;
-    toggleDrawer: (
-      toggle: boolean,
-    ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
-    navigate: (path: string) => void;
-    prependIcon?: ReactNode;
-    subItems?: INavigationList[];
-  },
-) {
+interface IRenderNestedListProps extends ListProps {
+  title: string;
+  path: string;
+  toggleDrawer: (
+    toggle: boolean,
+  ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
+  navigate: (path: string) => void;
+  prependIcon?: ReactNode;
+  subItems?: INavigationList[];
+}
+
+export function RenderNestedList(props: IRenderNestedListProps) {
   const {
     title,
     path,
@@ -98,8 +99,13 @@ export function RenderNestedList(
 
 export function NavDrawer() {
   const navBarState = useAppSelector(settingsSelectors.selectNavBarSettings);
+  const userisVerified = useAppSelector(userSelectors.isVerified);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const listToRender = userisVerified
+    ? authNavigationList
+    : nonAuthNavigationList;
 
   const toggleDrawer =
     (toggle: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -134,7 +140,7 @@ export function NavDrawer() {
           </Typography>
         </Box>
         <List>
-          {navigationList.map((item, index) => {
+          {listToRender.map((item, index) => {
             return (
               <Fragment key={index}>
                 <ListSubheader>{item.name}</ListSubheader>
