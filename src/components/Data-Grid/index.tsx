@@ -1,25 +1,28 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import DG from 'react-data-grid';
+import { Box, Typography } from '@mui/material';
+import { prepareDataforGrid } from '@/helpers';
 
 import type { DataGridProps, SortColumn } from 'react-data-grid';
 import type { IGridRow, IGridColumn } from '@helpers/types';
+import type { TGeneriCDocument } from '@plugins/backend/types';
 
 function rowKeyGetter(row: IGridRow) {
   return row.id;
-}
-
-interface IGridConfig {
-  rows: IGridRow[];
-  cols: IGridColumn[];
 }
 interface SummaryRow {
   id: string;
   totalCount: number;
 }
 
+interface IGridConfig {
+  rows: IGridRow[];
+  cols: IGridColumn[];
+}
+
 interface IDataGridProps
   extends Omit<DataGridProps<IGridRow, SummaryRow>, 'rows' | 'columns'> {
-  config: IGridConfig;
+  data: TGeneriCDocument[];
 }
 
 function getComparator(
@@ -30,17 +33,44 @@ function getComparator(
   };
 }
 
+function EmptyRowsRenderer() {
+  return (
+    <Box
+      sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center' }}
+    >
+      <Typography sx={{ fontWeight: 'bold' }} variant="h6">
+        No Records Found
+      </Typography>
+    </Box>
+  );
+}
+
 export function DataGrid(props: IDataGridProps) {
-  const { config } = props;
+  const { data } = props;
+
+  const [gridConfig, setGridConfig] = useState<IGridConfig>({
+    rows: [],
+    cols: [],
+  });
+
+  const processedData = useMemo((): IGridConfig => {
+    const response = prepareDataforGrid(data);
+    return response;
+  }, [data]);
+
+  useEffect(() => {
+    setGridConfig(processedData);
+  }, [processedData]);
+
   const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([]);
   const [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(
     () => new Set(),
   );
 
   const sortedRows = useMemo((): IGridRow[] => {
-    if (sortColumns.length === 0) return config.rows;
+    if (sortColumns.length === 0) return gridConfig.rows;
 
-    return [...config.rows].sort((a, b) => {
+    return [...gridConfig.rows].sort((a, b) => {
       for (const sort of sortColumns) {
         const comparator = getComparator(sort.columnKey);
         const compResult = comparator(a, b);
@@ -50,7 +80,7 @@ export function DataGrid(props: IDataGridProps) {
       }
       return 0;
     });
-  }, [config.rows, sortColumns]);
+  }, [gridConfig.rows, sortColumns]);
 
   return (
     <>
@@ -60,6 +90,7 @@ export function DataGrid(props: IDataGridProps) {
           width: '100%',
         }}
         className="rdg-dark"
+        emptyRowsRenderer={EmptyRowsRenderer}
         rowKeyGetter={rowKeyGetter}
         rows={sortedRows}
         sortColumns={sortColumns}
@@ -70,7 +101,7 @@ export function DataGrid(props: IDataGridProps) {
           sortable: true,
           resizable: true,
         }}
-        columns={config.cols}
+        columns={gridConfig.cols}
       />
     </>
   );
