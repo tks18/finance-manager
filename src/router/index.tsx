@@ -1,6 +1,13 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { dbApiConfig } from '@plugins/backend/api';
-import { Root, Home, MasterRoot, MasterHome, TransactionRoute } from '@routes';
+import {
+  Root,
+  Home,
+  Auth,
+  MasterRoot,
+  MasterHome,
+  TransactionRoute,
+} from '@routes';
 
 export const routes: RouteObject[] = [
   {
@@ -10,6 +17,10 @@ export const routes: RouteObject[] = [
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/auth',
+        element: <Auth />,
       },
       {
         path: '/transactions/calendar',
