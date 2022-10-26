@@ -11,7 +11,7 @@ export function Root() {
       <Container maxWidth={false} disableGutters sx={{ px: 0.5, py: 0.5 }}>
         <Outlet />
       </Container>
-      <ToastContainer />
+      <ToastContainer theme="dark" />
     </>
   );
 }
