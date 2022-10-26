@@ -1,8 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { useBackendApi } from '@plugins/backend/hooks';
 
+import { useAppSelector } from '@plugins/store';
+import { userSelectors, userHooks } from '@plugins/store';
+import { useBackendApi } from '@plugins/backend/hooks';
 export function MasterRoot() {
   const apiConfig = useBackendApi();
+  const userToken = useAppSelector(userSelectors.userToken);
 
-  return <Outlet context={{ config: apiConfig }} />;
+  userHooks.useVerify();
+
+  return <Outlet context={{ config: apiConfig, userToken }} />;
 }
