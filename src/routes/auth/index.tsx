@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@plugins/store';
 import { userSelectors } from '@plugins/store';
 
-import { Login, Register } from './sub-routes';
+import { Login, Register } from '@components';
 
 export function Auth() {
   const navigate = useNavigate();
