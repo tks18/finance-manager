@@ -3,9 +3,11 @@ import * as userThunks from './thunks';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IRequestError, IUserDoc } from '@plugins/backend/types';
 
 interface IUserState {
+  loginType: 'login' | 'register' | null;
   authenticated: boolean;
   verified: boolean;
   token: string | null;
@@ -25,6 +27,7 @@ interface IUserState {
 }
 
 const initialState: IUserState = {
+  loginType: null,
   authenticated: false,
   verified: false,
   token: null,
@@ -47,6 +50,9 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setLoginType: (state, action: PayloadAction<IUserState['loginType']>) => {
+      state.loginType = action.payload;
+    },
     signOut: (state) => {
       state.authenticated = initialState.authenticated;
       state.doc = initialState.doc;
