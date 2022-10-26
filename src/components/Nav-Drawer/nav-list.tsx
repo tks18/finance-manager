@@ -197,12 +197,12 @@ export const nonAuthNavigationList: INavigationList[] = [
       {
         name: 'Login',
         icon: <LoginIcon />,
-        path: '/auth/login',
+        path: '/auth',
       },
       {
         name: 'Register',
         icon: <VpnKeyIcon />,
-        path: '/auth/register',
+        path: '/auth',
       },
     ],
   },
