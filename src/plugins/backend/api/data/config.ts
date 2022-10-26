@@ -81,7 +81,7 @@ export const dbApiConfig: DataTypes.IBaseDBApiConfig[] = [
     api: new DatabaseHandler<
       DataTypes.IExpenseCategoryMasterCreationAttributes,
       DataTypes.IExpenseCategoryMasterDocument
-    >(routes.api.data.transactions.calendar),
+    >(routes.api.data.masters.expenses.categories),
     tableType: 'master',
     modelName: 'ExpenseCategoryMaster',
     componentOptions: {

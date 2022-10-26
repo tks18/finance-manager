@@ -1,6 +1,4 @@
-import { SelectColumn } from 'react-data-grid';
-
-import { IGridRowInput, IGridColumn, IGridRow } from './types';
+import type { IGridRowInput, IGridColumn, IGridRow } from './types';
 
 function flattenObject(obj: IGridRowInput) {
   const toReturn: IGridRowInput = {};
@@ -19,7 +17,6 @@ function flattenObject(obj: IGridRowInput) {
 
 const prepareColumns = (columnArray: string[]) => {
   const columns: IGridColumn[] = [];
-  columns.push(SelectColumn);
   columnArray.forEach((col) => {
     columns.push({
       key: col,
@@ -29,7 +26,7 @@ const prepareColumns = (columnArray: string[]) => {
       width: 'max-content',
     });
   });
-  columns.sort();
+  columns.sort((a, b) => (a.key > b.key ? 1 : -1));
   return columns;
 };
 
@@ -52,6 +49,9 @@ export function prepareDataforGrid(docs: IGridRowInput[]) {
 
   const colDef = prepareColumns(columns);
   const rowDef = prepareRows(flattenedDocs);
+
+  docs.length > 0 &&
+    rowDef.sort((a, b) => (a[columns[0]] > b[columns[0]] ? 1 : -1));
 
   return {
     rows: rowDef,

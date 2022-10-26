@@ -2,6 +2,83 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/tks18/finance-manager/compare/v0.1.6...v0.1.7) (2022-10-26)
+
+
+### Features 🔥
+
+* **components:** update navbar to use the account menu instead of theme button ([d99577d](https://github.com/tks18/finance-manager/commit/d99577d5f06155d352fe45c7bb9a897cd25ad24d))
+* **components:** write a account-menu component for handling user actions ([3c3e0d7](https://github.com/tks18/finance-manager/commit/3c3e0d703d9332c7a6f92a55830c0a3fa168f08b))
+* **plugins/store/user:** improve user login, register workflows with session reducer ([408d012](https://github.com/tks18/finance-manager/commit/408d012e6b9ad39e21e7bea9326af1cf7a7a9ef8))
+* **plugins/store/user:** write custom user hooks for verification of user ([8dc7dfa](https://github.com/tks18/finance-manager/commit/8dc7dfacfb337c73de3c09b55dc41ae16734ead5))
+* **plugins/store:** add logger middleware for debugging ([6380484](https://github.com/tks18/finance-manager/commit/63804848d149dcb0b83f123df697e57a91fc149c))
+* **plugins/store:** introduce a new reducer - session for managing user sessions ([5199a53](https://github.com/tks18/finance-manager/commit/5199a53f5fc99f2515477311a89c525cb5d57d23))
+* **plugins/store:** write selectors for session reducer ([988837d](https://github.com/tks18/finance-manager/commit/988837d7be6fa3232c2cb5cb4ede7d0bcbc43d3c))
+* **routes/master:** use the userverify hook to guard the route and pass in the token to context ([1feb0dc](https://github.com/tks18/finance-manager/commit/1feb0dcd8893cadf9adeb7ee240aa93fcc0060d6))
+
+
+### Code Refactoring 🖌
+
+* **components:** export all the components ([b7341e1](https://github.com/tks18/finance-manager/commit/b7341e1ecc6baaea412fa6157e595a4737100947))
+* **plugins/store:** export session reducer and add it to root reducer ([36b6275](https://github.com/tks18/finance-manager/commit/36b6275c59d37fa52648f98564e097bb369e2451))
+* **plugins/store:** export user hooks ([1f720f2](https://github.com/tks18/finance-manager/commit/1f720f285d4aae0fdc73942b10ca76847373b69c))
+* **routes/auth:** remove all the sub-routes and move it to components folder ([2df8239](https://github.com/tks18/finance-manager/commit/2df8239330deef3890a4868c3f749959309d6ec2))
+* **routes/auth:** update import line of login and register component ([1588422](https://github.com/tks18/finance-manager/commit/15884228fb6db1886b2f367c66d020631da9cb33))
+* **routes/master:** update the context type for master outlet ([ff4eebb](https://github.com/tks18/finance-manager/commit/ff4eebb0658ad9a4170754a161ce117f8e3a5823))
+* **routes/master:** update the home component to use the token from context ([502cb4c](https://github.com/tks18/finance-manager/commit/502cb4cde713aa8462e8284158dab210955144cf))
+
+### [0.1.6](https://github.com/tks18/finance-manager/compare/v0.1.5...v0.1.6) (2022-10-26)
+
+
+### Bug Fixes 🛠
+
+* **components/nav-list:** fix navigation path ([16d3e14](https://github.com/tks18/finance-manager/commit/16d3e144ba1178758513bc70ccc997c5b3d7edba))
+* **plugins/backend:** fix user register api path ([c8dc6b1](https://github.com/tks18/finance-manager/commit/c8dc6b1d826fc8fab688a5696cbdca013b22c90e))
+
+
+### Code Refactoring 🖌
+
+* **plugins/store:** export the user workflow file ([8f91561](https://github.com/tks18/finance-manager/commit/8f915618ea1682d10a13964cf60e60c4f0385101))
+* **routes/master:** fix import line ([d4204e0](https://github.com/tks18/finance-manager/commit/d4204e00d996bd810d535aa05527d0a7c32e318c))
+
+
+### Build System 🏗
+
+* **package:** add @mui/lab for more mui components ([8292033](https://github.com/tks18/finance-manager/commit/8292033d2a6bb9addc8d2bbbf5eec078a29b8488))
+
+
+### Features 🔥
+
+* **plugins/store/user:** create a selector for new prop ([b4a8f88](https://github.com/tks18/finance-manager/commit/b4a8f889a2982f4f82822b11f06c40fd18d58760))
+* **plugins/user/store:** add a helper prop for handling user ([68f34df](https://github.com/tks18/finance-manager/commit/68f34df7c6f5a38689596617347e0173f65b3fea))
+* **plugins/user/workflow:** create user workflow dispatch handler for handling login and register ([2116ad1](https://github.com/tks18/finance-manager/commit/2116ad1f19f85eef8d1c35a6b3b1dbd92ac47b24))
+* **router:** add the auth component to routes ([9dc166e](https://github.com/tks18/finance-manager/commit/9dc166eb1064447fc5e5fd818e25d0a3c94898fc))
+* **routes/auth:** write a login component ([80fa9f2](https://github.com/tks18/finance-manager/commit/80fa9f28d0918f5ba50e633f8be764b8bc13d201))
+* **routes/auth:** write a register component ([7b7dca4](https://github.com/tks18/finance-manager/commit/7b7dca400ffc1c7f66fe9d14607dd41bc5fb7fcc))
+* **routes/auth:** write the main auth route component ([9713b42](https://github.com/tks18/finance-manager/commit/9713b4257adf7c283d782b3122ac80a46aa58f62))
+* **routes/root:** give theme for toast container ([25f9249](https://github.com/tks18/finance-manager/commit/25f9249c1b556f0b58c6675f9221c179cebf715b))
+
+### [0.1.5](https://github.com/tks18/finance-manager/compare/v0.1.4...v0.1.5) (2022-10-25)
+
+
+### Bug Fixes 🛠
+
+* **helpers/data-grid:** fix column and row sort function ([c95aadb](https://github.com/tks18/finance-manager/commit/c95aadb970fdd9bcbf18b480ad69e9fa0eb5ee59))
+
+
+### Features 🔥
+
+* **components:** completely process data in the data grid component ([accad6a](https://github.com/tks18/finance-manager/commit/accad6a343d58d4d410337ad889b7d786c5e547b))
+* **components:** render different navigation list when user is logged out ([3789bfa](https://github.com/tks18/finance-manager/commit/3789bfa2a8fad73678668b3040a8772eb86c8539))
+* **components:** write a loader component ([ea276a6](https://github.com/tks18/finance-manager/commit/ea276a612f48677d292f197cb1189814b8731e0d))
+* **routes/master:** use the custom loader component ([9e518e2](https://github.com/tks18/finance-manager/commit/9e518e2dd59484bdc956a4d33e6dfe3da5758044))
+
+
+### Code Refactoring 🖌
+
+* **plugins/backend:** revert back to original url ([ee81549](https://github.com/tks18/finance-manager/commit/ee815496fe183611b800f64cb40de8474b29201a))
+* **routes/master:** refactor the home to reflect all the other changes ([74ef6e7](https://github.com/tks18/finance-manager/commit/74ef6e7abdac44f07a39b6ca8a6471f1098120bd))
+
 ### [0.1.4](https://github.com/tks18/finance-manager/compare/v0.1.3...v0.1.4) (2022-10-23)
 
 

@@ -9,26 +9,12 @@ import {
 import {
   AccountBalanceRounded as AppIcon,
   MenuRounded as MenuIcon,
-  WbSunnyRounded as SunnyIcon,
-  DarkModeRounded as DarkIcon,
 } from '@mui/icons-material';
-import { LinkButton } from '@components';
-import {
-  themeActions,
-  themeSelectors,
-  settingsActions,
-  useAppSelector,
-  useAppDispatch,
-} from '@plugins/store';
+import { LinkButton, AccountMenu } from '@components';
+import { settingsActions, useAppDispatch } from '@plugins/store';
 
 export function NavBar() {
   const dispatch = useAppDispatch();
-
-  const paletteMode = useAppSelector(themeSelectors.selectPaletteMode);
-
-  const changeTheme = () => {
-    dispatch(themeActions.updateMode());
-  };
 
   return (
     <AppBar position="relative" variant="elevation" color="primary">
@@ -67,12 +53,7 @@ export function NavBar() {
               justifyContent: 'right',
             }}
           >
-            <IconButton
-              sx={{ mr: { xs: 0.5, md: 1 }, color: 'primary.contrastText' }}
-              onClick={changeTheme}
-            >
-              {paletteMode === 'dark' ? <DarkIcon /> : <SunnyIcon />}
-            </IconButton>
+            <AccountMenu />
           </Box>
         </Toolbar>
       </Container>

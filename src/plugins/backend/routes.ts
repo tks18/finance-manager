@@ -36,7 +36,7 @@ export const routes = {
       buildCalendar: '/api/setup/build-calendar',
     },
     user: {
-      register: '/api/user/register',
+      register: '/api/user/add',
       login: '/api/user/login',
       get: '/api/user/get',
       verify: '/api/user/verify',

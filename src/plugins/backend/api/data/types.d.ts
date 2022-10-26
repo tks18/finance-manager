@@ -49,5 +49,25 @@ export interface IBaseDBApiConfig {
   };
 }
 
+export type TGeneriCDocument =
+  | MasterTypes.IAssetCategoryMasterDocument
+  | MasterTypes.IAssetMasterDocument
+  | MasterTypes.IBankMasterDocument
+  | MasterTypes.ICalendarMasterDocument
+  | MasterTypes.ICreditCardMasterDocument
+  | MasterTypes.IDebitCardMasterDocument
+  | MasterTypes.IEMIMasterDocument
+  | MasterTypes.IExpenseCategoryMasterDocument
+  | MasterTypes.IExpenseMasterDocument
+  | MasterTypes.IIncomeCategoryMasterDocument
+  | MasterTypes.IIncomeMasterDocument
+  | MasterTypes.IInsuranceMasterDocument
+  | MasterTypes.IInvestmentCategoryMasterDocument
+  | MasterTypes.IInvestmentMasterDocument
+  | TransactionTypes.IExpenseTransactionDocument
+  | TransactionTypes.IIncomeTransactionDocument
+  | TransactionTypes.IInvestmentTransactionDocument
+  | TransactionTypes.IOpeningBalanceTransactionDocument;
+
 export * from './masters/types';
 export * from './transactions/types';

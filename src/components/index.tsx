@@ -5,3 +5,7 @@ export * from './Button';
 export * from './Nav-Bar';
 export * from './Nav-Drawer';
 export * from './Data-Grid';
+export * from './Loader';
+export * from './Login';
+export * from './Register';
+export * from './Account-Menu';
