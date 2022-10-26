@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/tks18/finance-manager/compare/v0.1.5...v0.1.6) (2022-10-26)
+
+
+### Bug Fixes 🛠
+
+* **components/nav-list:** fix navigation path ([16d3e14](https://github.com/tks18/finance-manager/commit/16d3e144ba1178758513bc70ccc997c5b3d7edba))
+* **plugins/backend:** fix user register api path ([c8dc6b1](https://github.com/tks18/finance-manager/commit/c8dc6b1d826fc8fab688a5696cbdca013b22c90e))
+
+
+### Code Refactoring 🖌
+
+* **plugins/store:** export the user workflow file ([8f91561](https://github.com/tks18/finance-manager/commit/8f915618ea1682d10a13964cf60e60c4f0385101))
+* **routes/master:** fix import line ([d4204e0](https://github.com/tks18/finance-manager/commit/d4204e00d996bd810d535aa05527d0a7c32e318c))
+
+
+### Build System 🏗
+
+* **package:** add @mui/lab for more mui components ([8292033](https://github.com/tks18/finance-manager/commit/8292033d2a6bb9addc8d2bbbf5eec078a29b8488))
+
+
+### Features 🔥
+
+* **plugins/store/user:** create a selector for new prop ([b4a8f88](https://github.com/tks18/finance-manager/commit/b4a8f889a2982f4f82822b11f06c40fd18d58760))
+* **plugins/user/store:** add a helper prop for handling user ([68f34df](https://github.com/tks18/finance-manager/commit/68f34df7c6f5a38689596617347e0173f65b3fea))
+* **plugins/user/workflow:** create user workflow dispatch handler for handling login and register ([2116ad1](https://github.com/tks18/finance-manager/commit/2116ad1f19f85eef8d1c35a6b3b1dbd92ac47b24))
+* **router:** add the auth component to routes ([9dc166e](https://github.com/tks18/finance-manager/commit/9dc166eb1064447fc5e5fd818e25d0a3c94898fc))
+* **routes/auth:** write a login component ([80fa9f2](https://github.com/tks18/finance-manager/commit/80fa9f28d0918f5ba50e633f8be764b8bc13d201))
+* **routes/auth:** write a register component ([7b7dca4](https://github.com/tks18/finance-manager/commit/7b7dca400ffc1c7f66fe9d14607dd41bc5fb7fcc))
+* **routes/auth:** write the main auth route component ([9713b42](https://github.com/tks18/finance-manager/commit/9713b4257adf7c283d782b3122ac80a46aa58f62))
+* **routes/root:** give theme for toast container ([25f9249](https://github.com/tks18/finance-manager/commit/25f9249c1b556f0b58c6675f9221c179cebf715b))
+
 ### [0.1.5](https://github.com/tks18/finance-manager/compare/v0.1.4...v0.1.5) (2022-10-25)
 
 
