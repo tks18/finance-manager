@@ -3,7 +3,6 @@ import { Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import { LinkButton, DataGrid } from '@components';
-import { useAppSelector, userSelectors } from '@plugins/store';
 import { MasterLoader } from '../Loader';
 import { useMasterOutletContext } from '../hooks';
 
@@ -12,8 +11,7 @@ import { TGeneriCDocument } from '@plugins/backend/types';
 
 export function MasterHome() {
   const navigate = useNavigate();
-  const { config } = useMasterOutletContext();
-  const userToken = useAppSelector(userSelectors.userToken);
+  const { config, userToken } = useMasterOutletContext();
 
   const { api, componentOptions } = config;
   const { title } = componentOptions;
@@ -24,23 +22,19 @@ export function MasterHome() {
   useEffect(() => {
     const getMasterData = async () => {
       setMasterDataLoading(true);
-      if (userToken) {
-        const masterDocsResponse = await api.get(userToken, {
-          options: {
-            filter: {},
-            include: [],
-          },
-        });
+      const masterDocsResponse = await api.get(userToken, {
+        options: {
+          filter: {},
+          include: [],
+        },
+      });
 
-        const {
-          data: { docs },
-        } = masterDocsResponse;
+      const {
+        data: { docs },
+      } = masterDocsResponse;
 
-        setMasterData(docs);
-        setMasterDataLoading(false);
-      } else {
-        navigate('/');
-      }
+      setMasterData(docs);
+      setMasterDataLoading(false);
     };
     getMasterData().catch(console.log);
   }, [api, userToken, navigate]);
