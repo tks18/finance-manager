@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/tks18/finance-manager/compare/v0.1.6...v0.1.7) (2022-10-26)
+
+
+### Features 🔥
+
+* **components:** update navbar to use the account menu instead of theme button ([d99577d](https://github.com/tks18/finance-manager/commit/d99577d5f06155d352fe45c7bb9a897cd25ad24d))
+* **components:** write a account-menu component for handling user actions ([3c3e0d7](https://github.com/tks18/finance-manager/commit/3c3e0d703d9332c7a6f92a55830c0a3fa168f08b))
+* **plugins/store/user:** improve user login, register workflows with session reducer ([408d012](https://github.com/tks18/finance-manager/commit/408d012e6b9ad39e21e7bea9326af1cf7a7a9ef8))
+* **plugins/store/user:** write custom user hooks for verification of user ([8dc7dfa](https://github.com/tks18/finance-manager/commit/8dc7dfacfb337c73de3c09b55dc41ae16734ead5))
+* **plugins/store:** add logger middleware for debugging ([6380484](https://github.com/tks18/finance-manager/commit/63804848d149dcb0b83f123df697e57a91fc149c))
+* **plugins/store:** introduce a new reducer - session for managing user sessions ([5199a53](https://github.com/tks18/finance-manager/commit/5199a53f5fc99f2515477311a89c525cb5d57d23))
+* **plugins/store:** write selectors for session reducer ([988837d](https://github.com/tks18/finance-manager/commit/988837d7be6fa3232c2cb5cb4ede7d0bcbc43d3c))
+* **routes/master:** use the userverify hook to guard the route and pass in the token to context ([1feb0dc](https://github.com/tks18/finance-manager/commit/1feb0dcd8893cadf9adeb7ee240aa93fcc0060d6))
+
+
+### Code Refactoring 🖌
+
+* **components:** export all the components ([b7341e1](https://github.com/tks18/finance-manager/commit/b7341e1ecc6baaea412fa6157e595a4737100947))
+* **plugins/store:** export session reducer and add it to root reducer ([36b6275](https://github.com/tks18/finance-manager/commit/36b6275c59d37fa52648f98564e097bb369e2451))
+* **plugins/store:** export user hooks ([1f720f2](https://github.com/tks18/finance-manager/commit/1f720f285d4aae0fdc73942b10ca76847373b69c))
+* **routes/auth:** remove all the sub-routes and move it to components folder ([2df8239](https://github.com/tks18/finance-manager/commit/2df8239330deef3890a4868c3f749959309d6ec2))
+* **routes/auth:** update import line of login and register component ([1588422](https://github.com/tks18/finance-manager/commit/15884228fb6db1886b2f367c66d020631da9cb33))
+* **routes/master:** update the context type for master outlet ([ff4eebb](https://github.com/tks18/finance-manager/commit/ff4eebb0658ad9a4170754a161ce117f8e3a5823))
+* **routes/master:** update the home component to use the token from context ([502cb4c](https://github.com/tks18/finance-manager/commit/502cb4cde713aa8462e8284158dab210955144cf))
+
 ### [0.1.6](https://github.com/tks18/finance-manager/compare/v0.1.5...v0.1.6) (2022-10-26)
 
 
