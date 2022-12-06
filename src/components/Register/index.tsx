@@ -44,7 +44,7 @@ export function Register() {
     setFormFields(initialFormState);
   };
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password === confirmPassword) {
       userWorkflows.register(dispatch, {
