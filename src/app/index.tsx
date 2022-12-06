@@ -1,11 +1,13 @@
 import { StoreProvider, ThemeProvider } from '@components';
-import { RouterProvider } from '@components';
+import { RouterProvider, LocalizationProvider } from '@components';
 
 export function App() {
   return (
     <StoreProvider>
       <ThemeProvider>
-        <RouterProvider />
+        <LocalizationProvider>
+          <RouterProvider />
+        </LocalizationProvider>
       </ThemeProvider>
     </StoreProvider>
   );
