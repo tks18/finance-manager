@@ -1,4 +1,5 @@
-import { requester } from '@plugins/backend';
+import { requester } from '@plugins/backend/helpers';
+import { api } from '@plugins/backend/api';
 import type {
   IDBAddInput,
   IDBGetInput,
@@ -10,6 +11,7 @@ import type {
   IDBDelete,
   IDBColumns,
 } from './types';
+import type { ICalendarDateIdInput } from '@plugins/backend/types';
 
 export class DatabaseHandler<ICreationAttributes, IDocumentAttributes> {
   private route: string;
@@ -71,5 +73,9 @@ export class DatabaseHandler<ICreationAttributes, IDocumentAttributes> {
       token,
       data,
     });
+  }
+
+  public getDateId(token: string, data: ICalendarDateIdInput) {
+    return api.data.masters.calendar.getDateId(token, data);
   }
 }

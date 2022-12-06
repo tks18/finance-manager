@@ -6,6 +6,9 @@ export const routes = {
           categories: '/api/data/masters/assets/categories',
           master: '/api/data/masters/assets/master',
         },
+        calendar: {
+          getDateId: '/api/data/masters/calendar/get-date-id',
+        },
         banks: '/api/data/masters/banks',
         creditCards: '/api/data/masters/credit-cards',
         debitCards: '/api/data/masters/debit-cards',
@@ -29,6 +32,7 @@ export const routes = {
         expenses: '/api/data/transactions/expenses',
         incomes: '/api/data/transactions/incomes',
         investments: '/api/data/transactions/investments',
+        marketData: '/api/data/transactions/market-data',
         openingBalances: '/api/data/transactions/opening-balances',
       },
     },

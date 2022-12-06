@@ -1,6 +1,4 @@
 import {
-  CalendarViewDay as CalendarViewDayIcon,
-  CalendarMonth as CalendarMonthIcon,
   ReceiptLong as ReceiptLongIcon,
   CurrencyExchange as CurrencyExchangeIcon,
   PointOfSale as PointOfSaleIcon,
@@ -14,8 +12,6 @@ import {
   Healing as HealingIcon,
   Category as CategoryIcon,
   Storage as StorageIcon,
-  PhonelinkSetup as PhonelinkSetupIcon,
-  EventRepeat as EventRepeatIcon,
   Person as PersonIcon,
   Login as LoginIcon,
   VpnKey as VpnKeyIcon,
@@ -33,18 +29,6 @@ export interface INavigationList {
 }
 
 export const authNavigationList: INavigationList[] = [
-  {
-    name: 'Calendar Analysis',
-    icon: <CalendarViewDayIcon />,
-    path: '/transactions',
-    list: [
-      {
-        name: 'Combined Analysis',
-        icon: <CalendarMonthIcon />,
-        path: '/transactions/calendar',
-      },
-    ],
-  },
   {
     name: 'Manage Transactions',
     icon: <ReceiptLongIcon />,
@@ -171,18 +155,6 @@ export const authNavigationList: INavigationList[] = [
         name: 'Insurances',
         icon: <HealingIcon />,
         path: '/masters/insurances',
-      },
-    ],
-  },
-  {
-    name: 'Manage Setup',
-    icon: <PhonelinkSetupIcon />,
-    path: '/auth/setup',
-    list: [
-      {
-        name: 'Extend / Build Calendar Table',
-        icon: <EventRepeatIcon />,
-        path: '/auth/setup/calendar',
       },
     ],
   },

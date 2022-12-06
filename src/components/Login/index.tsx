@@ -42,7 +42,7 @@ export function Login() {
     setFormFields(initialFormState);
   };
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     userWorkflows.login(dispatch, {
       email,
