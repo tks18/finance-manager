@@ -18,7 +18,10 @@ export const userWorkflows = {
         ).unwrap(),
       )
       .then(() => dispatch(sessionActions.setUserVerifyStatus(true)))
-      .catch(() => dispatch(userActions.signOut()));
+      .catch(() => {
+        dispatch(userActions.signOut());
+        dispatch(sessionActions.setUserVerifyStatus(false));
+      });
   },
   register: (dispatch: AppDispatch, arg: IUserRegisterInput) => {
     dispatch(userActions.setLoginType('register'));
@@ -32,7 +35,10 @@ export const userWorkflows = {
         ).unwrap(),
       )
       .then(() => dispatch(sessionActions.setUserVerifyStatus(true)))
-      .catch(() => dispatch(userActions.signOut()));
+      .catch(() => {
+        dispatch(userActions.signOut());
+        dispatch(sessionActions.setUserVerifyStatus(false));
+      });
   },
   signOut: (dispatch: AppDispatch, navigate: NavigateFunction) => {
     dispatch(userActions.signOut());
