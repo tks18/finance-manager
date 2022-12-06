@@ -64,3 +64,11 @@ export interface ICalendarMasterDocument
   extends ICalendarMasterNonCreationAttributes,
     ICalendarMasterCreationAttributes,
     ICalendarMasterAssociationAttributes {}
+
+export interface ICalendarDateIdInput {
+  dateToFind: string;
+}
+
+export interface ICalendarDateIdResponse {
+  dateId: number;
+}
