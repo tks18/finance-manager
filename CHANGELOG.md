@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/tks18/finance-manager/compare/v0.1.7...v1.0.0) (2022-12-06)
+
+
+### Build System 🏗
+
+* **package:** remove data-grid plugins, add react-date pickers and other related plugins ([37a100d](https://github.com/tks18/finance-manager/commit/37a100d8633f06333a8ce65966c65c7611299fc3))
+
+
+### Bug Fixes 🛠
+
+* **routes/templates:** remove all master and transaction folders and replace with single temp file ([39d597e](https://github.com/tks18/finance-manager/commit/39d597ebfa058aa18ade155f922bd7a7f410208a))
+* **store/user:** fix the user signout workflow ([e45f408](https://github.com/tks18/finance-manager/commit/e45f408c5db794fe0f5df09e981c1fca8fedc60e))
+
+
+### Features 🔥
+
+* **app:** wrap the app inside the localization handler ([b0af2f4](https://github.com/tks18/finance-manager/commit/b0af2f4e9bb0ad9947f77f57eb8395528f5c1180))
+* **components/data-grid:** remove data-grid ([7902f8f](https://github.com/tks18/finance-manager/commit/7902f8f4312b9077b5a4a387cb928e4a29b48ed7))
+* **components/fields-renderer:** custom component to render all the fields given in the db config ([5d6a8f1](https://github.com/tks18/finance-manager/commit/5d6a8f1ea4632b9e9d116747b8aecda062d1b018))
+* **components:** remove some options from nav-drawer ([88c0aa0](https://github.com/tks18/finance-manager/commit/88c0aa07abea15437c50c383046ced19684f99d7))
+* **components:** write a component for localization handler for mui date picker ([00229e9](https://github.com/tks18/finance-manager/commit/00229e90e29a8747299e25ea1dd94813a535171e))
+* **helpers:** remove all helpers as it is not required ([2b10948](https://github.com/tks18/finance-manager/commit/2b10948156f7c3736de30076bb426de5ebefc3d2))
+* **plugins/backend:** map all the databasehandler classes in a single file ([5a7bd55](https://github.com/tks18/finance-manager/commit/5a7bd55cb8e3d602ec1197eaa64835bf3d05ecf4))
+* **plugins/backend:** retype the dbconfig interface to include fields ([9ebfd06](https://github.com/tks18/finance-manager/commit/9ebfd06b0cca6a06558dfaaa64402a33be5e03de))
+* **plugins/backend:** update the dbhandler class to include getdateid method for all by default ([d40e98b](https://github.com/tks18/finance-manager/commit/d40e98b2da242c4ee7e780d1ea1e4b251ba6ee9d))
+* **plugins/backend:** write all the config for all the master databases ([c5b188a](https://github.com/tks18/finance-manager/commit/c5b188a60a001e658746a845b5fbc4bd57a2d582))
+* **plugins/backend:** write all the config for all the transactional database ([35f5eeb](https://github.com/tks18/finance-manager/commit/35f5eebc89855c61326a4ea20a254b5b213a793f))
+* **plugins/backend:** write the getdateid method for calendar db ([5256f6b](https://github.com/tks18/finance-manager/commit/5256f6be45750b6afdd352fe6c172884c23e2307))
+* **plugins/database:** write the types for inputfield config ([96eee43](https://github.com/tks18/finance-manager/commit/96eee43b5eb5efaa0e64f82c348ba8eae5d4df96))
+* **routes/templates/data:** write a loader component for data loading ([27409ab](https://github.com/tks18/finance-manager/commit/27409ab1935d8d1c052452541955e8e70110fcb1))
+* **routes/templates/data:** write the root data component and the custom outlet hook ([38dffa5](https://github.com/tks18/finance-manager/commit/38dffa58075d8d1d5233404eeaad8f1b529f3746))
+* **routes/templates:** use the fields renderer to render the db fields ([447ab3f](https://github.com/tks18/finance-manager/commit/447ab3fc220036a230621636dcc409a1870fa6f7))
+* **store/user:** remove logger middleware ([4964215](https://github.com/tks18/finance-manager/commit/496421507e5066411d6afc4eb45d20bc2f6b1337))
+
+
+### Code Refactoring 🖌
+
+* **plugins/backend:** move all the config to its own seperate file ([d3af3ee](https://github.com/tks18/finance-manager/commit/d3af3eec5858a630cd9ccc7343dc69b1c9ebd0b1))
+* **router:** refactor the router according to template files ([542e216](https://github.com/tks18/finance-manager/commit/542e2168f6e19a80a46da11b922fe4d4fbd72bac))
+
+
+### Styling 🎨
+
+* add imports and exports ([5d7123d](https://github.com/tks18/finance-manager/commit/5d7123d354b038cee56e52ed73afc4f611881123))
+* **components/login:** remove async keyword from handlelogin handler ([830025f](https://github.com/tks18/finance-manager/commit/830025fa9f0aea069b7b0aa1fe0ed841bf5a3fac))
+* **components/register:** remove async keyword from handlelogin handler ([1fde136](https://github.com/tks18/finance-manager/commit/1fde1368576399fc05588526977ec72dc7719351))
+
 ### [0.1.7](https://github.com/tks18/finance-manager/compare/v0.1.6...v0.1.7) (2022-10-26)
 
 
