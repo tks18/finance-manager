@@ -78,14 +78,14 @@ export const incomeMasterConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IIncomeCategoryMasterDocument,
-            value: number,
+            value: IIncomeCategoryMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {
           label: 'Category',
-          required: false,
+          required: true,
         },
         options: {
           mode: 'api',

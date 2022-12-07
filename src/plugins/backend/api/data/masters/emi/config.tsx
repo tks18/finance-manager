@@ -30,9 +30,9 @@ export const emiConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: ICreditCardMasterDocument,
-            value: number,
+            value: ICreditCardMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {

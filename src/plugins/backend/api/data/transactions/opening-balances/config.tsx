@@ -59,9 +59,9 @@ export const openingBalanceTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IBankMasterDocument,
-            value: string,
+            value: IBankMasterDocument,
           ) => {
-            return option.name === value;
+            return option._id === value._id;
           },
         },
         textProps: {
