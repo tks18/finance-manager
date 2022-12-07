@@ -59,7 +59,11 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
     () => ({
       constructedStateFields: fields
         ? fields.reduce((prevValue, field) => {
-            prevValue[field.constructedValue] = '';
+            if (field.fieldType === 'switch') {
+              prevValue[field.constructedValue] = 0;
+            } else {
+              prevValue[field.constructedValue] = '';
+            }
             return prevValue;
           }, {} as { [key: string]: any })
         : {},
@@ -145,6 +149,7 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     e.preventDefault();
+    console.log(constructedStateFields);
     const { name, value } = e.target;
     setConstructedStateFields({ ...constructedStateFields, [name]: value });
   };
@@ -244,6 +249,7 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
         cleanedData[obj] = vals;
       }
     }
+    console.log(cleanedData);
     return cleanedData;
   };
 
@@ -275,7 +281,6 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
   const clearState = () => {
     setConstructedStateFields(initialState.constructedStateFields);
     setAmountFormattedFields(initialState.amountFormattedFields);
-    setAutoCompleteResults(initialState.autoCompleteResults);
   };
 
   const handleField = (field: TInputFieldType) => {
