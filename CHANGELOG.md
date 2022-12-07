@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/tks18/finance-manager/compare/v1.0.0...v1.0.1) (2022-12-07)
+
+
+### Bug Fixes 🛠
+
+* **components:** fix switch field's default value causing problems ([b6b793c](https://github.com/tks18/finance-manager/commit/b6b793c7b927ecfeb080953b37ca20b3de323177))
+* **index.html:** add content-security policy meta tag ([96b2e28](https://github.com/tks18/finance-manager/commit/96b2e28ef330bdd436e5479c26de8b8e7cd8858f))
+* **plugins/backend:** fix the autocomplete field for equality check ([168d4ef](https://github.com/tks18/finance-manager/commit/168d4ef2cd4b13c69c2e6d69d0eeeba3c9653aa8))
+
 ## [1.0.0](https://github.com/tks18/finance-manager/compare/v0.1.7...v1.0.0) (2022-12-06)
 
 
