@@ -33,3 +33,5 @@ export interface IMarketDataTransactionDocument
   extends IMarketDataTransactionNonCreationAttributes,
     IMarketDataTransactionCreationAttributes,
     IMarketDataTransactionAssociationAttributes {}
+
+export type TMarketDataUpdateMethodOutput = string;

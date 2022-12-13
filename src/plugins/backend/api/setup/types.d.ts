@@ -1,5 +1,7 @@
 export interface IBuildCalendarInput {
-  date: string;
+  options: {
+    endDate: string;
+  };
 }
 
 export interface IBuildCalendar {

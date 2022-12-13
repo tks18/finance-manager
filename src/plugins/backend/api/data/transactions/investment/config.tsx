@@ -62,9 +62,9 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IInvestmentMasterDocument,
-            value: number,
+            value: IInvestmentMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {
@@ -94,9 +94,9 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IBankMasterDocument,
-            value: number,
+            value: IBankMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {

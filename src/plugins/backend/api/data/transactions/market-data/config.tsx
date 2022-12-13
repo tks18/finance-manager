@@ -59,9 +59,9 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IInvestmentMasterDocument,
-            value: number,
+            value: IInvestmentMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {

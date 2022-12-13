@@ -66,9 +66,9 @@ export const investmentMasterConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IInvestmentCategoryMasterDocument,
-            value: number,
+            value: IInvestmentCategoryMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {

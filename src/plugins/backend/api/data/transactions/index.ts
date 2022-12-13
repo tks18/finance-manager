@@ -2,7 +2,7 @@ import { calendarTransactionConfig } from './calendar';
 import { expenseTransactionConfig } from './expense';
 import { incomeTransactionConfig } from './income';
 import { investmentTransactionConfig } from './investment';
-import { marketDataTransactionConfig } from './market-data';
+import { marketDataTransactionConfig, marketDataMethods } from './market-data';
 import { openingBalanceTransactionConfig } from './opening-balances';
 
 export const transactionConfig = {
@@ -12,6 +12,10 @@ export const transactionConfig = {
   investment: investmentTransactionConfig,
   marketData: marketDataTransactionConfig,
   openingBalance: openingBalanceTransactionConfig,
+};
+
+export const transactionMethods = {
+  marketData: marketDataMethods,
 };
 
 export * from './calendar';

@@ -48,9 +48,9 @@ export const expenseMasterConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IExpenseCategoryMasterDocument,
-            value: number,
+            value: IExpenseCategoryMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {

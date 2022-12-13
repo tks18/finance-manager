@@ -9,7 +9,7 @@ import {
   IAssetCategoryMasterDocument,
 } from '@plugins/backend/api/data/types';
 
-type TCustomCreditCardMasterDocument = WithRequiredProperty<
+type TCustomEMIMasterDocument = WithRequiredProperty<
   IEMIMasterDocument,
   'creditCard'
 >;
@@ -77,9 +77,9 @@ export const assetMasterConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IAssetCategoryMasterDocument,
-            value: number,
+            value: IAssetCategoryMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {
@@ -97,7 +97,7 @@ export const assetMasterConfig: IBaseDBApiConfig = {
         name: 'emi_id',
         constructedValue: 'emi_id',
         baseProps: {
-          renderOption: (props, option: TCustomCreditCardMasterDocument) => {
+          renderOption: (props, option: TCustomEMIMasterDocument) => {
             return (
               <Box component="li" {...props}>
                 {option._id}. {option.credit_card_id} -{' '}
@@ -105,14 +105,14 @@ export const assetMasterConfig: IBaseDBApiConfig = {
               </Box>
             );
           },
-          getOptionLabel: (option: TCustomCreditCardMasterDocument) => {
+          getOptionLabel: (option: TCustomEMIMasterDocument) => {
             return option.creditCard.card_name;
           },
           isOptionEqualToValue: (
-            option: TCustomCreditCardMasterDocument,
-            value: number,
+            option: TCustomEMIMasterDocument,
+            value: TCustomEMIMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {

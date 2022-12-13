@@ -76,9 +76,9 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: TCustomExpenseMasterDocument,
-            value: number,
+            value: TCustomExpenseMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {
@@ -113,9 +113,9 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IBankMasterDocument,
-            value: number,
+            value: IBankMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {
@@ -145,9 +145,9 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IAssetMasterDocument,
-            value: number,
+            value: IAssetMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {
@@ -178,9 +178,9 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: TCustomEmiMasterDocument,
-            value: number,
+            value: TCustomEmiMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {
@@ -215,9 +215,9 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: IInsuranceMasterDocument,
-            value: number,
+            value: IInsuranceMasterDocument,
           ) => {
-            return option._id === value;
+            return option._id === value._id;
           },
         },
         textProps: {

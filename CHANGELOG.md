@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/tks18/finance-manager/compare/v1.0.1...v1.1.0) (2022-12-13)
+
+
+### Features 🔥
+
+* **components/navbar:** add options for setting up the app ([535172f](https://github.com/tks18/finance-manager/commit/535172f5052f86a60b074e678d36bbfe8e1aa85d))
+* **plugins/backend:** add new api for updating investment market data ([21a0f96](https://github.com/tks18/finance-manager/commit/21a0f96d36b0f6e2907efc8438593eaec7d710a7))
+* **routes:** add new router views for settings page ([2d7a2f0](https://github.com/tks18/finance-manager/commit/2d7a2f0ca18e3497ea343e4a5c7f134b0a004fa0))
+
+
+### Code Refactoring 🖌
+
+* **routes:** change the file name for consistency ([5ebd766](https://github.com/tks18/finance-manager/commit/5ebd7660dd3c783f0306aff23ca9cb228df00a47))
+
+### [1.0.1](https://github.com/tks18/finance-manager/compare/v1.0.0...v1.0.1) (2022-12-07)
+
+
+### Bug Fixes 🛠
+
+* **components:** fix switch field's default value causing problems ([b6b793c](https://github.com/tks18/finance-manager/commit/b6b793c7b927ecfeb080953b37ca20b3de323177))
+* **index.html:** add content-security policy meta tag ([96b2e28](https://github.com/tks18/finance-manager/commit/96b2e28ef330bdd436e5479c26de8b8e7cd8858f))
+* **plugins/backend:** fix the autocomplete field for equality check ([168d4ef](https://github.com/tks18/finance-manager/commit/168d4ef2cd4b13c69c2e6d69d0eeeba3c9653aa8))
+
 ## [1.0.0](https://github.com/tks18/finance-manager/compare/v0.1.7...v1.0.0) (2022-12-06)
 
 
