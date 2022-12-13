@@ -15,6 +15,9 @@ import {
   Person as PersonIcon,
   Login as LoginIcon,
   VpnKey as VpnKeyIcon,
+  BarChart as BarChartIcon,
+  Settings as SettingsIcon,
+  CalendarMonth as CalendarMonthIcon,
 } from '@mui/icons-material';
 
 // Types
@@ -48,6 +51,11 @@ export const authNavigationList: INavigationList[] = [
         name: 'Investments',
         icon: <ShowChartIcon />,
         path: '/transactions/investments',
+      },
+      {
+        name: 'Market Data',
+        icon: <BarChartIcon />,
+        path: '/transactions/market-data',
       },
     ],
   },
@@ -155,6 +163,23 @@ export const authNavigationList: INavigationList[] = [
         name: 'Insurances',
         icon: <HealingIcon />,
         path: '/masters/insurances',
+      },
+    ],
+  },
+  {
+    name: 'Application Setup',
+    icon: <SettingsIcon />,
+    path: '/settings',
+    list: [
+      {
+        name: 'Setup / Update Calendar',
+        icon: <CalendarMonthIcon />,
+        path: '/settings/calendar',
+      },
+      {
+        name: 'Update Market Data',
+        icon: <ShowChartIcon />,
+        path: '/settings/investment-market-data',
       },
     ],
   },
