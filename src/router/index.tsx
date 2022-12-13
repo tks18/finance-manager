@@ -1,6 +1,15 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { dbApiConfig } from '@plugins/backend/api';
-import { Root, Home, Auth, DataRoot, DataHome } from '@routes';
+import {
+  Root,
+  Home,
+  Auth,
+  DataRoot,
+  DataHome,
+  SettingsRoot,
+  SettingsCalendar,
+  SettingsInvestmentMasterData,
+} from '@routes';
 
 export const routes: RouteObject[] = [
   {
@@ -29,6 +38,20 @@ export const routes: RouteObject[] = [
           },
         ],
       })),
+      {
+        path: '/settings',
+        element: <SettingsRoot />,
+        children: [
+          {
+            path: '/settings/calendar',
+            element: <SettingsCalendar />,
+          },
+          {
+            path: '/settings/investment-market-data',
+            element: <SettingsInvestmentMasterData />,
+          },
+        ],
+      },
     ],
   },
 ];
