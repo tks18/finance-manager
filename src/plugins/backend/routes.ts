@@ -35,6 +35,12 @@ export const routes = {
         marketData: '/api/data/transactions/market-data',
         openingBalances: '/api/data/transactions/opening-balances',
       },
+      transactionsNonStandard: {
+        marketData: {
+          updateMarketData:
+            '/api/data/transactions/market-data/update-market-data',
+        },
+      },
     },
     setup: {
       buildCalendar: '/api/setup/build-calendar',
