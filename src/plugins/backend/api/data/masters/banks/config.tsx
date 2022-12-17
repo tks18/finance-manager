@@ -31,15 +31,6 @@ export const bankConfig: IBaseDBApiConfig = {
         },
       },
       {
-        fieldType: 'text',
-        name: 'bank_branch',
-        constructedValue: 'bank_branch',
-        baseProps: {
-          label: 'Bank Branch',
-          required: true,
-        },
-      },
-      {
         fieldType: 'autocomplete',
         name: 'account_type',
         constructedValue: 'account_type',
@@ -56,9 +47,9 @@ export const bankConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: { _id: number; value: string },
-            value: string,
+            value: { _id: number; value: string },
           ) => {
-            return option.value === value;
+            return option._id === value._id;
           },
         },
         textProps: {

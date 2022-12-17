@@ -84,16 +84,16 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
     useState<IStateFields>(initialState.constructedStateFields);
   const [amountFormattedFields, setAmountFormattedFields] =
     useState<IStateFields>(initialState.amountFormattedFields);
-  const [autoCompleteResults, setAutoCompleteResults] = useState<
+  const [autoCompleteApiResults, setAutoCompleteApiResults] = useState<
     IAutoCompleteFieldResultState[]
   >(initialState.autoCompleteResults);
 
   const getAutoCompleteOptions = (constructedValue: string) => {
-    const [field] = autoCompleteResults.filter(
+    const [resultObj] = autoCompleteApiResults.filter(
       (result) => result.name === constructedValue,
     );
-    if (field) {
-      return field.options;
+    if (resultObj) {
+      return resultObj.options;
     } else {
       return [];
     }
@@ -101,25 +101,18 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
 
   useEffect(() => {
     if (fields) {
-      const autoCompletefields = fields.filter(
+      const autoCompleteApifields = fields.filter(
         (field) => field.fieldType === 'autocomplete',
       );
-      autoCompletefields.forEach(async (field) => {
-        if (field.fieldType === 'autocomplete') {
-          if (field.options.mode === 'local') {
-            const { values } = field.options;
-            setAutoCompleteResults((prevAutoCompleteResults) => [
-              ...prevAutoCompleteResults,
-              {
-                name: field.constructedValue,
-                options: values,
-              },
-            ]);
-          }
-          if (field.options.mode === 'api') {
-            const { apiOptions } = field.options;
-            try {
-              const apiResult = await field.options.api.get(
+      autoCompleteApifields.forEach((field) => {
+        if (
+          field.fieldType === 'autocomplete' &&
+          field.options.mode === 'api'
+        ) {
+          const { apiOptions } = field.options;
+          try {
+            field.options.api
+              .get(
                 userToken,
                 apiOptions
                   ? apiOptions
@@ -128,17 +121,21 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
                         filter: {},
                       },
                     },
-              );
-              setAutoCompleteResults((prevAutoCompleteResults) => [
-                ...prevAutoCompleteResults,
-                {
-                  name: field.constructedValue,
-                  options: apiResult.data.docs,
-                },
-              ]);
-            } catch (e) {
-              toast.error(String(e));
-            }
+              )
+              .then((apiResult) => {
+                setAutoCompleteApiResults((prevAutoCompleteApiResults) => [
+                  ...prevAutoCompleteApiResults,
+                  {
+                    name: field.constructedValue,
+                    options: apiResult.data.docs,
+                  },
+                ]);
+              })
+              .catch((e) => {
+                toast.error(String(e));
+              });
+          } catch (e) {
+            toast.error(String(e));
           }
         }
       });
@@ -149,7 +146,6 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     e.preventDefault();
-    console.log(constructedStateFields);
     const { name, value } = e.target;
     setConstructedStateFields({ ...constructedStateFields, [name]: value });
   };
@@ -249,7 +245,6 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
         cleanedData[obj] = vals;
       }
     }
-    console.log(cleanedData);
     return cleanedData;
   };
 
@@ -275,7 +270,7 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
   useEffect(() => {
     setConstructedStateFields(initialState.constructedStateFields);
     setAmountFormattedFields(initialState.amountFormattedFields);
-    setAutoCompleteResults(initialState.autoCompleteResults);
+    setAutoCompleteApiResults(initialState.autoCompleteResults);
   }, [location, initialState]);
 
   const clearState = () => {
@@ -308,29 +303,55 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
           />
         );
       case 'autocomplete':
-        return (
-          <Autocomplete
-            {...field.baseProps}
-            sx={{ width: '100%' }}
-            onChange={(
-              e,
-              value,
-              reason,
-              details:
-                | AutocompleteChangeDetails<{ [key: string]: any }>
-                | undefined,
-            ) =>
-              onAutoCompleteValueChange(e, details, {
-                ...field.options,
-                constructedValue: field.constructedValue,
-              })
-            }
-            options={getAutoCompleteOptions(field.constructedValue)}
-            renderInput={(params) => (
-              <TextField {...field.textProps} {...params} />
-            )}
-          />
-        );
+        if (field.options.mode === 'api') {
+          return (
+            <Autocomplete
+              {...field.baseProps}
+              sx={{ width: '100%' }}
+              onChange={(
+                e,
+                value,
+                reason,
+                details:
+                  | AutocompleteChangeDetails<{ [key: string]: any }>
+                  | undefined,
+              ) =>
+                onAutoCompleteValueChange(e, details, {
+                  ...field.options,
+                  constructedValue: field.constructedValue,
+                })
+              }
+              options={getAutoCompleteOptions(field.constructedValue)}
+              renderInput={(params) => (
+                <TextField {...field.textProps} {...params} />
+              )}
+            />
+          );
+        } else {
+          return (
+            <Autocomplete
+              {...field.baseProps}
+              sx={{ width: '100%' }}
+              onChange={(
+                e,
+                value,
+                reason,
+                details:
+                  | AutocompleteChangeDetails<{ [key: string]: any }>
+                  | undefined,
+              ) =>
+                onAutoCompleteValueChange(e, details, {
+                  ...field.options,
+                  constructedValue: field.constructedValue,
+                })
+              }
+              options={field.options.values}
+              renderInput={(params) => (
+                <TextField {...field.textProps} {...params} />
+              )}
+            />
+          );
+        }
       case 'amount':
         return (
           <NumericFormat<TextFieldProps>
