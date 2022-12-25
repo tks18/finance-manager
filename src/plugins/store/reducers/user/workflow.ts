@@ -40,9 +40,13 @@ export const userWorkflows = {
         dispatch(sessionActions.setUserVerifyStatus(false));
       });
   },
-  signOut: (dispatch: AppDispatch, navigate: NavigateFunction) => {
+  signOut: (
+    dispatch: AppDispatch,
+    navigate: NavigateFunction,
+    redirectRoute: string,
+  ) => {
     dispatch(userActions.signOut());
     dispatch(sessionActions.setUserVerifyStatus(false));
-    navigate('/auth');
+    navigate(redirectRoute);
   },
 };

@@ -6,7 +6,7 @@ import { userThunks, userActions, userSelectors } from '@plugins/store';
 import { sessionActions, sessionSelectors } from '@plugins/store';
 
 export const userHooks = {
-  useVerify: () => {
+  useVerify: (redirectRoute: string) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const userSessionVerifyState = useAppSelector(
@@ -17,7 +17,7 @@ export const userHooks = {
     useEffect(() => {
       if (!userToken) {
         toast('Protected Route, Please Sign in to Continue');
-        navigate('/auth');
+        navigate(redirectRoute);
       } else {
         if (!userSessionVerifyState) {
           dispatch(userThunks.verifyUser({ token: userToken }))
@@ -31,6 +31,6 @@ export const userHooks = {
             });
         }
       }
-    }, [userToken, userSessionVerifyState, dispatch, navigate]);
+    }, [userToken, userSessionVerifyState, dispatch, navigate, redirectRoute]);
   },
 };
