@@ -3,4 +3,4 @@ import { IBaseDBApiConfig } from '@plugins/backend/types';
 
 type ContextType = { config: IBaseDBApiConfig; userToken: string };
 
-export const useDataOutletContext = () => useOutletContext<ContextType>();
+export const useAuthDataOutletContext = () => useOutletContext<ContextType>();

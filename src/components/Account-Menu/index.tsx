@@ -33,7 +33,7 @@ export function AccountMenu() {
         {
           title: 'Logout',
           onClick: () => {
-            userWorkflows.signOut(dispatch, navigate);
+            userWorkflows.signOut(dispatch, navigate, '/access');
             handleClose();
           },
         },
@@ -42,7 +42,7 @@ export function AccountMenu() {
         {
           title: 'Login / Register',
           onClick: () => {
-            navigate('/auth');
+            navigate('/access');
             handleClose();
           },
         },

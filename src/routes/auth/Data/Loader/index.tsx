@@ -1,5 +1,5 @@
 import { Loader } from '@components';
 
-export function DataLoader() {
+export function AuthDataLoader() {
   return <Loader loaderText="Loading Master Table" />;
 }

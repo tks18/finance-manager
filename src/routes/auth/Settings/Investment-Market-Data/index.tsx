@@ -2,18 +2,17 @@ import { Typography, Unstable_Grid2 as Grid, Button } from '@mui/material';
 import { api } from '@plugins/backend';
 import { toast } from 'react-toastify';
 
-import { useAppSelector, userSelectors } from '@plugins/store';
+import { useAuthOutletContext } from '@routes/Auth/hooks';
 
-export function SettingsInvestmentMasterData() {
-  const userToken = useAppSelector(userSelectors.userToken);
+export function AuthSettingsInvestmentMasterData() {
+  const { userToken } = useAuthOutletContext();
 
   const updateMarketData = async () => {
     try {
-      if (userToken) {
-        const response =
-          await api.data.transactions.marketData.updateMarketData(userToken);
-        toast.success(response.data);
-      }
+      const response = await api.data.transactions.marketData.updateMarketData(
+        userToken,
+      );
+      toast.success(response.data);
     } catch (e) {
       toast.error(String(e));
     }

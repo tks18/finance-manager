@@ -10,13 +10,13 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { DateTime } from 'luxon';
 import { toast } from 'react-toastify';
 
-import { useAppSelector, userSelectors } from '@plugins/store';
+import { useAuthOutletContext } from '@routes/Auth/hooks';
 
-export function SettingsCalendar() {
+export function AuthSettingsCalendar() {
   const [formData, setFormData] = useState<string>('');
   const [endDate, setEndDate] = useState<DateTime>(DateTime.now());
 
-  const userToken = useAppSelector(userSelectors.userToken);
+  const { userToken } = useAuthOutletContext();
 
   const onDateValueChange = (newValue: DateTime) => {
     setEndDate(newValue);
@@ -25,15 +25,13 @@ export function SettingsCalendar() {
 
   const submitCalendarDate = async () => {
     try {
-      if (userToken) {
-        const apiData = {
-          options: {
-            endDate: formData,
-          },
-        };
-        const response = await api.setup.buildCalendar(userToken, apiData);
-        toast.success(response.data.message);
-      }
+      const apiData = {
+        options: {
+          endDate: formData,
+        },
+      };
+      const response = await api.setup.buildCalendar(userToken, apiData);
+      toast.success(response.data.message);
     } catch (e) {
       toast.error(String(e));
     }

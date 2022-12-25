@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/tks18/finance-manager/compare/v1.1.0...v1.2.0) (2022-12-25)
+
+
+### Bug Fixes 🛠
+
+* **components:** fix field-renderer component not rendering options for local autocomplete ([c632b2a](https://github.com/tks18/finance-manager/commit/c632b2adff613b63d253f9ba23499eb435054690))
+
+
+### Others 🔧
+
+* **package:** change proxy url for dev purposes ([9c53c37](https://github.com/tks18/finance-manager/commit/9c53c37ba38d5c3b47985fa0850dac8405017494))
+
+
+### Code Refactoring 🖌
+
+* **components/field-renderer:** replace fields-renderer with a appropriate name ([d256b27](https://github.com/tks18/finance-manager/commit/d256b27ddf74b96b5576c9c2cdbe97641c4868a2))
+* **components:** fix route paths as per changes in router ([24461da](https://github.com/tks18/finance-manager/commit/24461dab462bdf07de8e5dff3a26fad691ec4578))
+* **components:** fix the route path as per the changes in router ([680a9fb](https://github.com/tks18/finance-manager/commit/680a9fb4972d1f1a10433e3c6ff1f1ef7bd662d2))
+* **plugins/backend/hooks:** refactor for changes in route paths ([4f10f1a](https://github.com/tks18/finance-manager/commit/4f10f1a0ca50f2bded3419b9efd460b0a2b069a4))
+* **plugins/store/user:** add a param for redirect route on usersignout ([3905d20](https://github.com/tks18/finance-manager/commit/3905d202f26372e7af64adbf5ecfabd4a1433475))
+* **router:** bring all the protected routes under auth route and replace auth with access route ([8ac4f86](https://github.com/tks18/finance-manager/commit/8ac4f86b211b21357d32169640dbb71895ed1e5f))
+* **routes/access:** replace the previous auth route with access route ([cdd0210](https://github.com/tks18/finance-manager/commit/cdd0210bf6ac30243b412b7987bf25263e743c5d))
+* **routes/auth:** protect the auth route by verifying the user ([fe32fb3](https://github.com/tks18/finance-manager/commit/fe32fb355380597fb793727dcf4ffbd2b1186708))
+* **routes/root:** move the base layout to a seperate component ([98293fb](https://github.com/tks18/finance-manager/commit/98293fbb6eddd2b334ad1c053d1f2e9c6f317188))
+* **routes/root:** use the base layout from the components ([b395601](https://github.com/tks18/finance-manager/commit/b395601a2bca4510ab19c44a4a2cf8589f13ae70))
+* **routes/settings:** move all the settings route to protected Auth Folder ([fdd6975](https://github.com/tks18/finance-manager/commit/fdd69757c4d4b34327a1caedd5c6029089836567))
+* **routes/templates:** move all the data template route to Protected Auth Folder ([d2db990](https://github.com/tks18/finance-manager/commit/d2db99093cfcf13e89eb5c6498332b30f8448117))
+
+
+### Features 🔥
+
+* **components/render-fields:** add a handler for handling api field type ([ffb29ba](https://github.com/tks18/finance-manager/commit/ffb29ba6a3bd601ec70391e7278d38291d4f8ac8))
+* **components/render-fields:** add a helper function to clean data before sending to api ([df43a30](https://github.com/tks18/finance-manager/commit/df43a308efc08aba0f74976e90b85f49fc176839))
+* **components/render-fields:** componentize all the fields seperately for proper handling ([bcaf0a6](https://github.com/tks18/finance-manager/commit/bcaf0a6ceafbaf368b726a482d74a0a1e27d39b4))
+* **components/render-fields:** write the render-input-fields component with all the sub components ([52f6996](https://github.com/tks18/finance-manager/commit/52f69968df7a66edf5422fa2b3c090f4b232d910))
+
+
+### Styling 🎨
+
+* **components:** add exports for new components ([936167d](https://github.com/tks18/finance-manager/commit/936167de99cecbddfc07ce114c3a2456c9492b01))
+* **routes:** add all the exports ([d4815c2](https://github.com/tks18/finance-manager/commit/d4815c2d75098b47b49d967641c8840770b2b54c))
+
 ## [1.1.0](https://github.com/tks18/finance-manager/compare/v1.0.1...v1.1.0) (2022-12-13)
 
 
