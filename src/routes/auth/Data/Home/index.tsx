@@ -1,10 +1,10 @@
 import { Typography, Unstable_Grid2 as Grid } from '@mui/material';
 
-import { RenderModelInputFields } from '@components/Fields-Renderer';
-import { useDataOutletContext } from '../hooks';
+import { RenderModelInputFields } from '@/components';
+import { useAuthDataOutletContext } from '../hooks';
 
-export function DataHome() {
-  const { userToken, config } = useDataOutletContext();
+export function AuthDataHome() {
+  const { userToken, config } = useAuthDataOutletContext();
 
   const { componentOptions } = config;
   const { title } = componentOptions;
