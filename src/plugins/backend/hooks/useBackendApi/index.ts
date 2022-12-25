@@ -5,7 +5,7 @@ export function useBackendApi() {
   const currentLocation = useLocation();
 
   const [currentRouteApiConfig] = dbApiConfig.filter(
-    (api) => api.path === currentLocation.pathname,
+    (api) => `/auth${api.path}` === currentLocation.pathname,
   );
   return currentRouteApiConfig;
 }
