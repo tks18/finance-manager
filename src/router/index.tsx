@@ -3,12 +3,13 @@ import { dbApiConfig } from '@plugins/backend/api';
 import {
   Root,
   Home,
-  Auth,
-  DataRoot,
-  DataHome,
-  SettingsRoot,
-  SettingsCalendar,
-  SettingsInvestmentMasterData,
+  Access,
+  AuthRoot,
+  AuthDataRoot,
+  AuthDataHome,
+  AuthSettingsRoot,
+  AuthSettingsCalendar,
+  AuthSettingsInvestmentMasterData,
 } from '@routes';
 
 export const routes: RouteObject[] = [
@@ -21,34 +22,36 @@ export const routes: RouteObject[] = [
         element: <Home />,
       },
       {
+        path: '/access',
+        element: <Access />,
+      },
+      {
         path: '/auth',
-        element: <Auth />,
-      },
-      {
-        path: '/transactions/calendar',
-        element: <Home />,
-      },
-      ...dbApiConfig.map((config) => ({
-        path: config.path,
-        element: <DataRoot />,
+        element: <AuthRoot />,
         children: [
+          ...dbApiConfig.map((config) => ({
+            path: `/auth${config.path}`,
+            element: <AuthDataRoot />,
+            children: [
+              {
+                path: `/auth${config.path}`,
+                element: <AuthDataHome />,
+              },
+            ],
+          })),
           {
-            path: `${config.path}/`,
-            element: <DataHome />,
-          },
-        ],
-      })),
-      {
-        path: '/settings',
-        element: <SettingsRoot />,
-        children: [
-          {
-            path: '/settings/calendar',
-            element: <SettingsCalendar />,
-          },
-          {
-            path: '/settings/investment-market-data',
-            element: <SettingsInvestmentMasterData />,
+            path: '/auth/settings',
+            element: <AuthSettingsRoot />,
+            children: [
+              {
+                path: '/auth/settings/calendar',
+                element: <AuthSettingsCalendar />,
+              },
+              {
+                path: '/auth/settings/investment-market-data',
+                element: <AuthSettingsInvestmentMasterData />,
+              },
+            ],
           },
         ],
       },
