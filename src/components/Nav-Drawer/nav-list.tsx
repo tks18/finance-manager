@@ -35,100 +35,100 @@ export const authNavigationList: INavigationList[] = [
   {
     name: 'Manage Transactions',
     icon: <ReceiptLongIcon />,
-    path: '/transactions',
+    path: '/auth/transactions',
     list: [
       {
         name: 'Income',
         icon: <CurrencyExchangeIcon />,
-        path: '/transactions/incomes',
+        path: '/auth/transactions/incomes',
       },
       {
         name: 'Expense',
         icon: <PointOfSaleIcon />,
-        path: '/transactions/expenses',
+        path: '/auth/transactions/expenses',
       },
       {
         name: 'Investments',
         icon: <ShowChartIcon />,
-        path: '/transactions/investments',
+        path: '/auth/transactions/investments',
       },
       {
         name: 'Market Data',
         icon: <BarChartIcon />,
-        path: '/transactions/market-data',
+        path: '/auth/transactions/market-data',
       },
     ],
   },
   {
     name: 'Manage Core Masters',
     icon: <HubIcon />,
-    path: '/masters',
+    path: '/auth/masters',
     list: [
       {
         name: 'Income',
         icon: <CurrencyExchangeIcon />,
-        path: '/masters/incomes',
+        path: '/auth/masters/incomes',
         list: [
           {
             name: 'Income Categories',
             icon: <CategoryIcon />,
-            path: '/masters/incomes/categories',
+            path: '/auth/masters/incomes/categories',
           },
           {
             name: 'Income Master',
             icon: <StorageIcon />,
-            path: '/masters/incomes/master',
+            path: '/auth/masters/incomes/master',
           },
         ],
       },
       {
         name: 'Expense',
         icon: <PointOfSaleIcon />,
-        path: '/masters/expenses',
+        path: '/auth/masters/expenses',
         list: [
           {
             name: 'Expense Categories',
             icon: <CategoryIcon />,
-            path: '/masters/expenses/categories',
+            path: '/auth/masters/expenses/categories',
           },
           {
             name: 'Expense Master',
             icon: <StorageIcon />,
-            path: '/masters/expenses/master',
+            path: '/auth/masters/expenses/master',
           },
         ],
       },
       {
         name: 'Investment',
         icon: <ShowChartIcon />,
-        path: '/masters/investments',
+        path: '/auth/masters/investments',
         list: [
           {
             name: 'Investment Categories',
             icon: <CategoryIcon />,
-            path: '/masters/investments/categories',
+            path: '/auth/masters/investments/categories',
           },
           {
             name: 'Investment Master',
             icon: <StorageIcon />,
-            path: '/masters/investments/master',
+            path: '/auth/masters/investments/master',
           },
         ],
       },
       {
         name: 'Asset',
         icon: <ApartmentIcon />,
-        path: '/masters/asset',
+        path: '/auth/masters/asset',
         list: [
           {
             name: 'Asset Categories',
             icon: <CategoryIcon />,
-            path: '/masters/assets/categories',
+            path: '/auth/masters/assets/categories',
           },
           {
             name: 'Asset Master',
             icon: <StorageIcon />,
-            path: '/masters/assets/master',
+            path: '/auth/masters/assets/master',
           },
         ],
       },
@@ -136,50 +136,50 @@ export const authNavigationList: INavigationList[] = [
   },
   {
     name: 'Manage Other Masters',
-    path: '/masters',
+    path: '/auth/masters',
     icon: <OtherHousesIcon />,
     list: [
       {
         name: 'Banks',
         icon: <AccountBalanceWalletIcon />,
-        path: '/masters/banks',
+        path: '/auth/masters/banks',
       },
       {
         name: 'Credit Cards',
         icon: <CreditCardIcon />,
-        path: '/masters/credit-cards',
+        path: '/auth/masters/credit-cards',
       },
       {
         name: 'Debit Cards',
         icon: <CreditCardIcon />,
-        path: '/masters/debit-cards',
+        path: '/auth/masters/debit-cards',
       },
       {
         name: 'EMIs',
         icon: <LocalAtmIcon />,
-        path: '/masters/emi',
+        path: '/auth/masters/emi',
       },
       {
         name: 'Insurances',
         icon: <HealingIcon />,
-        path: '/masters/insurances',
+        path: '/auth/masters/insurances',
       },
     ],
   },
   {
     name: 'Application Setup',
     icon: <SettingsIcon />,
-    path: '/settings',
+    path: '/auth/settings',
     list: [
       {
         name: 'Setup / Update Calendar',
         icon: <CalendarMonthIcon />,
-        path: '/settings/calendar',
+        path: '/auth/settings/calendar',
       },
       {
         name: 'Update Market Data',
         icon: <ShowChartIcon />,
-        path: '/settings/investment-market-data',
+        path: '/auth/settings/investment-market-data',
       },
     ],
   },
@@ -188,18 +188,18 @@ export const authNavigationList: INavigationList[] = [
 export const nonAuthNavigationList: INavigationList[] = [
   {
     name: 'Login / Register',
-    path: '/auth',
+    path: '/access',
     icon: <PersonIcon />,
     list: [
       {
         name: 'Login',
         icon: <LoginIcon />,
-        path: '/auth',
+        path: '/access',
       },
       {
         name: 'Register',
         icon: <VpnKeyIcon />,
-        path: '/auth',
+        path: '/access',
       },
     ],
   },
