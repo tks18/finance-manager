@@ -1,5 +1,4 @@
 export * from './Root';
 export * from './Home';
+export * from './Access';
 export * from './Auth';
-export * from './Templates';
-export * from './Settings';
