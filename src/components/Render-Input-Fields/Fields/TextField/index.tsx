@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 
 import type { TextFieldProps } from '@mui/material';
+import type { Dispatch, SetStateAction } from 'react';
 import type {
   IFieldBaseProps,
   TFieldText,
@@ -11,55 +12,77 @@ type TCustomText = IFieldBaseProps & TFieldText;
 
 type TTextFieldProps = TextFieldProps & {
   field: TCustomText;
-  fieldsState: { [key: string]: any };
-  setFieldsState: React.Dispatch<
-    React.SetStateAction<{
+  fields: {
+    state: {
       [key: string]: any;
-    }>
-  >;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
 };
 
 type TCustomControlledText = IFieldBaseProps & TFieldControlledTextField;
 
 type TControlledTextFieldProps = TextFieldProps & {
   field: TCustomControlledText;
-  fieldsState: { [key: string]: any };
+  fields: {
+    state: {
+      [key: string]: any;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
 };
 
 export function CustomTextField(props: TTextFieldProps) {
-  const { field, fieldsState, setFieldsState } = props;
+  const { field, fields } = props;
 
   const onStateFieldChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     e.preventDefault();
     const { name, value } = e.target;
-    setFieldsState({ ...fieldsState, [name]: value });
+    fields.set({ ...fields.state, [name]: value });
   };
 
-  return (
+  const isStateUndefined = fields.state[field.constructedValue] === undefined;
+
+  return isStateUndefined ? (
+    <></>
+  ) : (
     <TextField
       {...field.baseProps}
       sx={{ width: '100%' }}
       name={field.constructedValue}
-      value={fieldsState[field.constructedValue]}
+      value={fields.state[field.constructedValue]}
       onChange={onStateFieldChange}
     />
   );
 }
 
 export function CustomControlledTextField(props: TControlledTextFieldProps) {
-  const { field, fieldsState } = props;
+  const { field, fields } = props;
 
-  return (
+  const isStateUndefined = fields.state[field.constructedValue] === undefined;
+
+  return isStateUndefined ? (
+    <></>
+  ) : (
     <TextField
       {...field.baseProps}
       sx={{ width: '100%' }}
       disabled={true}
-      InputLabelProps={{ shrink: true }}
+      InputLabelProps={{
+        shrink: fields.state[field.constructedValue] === '' ? false : true,
+      }}
       name={field.constructedValue}
-      defaultValue={fieldsState[field.constructedValue]}
-      key={fieldsState[field.constructedValue]}
+      value={fields.state[field.constructedValue]}
     />
   );
 }

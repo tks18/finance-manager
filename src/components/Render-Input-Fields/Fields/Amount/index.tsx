@@ -3,6 +3,7 @@ import { NumericFormat } from 'react-number-format';
 import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
 
 import type { TextFieldProps } from '@mui/material';
+import type { Dispatch, SetStateAction } from 'react';
 import type { NumericFormatProps } from 'react-number-format';
 import type { NumberFormatValues, SourceInfo } from 'react-number-format';
 import type {
@@ -15,32 +16,30 @@ type TCustomAmount = IFieldBaseProps & TFieldAmount;
 type TAmountFieldProps = NumericFormatProps &
   TextFieldProps & {
     field: TCustomAmount;
-    fieldsState: {
-      [key: string]: any;
-    };
-    setFieldsState: React.Dispatch<
-      React.SetStateAction<{
+    fields: {
+      state: {
         [key: string]: any;
-      }>
-    >;
-    amountFormattedFieldsState: {
-      [key: string]: any;
+      };
+      set: Dispatch<
+        SetStateAction<{
+          [key: string]: any;
+        }>
+      >;
     };
-    setAmountFormattedFieldsState: React.Dispatch<
-      React.SetStateAction<{
+    amountFields: {
+      state: {
         [key: string]: any;
-      }>
-    >;
+      };
+      set: Dispatch<
+        SetStateAction<{
+          [key: string]: any;
+        }>
+      >;
+    };
   };
 
 export function CustomAmountField(props: TAmountFieldProps) {
-  const {
-    field,
-    fieldsState,
-    setFieldsState,
-    amountFormattedFieldsState,
-    setAmountFormattedFieldsState,
-  } = props;
+  const { field, fields, amountFields } = props;
 
   const onAmountValueChange = (
     constructedValue: string,
@@ -49,17 +48,23 @@ export function CustomAmountField(props: TAmountFieldProps) {
   ) => {
     sourceInfo.event?.preventDefault();
     const { formattedValue, floatValue } = values;
-    setFieldsState({
-      ...fieldsState,
+    fields.set({
+      ...fields.state,
       [constructedValue]: floatValue,
     });
-    setAmountFormattedFieldsState({
-      ...amountFormattedFieldsState,
+    amountFields.set({
+      ...amountFields.state,
       [constructedValue]: formattedValue,
     });
   };
 
-  return (
+  const isStateUndefined =
+    fields.state[field.constructedValue] === undefined &&
+    amountFields.state[field.constructedValue] === undefined;
+
+  return isStateUndefined ? (
+    <></>
+  ) : (
     <NumericFormat<TextFieldProps>
       {...field.baseProps}
       {...field.textProps}
@@ -75,7 +80,7 @@ export function CustomAmountField(props: TAmountFieldProps) {
         ),
       }}
       name={field.constructedValue}
-      value={amountFormattedFieldsState[field.constructedValue]}
+      value={amountFields.state[field.constructedValue]}
       onValueChange={(v, s) =>
         onAmountValueChange(field.constructedValue, v, s)
       }

@@ -3,6 +3,7 @@ import { TextField } from '@mui/material';
 import { DateTime } from 'luxon';
 
 import type { DatePickerProps } from '@mui/x-date-pickers';
+import type { Dispatch, SetStateAction } from 'react';
 import type {
   IFieldBaseProps,
   TFieldDate,
@@ -17,14 +18,16 @@ type TDateFieldProps = Omit<
   'renderInput' | 'value' | 'onChange'
 > & {
   field: TCustomDateField;
-  fieldsState: {
-    [key: string]: any;
-  };
-  setFieldsState: React.Dispatch<
-    React.SetStateAction<{
+  fields: {
+    state: {
       [key: string]: any;
-    }>
-  >;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
   getDateIdfromAPI: (date: string) => Promise<number | undefined>;
 };
 
@@ -33,18 +36,20 @@ type TMonthYearFieldProps = Omit<
   'renderInput' | 'value' | 'onChange'
 > & {
   field: TCustomYearMonthField;
-  fieldsState: {
-    [key: string]: any;
-  };
-  setFieldsState: React.Dispatch<
-    React.SetStateAction<{
+  fields: {
+    state: {
       [key: string]: any;
-    }>
-  >;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
 };
 
 export function CustomDateField(props: TDateFieldProps) {
-  const { field, fieldsState, setFieldsState, getDateIdfromAPI } = props;
+  const { field, fields, getDateIdfromAPI } = props;
 
   const onDateValueChange = async (
     field: TCustomDateField,
@@ -52,23 +57,31 @@ export function CustomDateField(props: TDateFieldProps) {
   ) => {
     if (field.options.updateIdonOtherField.required) {
       const dateId = await getDateIdfromAPI(dateTime.toISODate());
-      setFieldsState({
-        ...fieldsState,
+      fields.set({
+        ...fields.state,
         [field.constructedValue]: dateTime.toISODate(),
         [field.options.updateIdonOtherField.fieldName]: dateId,
       });
     } else {
-      setFieldsState({
-        ...fieldsState,
+      fields.set({
+        ...fields.state,
         [field.constructedValue]: dateTime.toISODate(),
       });
     }
   };
 
-  return (
+  const isStateUndefined = fields.state[field.constructedValue] === undefined;
+
+  return isStateUndefined ? (
+    <></>
+  ) : (
     <DatePicker
       {...field.baseProps}
-      value={fieldsState[field.constructedValue]}
+      value={
+        fields.state[field.constructedValue] === ''
+          ? null
+          : fields.state[field.constructedValue]
+      }
       onChange={(newValue) => {
         const dateValue = newValue as DateTime;
         onDateValueChange(field, dateValue);
@@ -78,7 +91,10 @@ export function CustomDateField(props: TDateFieldProps) {
           sx={{ width: '100%' }}
           {...params}
           {...field.textProps}
-          InputLabelProps={{ shrink: true }}
+          disabled={true}
+          InputLabelProps={{
+            shrink: fields.state[field.constructedValue] === '' ? false : true,
+          }}
         />
       )}
     />
@@ -86,23 +102,31 @@ export function CustomDateField(props: TDateFieldProps) {
 }
 
 export function CustomMonthYearField(props: TMonthYearFieldProps) {
-  const { field, fieldsState, setFieldsState } = props;
+  const { field, fields } = props;
 
   const onMonthYearValueChange = (
     field: TCustomYearMonthField,
     dateTime: DateTime,
   ) => {
     const { dateFormatter } = field.options;
-    setFieldsState({
-      ...fieldsState,
+    fields.set({
+      ...fields.state,
       [field.constructedValue]: dateTime.toFormat(dateFormatter),
     });
   };
 
-  return (
+  const isStateUndefined = fields.state[field.constructedValue] === undefined;
+
+  return isStateUndefined ? (
+    <></>
+  ) : (
     <DatePicker
       {...field.baseProps}
-      value={fieldsState[field.constructedValue]}
+      value={
+        fields.state[field.constructedValue] === ''
+          ? null
+          : fields.state[field.constructedValue]
+      }
       onChange={(newValue) => {
         const dateValue = newValue as DateTime;
         onMonthYearValueChange(field, dateValue);
@@ -112,7 +136,10 @@ export function CustomMonthYearField(props: TMonthYearFieldProps) {
           sx={{ width: '100%' }}
           {...params}
           {...field.textProps}
-          InputLabelProps={{ shrink: true }}
+          disabled={true}
+          InputLabelProps={{
+            shrink: fields.state[field.constructedValue] === '' ? false : true,
+          }}
         />
       )}
     />

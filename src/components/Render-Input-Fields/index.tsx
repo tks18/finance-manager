@@ -14,6 +14,10 @@ interface IStateFields {
   [key: string]: any;
 }
 
+interface ICurrentAutoCompleteOptionSelected {
+  [key: string]: IStateFields | null;
+}
+
 interface IRenderModelInputFieldsProps extends PropsWithChildren {
   userToken: string;
   config: IBaseDBApiConfig;
@@ -47,6 +51,22 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
               return prevValue;
             }, {} as { [key: string]: any })
         : {},
+      autoCompleteFieldsInput: fields
+        ? fields
+            .filter((field) => field.fieldType === 'autocomplete')
+            .reduce((prevValue, field) => {
+              prevValue[field.constructedValue] = '';
+              return prevValue;
+            }, {} as { [key: string]: any })
+        : {},
+      currentAutoCompleteOptionSelected: fields
+        ? fields
+            .filter((field) => field.fieldType === 'autocomplete')
+            .reduce((prevValue, field) => {
+              prevValue[field.constructedValue] = null;
+              return prevValue;
+            }, {} as { [key: string]: any })
+        : {},
     }),
     [fields],
   );
@@ -55,6 +75,14 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
     useState<IStateFields>(initialState.constructedStateFields);
   const [amountFormattedFields, setAmountFormattedFields] =
     useState<IStateFields>(initialState.amountFormattedFields);
+  const [autoCompleteFieldsInput, setAutoCompleteFieldsInput] =
+    useState<IStateFields>(initialState.autoCompleteFieldsInput);
+  const [
+    currentAutoCompleteOptionSelected,
+    setCurrentAutoCompleteOptionSelected,
+  ] = useState<ICurrentAutoCompleteOptionSelected>(
+    initialState.currentAutoCompleteOptionSelected,
+  );
 
   const getDateIdfromAPI = async (date: string) => {
     try {
@@ -89,22 +117,42 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
 
   useEffect(() => {
     setConstructedStateFields(initialState.constructedStateFields);
+    setAutoCompleteFieldsInput(initialState.autoCompleteFieldsInput);
     setAmountFormattedFields(initialState.amountFormattedFields);
+    setCurrentAutoCompleteOptionSelected(
+      initialState.currentAutoCompleteOptionSelected,
+    );
   }, [location, initialState]);
 
   const clearState = () => {
     setConstructedStateFields(initialState.constructedStateFields);
+    setAutoCompleteFieldsInput(initialState.autoCompleteFieldsInput);
     setAmountFormattedFields(initialState.amountFormattedFields);
+    setCurrentAutoCompleteOptionSelected(
+      initialState.currentAutoCompleteOptionSelected,
+    );
   };
 
   const HandleField = (field: TInputFieldType) => (
     <HandleFieldType
       userToken={userToken}
       field={field}
-      fieldsState={constructedStateFields}
-      setFieldsState={setConstructedStateFields}
-      amountFieldsState={amountFormattedFields}
-      setAmountFieldsState={setAmountFormattedFields}
+      fields={{
+        state: constructedStateFields,
+        set: setConstructedStateFields,
+      }}
+      autoCompleteInputFields={{
+        state: autoCompleteFieldsInput,
+        set: setAutoCompleteFieldsInput,
+      }}
+      amountFields={{
+        state: amountFormattedFields,
+        set: setAmountFormattedFields,
+      }}
+      autoCompleteFieldOptions={{
+        state: currentAutoCompleteOptionSelected,
+        set: setCurrentAutoCompleteOptionSelected,
+      }}
       getDateIdfromAPI={getDateIdfromAPI}
     />
   );

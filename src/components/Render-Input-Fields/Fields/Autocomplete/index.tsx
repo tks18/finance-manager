@@ -7,6 +7,7 @@ import type {
   AutocompleteProps,
   AutocompleteChangeDetails,
 } from '@mui/material';
+import type { Dispatch, SetStateAction } from 'react';
 import type {
   IFieldBaseProps,
   TFieldAutocomplete,
@@ -29,12 +30,40 @@ type TAutoCompleteProps = Omit<
 > & {
   userToken: string;
   field: TCustomAutocomplete;
-  fieldsState: { [key: string]: any };
-  setFieldsState: React.Dispatch<
-    React.SetStateAction<{
+  fields: {
+    state: {
       [key: string]: any;
-    }>
-  >;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
+  autoCompleteInputFields: {
+    state: {
+      [key: string]: any;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
+  autoCompleteFieldOptions: {
+    state: {
+      [key: string]: {
+        [key: string]: any;
+      } | null;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: {
+          [key: string]: any;
+        } | null;
+      }>
+    >;
+  };
 };
 
 interface IAutoCompleteFieldResultState {
@@ -43,7 +72,13 @@ interface IAutoCompleteFieldResultState {
 }
 
 export function CustomAutoCompleteField(props: TAutoCompleteProps) {
-  const { userToken, field, fieldsState, setFieldsState } = props;
+  const {
+    userToken,
+    field,
+    fields,
+    autoCompleteInputFields,
+    autoCompleteFieldOptions,
+  } = props;
   const location = useLocation();
 
   const [autoCompleteApiResult, setAutoCompleteApiResult] =
@@ -103,23 +138,47 @@ export function CustomAutoCompleteField(props: TAutoCompleteProps) {
   ) => {
     if (details !== undefined) {
       e.preventDefault();
-      setFieldsState({
-        ...fieldsState,
+      fields.set({
+        ...fields.state,
         [fieldOptions.constructedValue]:
           details.option[fieldOptions.valueField],
       });
+      autoCompleteFieldOptions.set({
+        ...autoCompleteFieldOptions.state,
+        [fieldOptions.constructedValue]: details.option,
+      });
     }
+  };
+
+  const onAutoCompleteInputChange = (
+    event: React.SyntheticEvent<Element, Event>,
+    value: string,
+    fieldOptions: TAutoCompleteFieldsState,
+  ) => {
+    autoCompleteInputFields.set({
+      ...autoCompleteInputFields.state,
+      [fieldOptions.constructedValue]: value,
+    });
   };
 
   useEffect(() => {
     setAutoCompleteApiResult(null);
   }, [location]);
 
+  const isStateUndefined =
+    fields.state[field.constructedValue] === undefined &&
+    autoCompleteInputFields.state[field.constructedValue] === undefined &&
+    autoCompleteFieldOptions.state[field.constructedValue] === undefined;
+
   if (field.options.mode === 'api') {
-    return (
+    return isStateUndefined ? (
+      <></>
+    ) : (
       <Autocomplete
         {...field.baseProps}
         sx={{ width: '100%' }}
+        value={autoCompleteFieldOptions.state[field.constructedValue]}
+        inputValue={autoCompleteInputFields.state[field.constructedValue]}
         onChange={(
           e,
           value,
@@ -133,6 +192,12 @@ export function CustomAutoCompleteField(props: TAutoCompleteProps) {
             constructedValue: field.constructedValue,
           })
         }
+        onInputChange={(e, value) =>
+          onAutoCompleteInputChange(e, value, {
+            ...field.options,
+            constructedValue: field.constructedValue,
+          })
+        }
         options={
           autoCompleteApiResult !== null ? autoCompleteApiResult.options : []
         }
@@ -140,10 +205,14 @@ export function CustomAutoCompleteField(props: TAutoCompleteProps) {
       />
     );
   } else {
-    return (
+    return isStateUndefined ? (
+      <></>
+    ) : (
       <Autocomplete
         {...field.baseProps}
         sx={{ width: '100%' }}
+        value={autoCompleteFieldOptions.state[field.constructedValue]}
+        inputValue={autoCompleteInputFields.state[field.constructedValue]}
         onChange={(
           e,
           value,
@@ -153,6 +222,12 @@ export function CustomAutoCompleteField(props: TAutoCompleteProps) {
             | undefined,
         ) =>
           onAutoCompleteValueChange(e, details, {
+            ...field.options,
+            constructedValue: field.constructedValue,
+          })
+        }
+        onInputChange={(e, value) =>
+          onAutoCompleteInputChange(e, value, {
             ...field.options,
             constructedValue: field.constructedValue,
           })

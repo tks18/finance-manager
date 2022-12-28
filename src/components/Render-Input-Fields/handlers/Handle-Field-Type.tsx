@@ -14,22 +14,50 @@ import type { TInputFieldType } from '@plugins/backend/api/data/inputs';
 type THandleFieldTypeProps = {
   userToken: string;
   field: TInputFieldType;
-  fieldsState: {
-    [key: string]: any;
-  };
-  setFieldsState: Dispatch<
-    SetStateAction<{
+  fields: {
+    state: {
       [key: string]: any;
-    }>
-  >;
-  amountFieldsState: {
-    [key: string]: any;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
   };
-  setAmountFieldsState: Dispatch<
-    SetStateAction<{
+  autoCompleteInputFields: {
+    state: {
       [key: string]: any;
-    }>
-  >;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
+  amountFields: {
+    state: {
+      [key: string]: any;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
+  autoCompleteFieldOptions: {
+    state: {
+      [key: string]: {
+        [key: string]: any;
+      } | null;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: {
+          [key: string]: any;
+        } | null;
+      }>
+    >;
+  };
   getDateIdfromAPI: (date: string) => Promise<number | undefined>;
 };
 
@@ -37,68 +65,46 @@ export function HandleFieldType(props: THandleFieldTypeProps) {
   const {
     userToken,
     field,
-    fieldsState,
-    setFieldsState,
-    amountFieldsState,
-    setAmountFieldsState,
+    fields,
+    autoCompleteInputFields,
+    amountFields,
+    autoCompleteFieldOptions,
     getDateIdfromAPI,
   } = props;
   switch (field.fieldType) {
     case 'text':
-      return (
-        <CustomTextField
-          field={field}
-          fieldsState={fieldsState}
-          setFieldsState={setFieldsState}
-        />
-      );
+      return <CustomTextField field={field} fields={fields} />;
     case 'controlledText':
-      return (
-        <CustomControlledTextField field={field} fieldsState={fieldsState} />
-      );
+      return <CustomControlledTextField field={field} fields={fields} />;
     case 'autocomplete':
       return (
         <CustomAutoCompleteField
           userToken={userToken}
           field={field}
-          fieldsState={fieldsState}
-          setFieldsState={setFieldsState}
+          fields={fields}
+          autoCompleteInputFields={autoCompleteInputFields}
+          autoCompleteFieldOptions={autoCompleteFieldOptions}
         />
       );
     case 'amount':
       return (
         <CustomAmountField
           field={field}
-          fieldsState={fieldsState}
-          setFieldsState={setFieldsState}
-          amountFormattedFieldsState={amountFieldsState}
-          setAmountFormattedFieldsState={setAmountFieldsState}
+          fields={fields}
+          amountFields={amountFields}
         />
       );
     case 'date':
       return (
         <CustomDateField
           field={field}
-          fieldsState={fieldsState}
-          setFieldsState={setFieldsState}
+          fields={fields}
           getDateIdfromAPI={getDateIdfromAPI}
         />
       );
     case 'year/month':
-      return (
-        <CustomMonthYearField
-          field={field}
-          fieldsState={fieldsState}
-          setFieldsState={setFieldsState}
-        />
-      );
+      return <CustomMonthYearField field={field} fields={fields} />;
     case 'switch':
-      return (
-        <CustomSwitchField
-          field={field}
-          fieldsState={fieldsState}
-          setFieldsState={setFieldsState}
-        />
-      );
+      return <CustomSwitchField field={field} fields={fields} />;
   }
 }
