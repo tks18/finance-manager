@@ -48,9 +48,9 @@ export const creditCardConfig: IBaseDBApiConfig = {
           },
           isOptionEqualToValue: (
             option: { _id: number; value: string },
-            value: string,
+            value: { _id: number; value: string },
           ) => {
-            return option.value === value;
+            return option._id === value._id;
           },
         },
         textProps: {
