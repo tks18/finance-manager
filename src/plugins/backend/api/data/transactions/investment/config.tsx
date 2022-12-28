@@ -6,6 +6,7 @@ import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
 import {
   IInvestmentMasterDocument,
   IBankMasterDocument,
+  IInvestmentAgentMasterDocument,
 } from '@plugins/backend/api/data/types';
 
 export const investmentTransactionConfig: IBaseDBApiConfig = {
@@ -106,6 +107,38 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
         options: {
           mode: 'api',
           api: databaseHandlers.masters.banks,
+          valueField: '_id',
+        },
+      },
+      {
+        fieldType: 'autocomplete',
+        name: 'agent_id',
+        constructedValue: 'agent_id',
+        baseProps: {
+          renderOption: (props, option: IInvestmentAgentMasterDocument) => {
+            return (
+              <Box component="li" {...props} key={option._id}>
+                {option._id}. {option.name}({option.company_name})
+              </Box>
+            );
+          },
+          getOptionLabel: (option: IInvestmentAgentMasterDocument) => {
+            return option.name;
+          },
+          isOptionEqualToValue: (
+            option: IInvestmentAgentMasterDocument,
+            value: IInvestmentAgentMasterDocument,
+          ) => {
+            return option._id === value._id;
+          },
+        },
+        textProps: {
+          label: 'Agent ID',
+          required: true,
+        },
+        options: {
+          mode: 'api',
+          api: databaseHandlers.masters.investments.agents,
           valueField: '_id',
         },
       },

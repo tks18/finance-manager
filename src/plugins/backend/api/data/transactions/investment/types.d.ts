@@ -2,6 +2,7 @@ import {
   ICalendarMasterDocument,
   IInvestmentMasterDocument,
   IBankMasterDocument,
+  IInvestmentAgentMasterDocument,
 } from '@plugins/backend/api/data/types';
 
 export interface IInvestmentTransactionNonCreationAttributes {
@@ -15,6 +16,7 @@ export interface IInvestmentTransactionCreationAttributes {
   date: string;
   master_id: IInvestmentMasterDocument['_id'];
   bank_id: IBankMasterDocument['_id'];
+  agent_id: IInvestmentAgentMasterDocument['_id'];
   cost: number;
   units: number;
   amount: number;
@@ -25,6 +27,7 @@ export interface IInvestmentTransactionManytoOneAssociationAttributes {
   calendarRecord?: ICalendarMasterDocument;
   masterRecord?: IInvestmentMasterDocument;
   bankRecord?: IBankMasterDocument;
+  agentRecord?: IInvestmentAgentMasterDocument;
 }
 
 export interface IInvestmentTransactionAssociationAttributes

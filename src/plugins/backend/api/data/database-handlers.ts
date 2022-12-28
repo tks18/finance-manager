@@ -64,6 +64,10 @@ export const databaseHandlers = {
         DataTypes.IInvestmentMasterCreationAttributes,
         DataTypes.IInvestmentMasterDocument
       >(routes.api.data.masters.investments.master),
+      agents: new DatabaseHandler<
+        DataTypes.IInvestmentAgentMasterCreationAttributes,
+        DataTypes.IInvestmentAgentMasterDocument
+      >(routes.api.data.masters.investments.agent),
     },
   },
   transactions: {

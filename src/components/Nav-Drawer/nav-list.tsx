@@ -18,6 +18,7 @@ import {
   BarChart as BarChartIcon,
   Settings as SettingsIcon,
   CalendarMonth as CalendarMonthIcon,
+  SupportAgent as SupportAgentIcon,
 } from '@mui/icons-material';
 
 // Types
@@ -112,6 +113,11 @@ export const authNavigationList: INavigationList[] = [
             name: 'Investment Master',
             icon: <StorageIcon />,
             path: '/auth/masters/investments/master',
+          },
+          {
+            name: 'Investment Agents',
+            icon: <SupportAgentIcon />,
+            path: '/auth/masters/investments/agents',
           },
         ],
       },
