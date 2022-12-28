@@ -52,18 +52,35 @@ export function CustomAutoCompleteField(props: TAutoCompleteProps) {
   useEffect(() => {
     if (field.options.mode === 'api') {
       const { apiOptions } = field.options;
+      const defaultApiOptions = {
+        options: {
+          filter: {},
+          order: [['_id', 'ASC']],
+        },
+      };
+      const inputOptions = apiOptions
+        ? {
+            options: {
+              ...apiOptions.options,
+              ...defaultApiOptions.options,
+              filter: apiOptions.options.filter
+                ? {
+                    ...apiOptions.options.filter,
+                    ...defaultApiOptions.options.filter,
+                  }
+                : defaultApiOptions.options.filter,
+              order: apiOptions.options.order
+                ? [
+                    ...apiOptions.options.order,
+                    ...defaultApiOptions.options.order,
+                  ]
+                : defaultApiOptions.options.order,
+            },
+          }
+        : defaultApiOptions;
       try {
         field.options.api
-          .get(
-            userToken,
-            apiOptions
-              ? apiOptions
-              : {
-                  options: {
-                    filter: {},
-                  },
-                },
-          )
+          .get(userToken, inputOptions)
           .then((apiResult) => {
             setAutoCompleteApiResult({
               name: field.constructedValue,
