@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/tks18/finance-manager/compare/v1.2.0...v1.2.1) (2022-12-28)
+
+
+### Bug Fixes 🛠
+
+* **components/render-fields:** autocomplete: send the default api options to sort by _id ([8a2933f](https://github.com/tks18/finance-manager/commit/8a2933f7e26ea52089732fce7ca60e2e4e03b500))
+
 ## [1.2.0](https://github.com/tks18/finance-manager/compare/v1.1.0...v1.2.0) (2022-12-25)
 
 
