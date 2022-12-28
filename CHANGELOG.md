@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/tks18/finance-manager/compare/v1.2.1...v1.3.0) (2022-12-28)
+
+
+### Bug Fixes 🛠
+
+* **components/render-fields:** fix uncontrolled input field error for all fields and refactor it ([6df1840](https://github.com/tks18/finance-manager/commit/6df18406c193661c34ed700bd62d739f5225c51a))
+* **plugins/backend:** fix the field config for credit and debit card ([a308a3a](https://github.com/tks18/finance-manager/commit/a308a3a3f556ddb32c562eac98a9bcd8174e1836))
+
+
+### Features 🔥
+
+* **plugins/backend:** write the api config for new investment-agent master and update related files ([39a7258](https://github.com/tks18/finance-manager/commit/39a7258e99596b252e544384870bec255cd251d9))
+
 ### [1.2.1](https://github.com/tks18/finance-manager/compare/v1.2.0...v1.2.1) (2022-12-28)
 
 
