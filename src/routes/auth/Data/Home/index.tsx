@@ -1,6 +1,6 @@
 import { Typography, Unstable_Grid2 as Grid } from '@mui/material';
 
-import { RenderModelInputFields } from '@/components';
+import { BuildDBApiInputForm } from '@/components';
 import { useAuthDataOutletContext } from '../hooks';
 
 export function AuthDataHome() {
@@ -21,7 +21,7 @@ export function AuthDataHome() {
       </Grid>
 
       <Grid xs={12} container>
-        <RenderModelInputFields userToken={userToken} config={config} />
+        <BuildDBApiInputForm userToken={userToken} config={config} />
       </Grid>
     </Grid>
   );
