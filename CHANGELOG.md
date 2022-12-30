@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/tks18/finance-manager/compare/v1.3.0...v1.4.0) (2022-12-30)
+
+
+### Features 🔥
+
+* **components:** write logic for calculated amount fields and to perform math operations ([3fcd68a](https://github.com/tks18/finance-manager/commit/3fcd68aac36f6efc1b42d3c3cf84560ae8293340))
+* **plugins/backend/api:** allow input config for calculated amount fields ([49cc0f7](https://github.com/tks18/finance-manager/commit/49cc0f71358484986aa9923153b852c7f8b28b45))
+
+
+### Code Refactoring 🖌
+
+* **components/render-input-fields:** rename the folder to a proper name: build api input form ([54e81b6](https://github.com/tks18/finance-manager/commit/54e81b63f3bc110acc036660cec5ec0ae981161b))
+* **plugins/backend:** refactor the databasehandler to a new name: apihandler ([8a26ddc](https://github.com/tks18/finance-manager/commit/8a26ddc8ba7f1f52acb4b97ed3c715894e8e217e))
+* **routes|router:** rename the components used to refactor names ([382f09a](https://github.com/tks18/finance-manager/commit/382f09a9326bfc0c682a16daac5b4f9f38c883ea))
+
 ## [1.3.0](https://github.com/tks18/finance-manager/compare/v1.2.1...v1.3.0) (2022-12-28)
 
 
