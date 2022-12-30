@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -7,7 +7,7 @@ import { IIncomeCategoryMasterDocument } from '@plugins/backend/api/data/types';
 
 export const incomeMasterConfig: IBaseDBApiConfig = {
   path: '/masters/incomes/master',
-  api: databaseHandlers.masters.incomes.master,
+  api: apiHandlers.masters.incomes.master,
   tableType: 'master',
   modelName: 'IncomeMaster',
   componentOptions: {
@@ -89,7 +89,7 @@ export const incomeMasterConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.incomes.category,
+          api: apiHandlers.masters.incomes.category,
           valueField: '_id',
         },
       },

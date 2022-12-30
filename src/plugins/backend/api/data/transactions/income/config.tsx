@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -17,7 +18,7 @@ type TCustomIncomeMasterDocument = WithRequiredProperty<
 
 export const incomeTransactionConfig: IBaseDBApiConfig = {
   path: '/transactions/incomes',
-  api: databaseHandlers.transactions.incomes,
+  api: apiHandlers.transactions.incomes,
   tableType: 'transaction',
   modelName: 'Incomes',
   componentOptions: {
@@ -80,7 +81,7 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.incomes.master,
+          api: apiHandlers.masters.incomes.master,
           apiOptions: {
             options: {
               include: ['masterTables.incomes.master.category'],
@@ -117,7 +118,7 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.banks,
+          api: apiHandlers.masters.banks,
           valueField: '_id',
         },
       },
@@ -149,8 +150,17 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.investments.master,
+          api: apiHandlers.masters.investments.master,
           valueField: '_id',
+        },
+      },
+      {
+        fieldType: 'text',
+        name: 'remarks',
+        constructedValue: 'remarks',
+        baseProps: {
+          label: 'Transaction Remarks',
+          required: true,
         },
       },
       {
@@ -167,6 +177,7 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
           label: 'Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -182,6 +193,7 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
           label: 'Taxable Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

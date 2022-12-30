@@ -21,6 +21,8 @@ export interface IExpenseTransactionCreationAttributes {
   asset_id?: IAssetMasterDocument['_id'];
   emi_id?: IEMIMasterDocument['_id'];
   insurance_id?: IInsuranceMasterDocument['_id'];
+  vendor: string;
+  remarks: string;
   amount: number;
   tax_allowable_amount: number;
 }

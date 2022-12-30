@@ -17,6 +17,7 @@ export interface IInvestmentTransactionCreationAttributes {
   master_id: IInvestmentMasterDocument['_id'];
   bank_id: IBankMasterDocument['_id'];
   agent_id: IInvestmentAgentMasterDocument['_id'];
+  remarks: string;
   cost: number;
   units: number;
   amount: number;

@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -7,7 +8,7 @@ import { IBankMasterDocument } from '@plugins/backend/api/data/types';
 
 export const debitCardConfig: IBaseDBApiConfig = {
   path: '/masters/debit-cards',
-  api: databaseHandlers.masters.debitCards,
+  api: apiHandlers.masters.debitCards,
   tableType: 'master',
   modelName: 'DebitCardMaster',
   componentOptions: {
@@ -104,7 +105,7 @@ export const debitCardConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.banks,
+          api: apiHandlers.masters.banks,
           valueField: '_id',
         },
       },
@@ -183,6 +184,7 @@ export const debitCardConfig: IBaseDBApiConfig = {
           label: 'ATM Limit',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'switch',
@@ -208,6 +210,7 @@ export const debitCardConfig: IBaseDBApiConfig = {
           label: 'International Limit',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -223,6 +226,7 @@ export const debitCardConfig: IBaseDBApiConfig = {
           label: 'Ecommerce Limit',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'switch',
@@ -248,6 +252,7 @@ export const debitCardConfig: IBaseDBApiConfig = {
           label: 'Tap Limit',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -263,6 +268,7 @@ export const debitCardConfig: IBaseDBApiConfig = {
           label: 'POS Limit',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

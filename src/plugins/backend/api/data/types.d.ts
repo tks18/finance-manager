@@ -1,10 +1,10 @@
-import { DatabaseHandler } from '../../helpers';
+import { ApiHandler } from '../../helpers';
 import { TInputFieldType } from './inputs';
 import * as MasterTypes from './masters/types';
 import * as TransactionTypes from './transactions/types';
 export interface IBaseDBApiConfig {
   path: string;
-  api: DatabaseHandler<{ [key: string]: any }, { [key: string]: any }>;
+  api: ApiHandler<{ [key: string]: any }, { [key: string]: any }>;
   modelName: string;
   tableType: 'master' | 'transaction';
   componentOptions: {

@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -7,7 +8,7 @@ import { IBankMasterDocument } from '@plugins/backend/api/data/types';
 
 export const openingBalanceTransactionConfig: IBaseDBApiConfig = {
   path: '/transactions/opening-balances',
-  api: databaseHandlers.transactions.openingBalances,
+  api: apiHandlers.transactions.openingBalances,
   tableType: 'transaction',
   modelName: 'OpeningBalances',
   componentOptions: {
@@ -70,7 +71,7 @@ export const openingBalanceTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.banks,
+          api: apiHandlers.masters.banks,
           valueField: '_id',
         },
       },
@@ -88,6 +89,7 @@ export const openingBalanceTransactionConfig: IBaseDBApiConfig = {
           label: 'Balance',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },
