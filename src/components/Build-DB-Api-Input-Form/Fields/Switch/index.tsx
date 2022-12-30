@@ -49,7 +49,8 @@ export function CustomSwitchField(props: TSwitchFieldProps) {
           {...switchProps}
           {...field.switchProps}
           name={field.constructedValue}
-          value={fields.state[field.constructedValue] === '1' ? true : false}
+          value={fields.state[field.constructedValue] === 1}
+          checked={fields.state[field.constructedValue] === 1}
           onChange={(e) => onSwitchValueChange(field, e)}
         />
       }

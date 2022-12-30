@@ -3,63 +3,13 @@ import {
   CustomControlledTextField,
   CustomAutoCompleteField,
   CustomAmountField,
+  CustomCalculatedAmountField,
   CustomDateField,
   CustomMonthYearField,
   CustomSwitchField,
 } from '../Fields';
 
-import type { Dispatch, SetStateAction } from 'react';
-import type { TInputFieldType } from '@plugins/backend/api/data/inputs';
-
-type THandleFieldTypeProps = {
-  userToken: string;
-  field: TInputFieldType;
-  fields: {
-    state: {
-      [key: string]: any;
-    };
-    set: Dispatch<
-      SetStateAction<{
-        [key: string]: any;
-      }>
-    >;
-  };
-  autoCompleteInputFields: {
-    state: {
-      [key: string]: any;
-    };
-    set: Dispatch<
-      SetStateAction<{
-        [key: string]: any;
-      }>
-    >;
-  };
-  amountFields: {
-    state: {
-      [key: string]: any;
-    };
-    set: Dispatch<
-      SetStateAction<{
-        [key: string]: any;
-      }>
-    >;
-  };
-  autoCompleteFieldOptions: {
-    state: {
-      [key: string]: {
-        [key: string]: any;
-      } | null;
-    };
-    set: Dispatch<
-      SetStateAction<{
-        [key: string]: {
-          [key: string]: any;
-        } | null;
-      }>
-    >;
-  };
-  getDateIdfromAPI: (date: string) => Promise<number | undefined>;
-};
+import type { THandleFieldTypeProps } from './types';
 
 export function HandleFieldType(props: THandleFieldTypeProps) {
   const {
@@ -68,6 +18,7 @@ export function HandleFieldType(props: THandleFieldTypeProps) {
     fields,
     autoCompleteInputFields,
     amountFields,
+    operationalAmounts,
     autoCompleteFieldOptions,
     getDateIdfromAPI,
   } = props;
@@ -92,8 +43,11 @@ export function HandleFieldType(props: THandleFieldTypeProps) {
           field={field}
           fields={fields}
           amountFields={amountFields}
+          operationalAmounts={operationalAmounts}
         />
       );
+    case 'controlledAmount':
+      return <CustomCalculatedAmountField field={field} fields={fields} />;
     case 'date':
       return (
         <CustomDateField
@@ -106,5 +60,7 @@ export function HandleFieldType(props: THandleFieldTypeProps) {
       return <CustomMonthYearField field={field} fields={fields} />;
     case 'switch':
       return <CustomSwitchField field={field} fields={fields} />;
+    case 'helper':
+      return <></>;
   }
 }

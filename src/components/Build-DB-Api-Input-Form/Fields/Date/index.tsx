@@ -95,6 +95,8 @@ export function CustomDateField(props: TDateFieldProps) {
           InputLabelProps={{
             shrink: fields.state[field.constructedValue] === '' ? false : true,
           }}
+          inputProps={{ readOnly: true }}
+          value={fields.state[field.constructedValue]}
         />
       )}
     />
@@ -138,8 +140,11 @@ export function CustomMonthYearField(props: TMonthYearFieldProps) {
           {...field.textProps}
           disabled={true}
           InputLabelProps={{
+            ...params.InputLabelProps,
             shrink: fields.state[field.constructedValue] === '' ? false : true,
           }}
+          inputProps={{ ...params.inputProps, readOnly: true }}
+          value={fields.state[field.constructedValue]}
         />
       )}
     />
