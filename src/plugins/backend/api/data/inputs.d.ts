@@ -5,7 +5,7 @@ import type {
   FormControlLabelProps,
 } from '@mui/material';
 import type { DatePickerProps } from '@mui/x-date-pickers';
-import { DatabaseHandler } from '../..';
+import { ApiHandler } from '../..';
 import { IDBGetInput } from '../../types';
 
 type WithRequiredProperty<Type, Key extends keyof Type> = Type & {
@@ -22,7 +22,7 @@ export interface IFieldAutoCompleteApiOption<
   IDocumentAttributes,
 > {
   mode: 'api';
-  api: DatabaseHandler<ICreationAttributes, IDocumentAttributes>;
+  api: ApiHandler<ICreationAttributes, IDocumentAttributes>;
   apiOptions?: IDBGetInput<ICreationAttributes>;
   valueField: string;
 }
@@ -95,10 +95,39 @@ export type TFieldYearorMonth = {
   };
 };
 
+export type TFieldAmountCalculatedOperations =
+  | 'add'
+  | 'subtract'
+  | 'multiply'
+  | 'divide';
+
+export type TFieldAmountCalculatedOperationConfig = {
+  field1: string;
+  field2: string;
+  operation: TFieldAmountCalculatedOperations;
+  affectedField: string;
+  affectedFieldType: 'helperField' | 'stateField';
+};
+
 export type TFieldAmount = {
   fieldType: 'amount';
   baseProps: NumericFormatProps;
   textProps: TextFieldProps;
+  startIcon: JSX.Element;
+  affectsCalculatedField?: {
+    operations: TFieldAmountCalculatedOperationConfig[];
+  };
+};
+
+export type TFieldOperationHelper = {
+  fieldType: 'helper';
+};
+
+export type TFieldCalculatedAmount = {
+  fieldType: 'controlledAmount';
+  baseProps: NumericFormatProps;
+  textProps: TextFieldProps;
+  startIcon: JSX.Element;
 };
 
 export type TFieldControlledTextField = {
@@ -115,4 +144,6 @@ export type TInputFieldType = IFieldBaseProps &
     | TFieldDate
     | TFieldYearorMonth
     | TFieldAmount
+    | TFieldCalculatedAmount
+    | TFieldOperationHelper
   );
