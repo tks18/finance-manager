@@ -31,7 +31,7 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
   const { userToken, config } = props;
   const location = useLocation();
   const {
-    componentOptions: { fields, title },
+    componentOptions: { fields, title, excludeResetFields },
     api,
   } = config;
 
@@ -89,6 +89,89 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
     [fields],
   );
 
+  const resetState = useMemo(
+    () => ({
+      constructedStateFields: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType !== 'helper')
+              .filter((field) => {
+                console.log(
+                  field.constructedValue,
+                  excludeResetFields.includes(field.constructedValue),
+                );
+                return !excludeResetFields.includes(field.constructedValue);
+              })
+              .reduce((prevValue, field) => {
+                if (field.fieldType === 'switch') {
+                  prevValue[field.constructedValue] = 0;
+                } else {
+                  prevValue[field.constructedValue] = '';
+                }
+                return prevValue;
+              }, {} as { [key: string]: any })
+          : {}
+        : initialState.constructedStateFields,
+      operationalAmountFields: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) =>
+                ['amount', 'helper', 'controlledAmount'].includes(
+                  field.fieldType,
+                ),
+              )
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce((prevValue, field) => {
+                prevValue[field.constructedValue] = 0;
+                return prevValue;
+              }, {} as { [key: string]: number })
+          : {}
+        : initialState.operationalAmountFields,
+      amountFormattedFields: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType === 'amount')
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce((prevValue, field) => {
+                prevValue[field.constructedValue] = '';
+                return prevValue;
+              }, {} as { [key: string]: any })
+          : {}
+        : initialState.amountFormattedFields,
+      autoCompleteFieldsInput: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType === 'autocomplete')
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce((prevValue, field) => {
+                prevValue[field.constructedValue] = '';
+                return prevValue;
+              }, {} as { [key: string]: any })
+          : {}
+        : initialState.autoCompleteFieldsInput,
+      currentAutoCompleteOptionSelected: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType === 'autocomplete')
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce((prevValue, field) => {
+                prevValue[field.constructedValue] = null;
+                return prevValue;
+              }, {} as { [key: string]: any })
+          : {}
+        : initialState.currentAutoCompleteOptionSelected,
+    }),
+    [initialState, fields, excludeResetFields],
+  );
+
   const [constructedStateFields, setConstructedStateFields] =
     useState<IStateFields>(initialState.constructedStateFields);
   const [amountFormattedFields, setAmountFormattedFields] =
@@ -114,6 +197,25 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
     } catch (e) {
       toast.error(String(e));
     }
+  };
+
+  const clearState = () => {
+    setConstructedStateFields((state) => ({
+      ...state,
+      ...resetState.constructedStateFields,
+    }));
+    setAutoCompleteFieldsInput((state) => ({
+      ...state,
+      ...resetState.autoCompleteFieldsInput,
+    }));
+    setAmountFormattedFields((state) => ({
+      ...state,
+      ...resetState.amountFormattedFields,
+    }));
+    setCurrentAutoCompleteOptionSelected((state) => ({
+      ...state,
+      ...resetState.currentAutoCompleteOptionSelected,
+    }));
   };
 
   const handleDataSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -143,15 +245,6 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
       initialState.currentAutoCompleteOptionSelected,
     );
   }, [location, initialState]);
-
-  const clearState = () => {
-    setConstructedStateFields(initialState.constructedStateFields);
-    setAutoCompleteFieldsInput(initialState.autoCompleteFieldsInput);
-    setAmountFormattedFields(initialState.amountFormattedFields);
-    setCurrentAutoCompleteOptionSelected(
-      initialState.currentAutoCompleteOptionSelected,
-    );
-  };
 
   const HandleField = (field: TInputFieldType) => (
     <HandleFieldType
