@@ -13,6 +13,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
   modelName: 'MarketData',
   componentOptions: {
     title: 'Investment Market Data',
+    excludeResetFields: ['master_id'],
     fields: [
       {
         fieldType: 'controlledText',

@@ -12,6 +12,7 @@ export const incomeMasterConfig: IBaseDBApiConfig = {
   modelName: 'IncomeMaster',
   componentOptions: {
     title: 'Income Masters',
+    excludeResetFields: ['category_id'],
     fields: [
       {
         fieldType: 'text',

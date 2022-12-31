@@ -12,6 +12,7 @@ export const investmentMasterConfig: IBaseDBApiConfig = {
   modelName: 'InvestmentMaster',
   componentOptions: {
     title: 'Investment Master',
+    excludeResetFields: ['category_id'],
     fields: [
       {
         fieldType: 'text',

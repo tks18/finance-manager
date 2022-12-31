@@ -17,6 +17,7 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
   modelName: 'Investments',
   componentOptions: {
     title: 'Investment Transactions',
+    excludeResetFields: ['date_id', 'date', 'master_id', 'bank_id', 'agent_id'],
     fields: [
       {
         fieldType: 'controlledText',

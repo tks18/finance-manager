@@ -22,6 +22,7 @@ export const assetMasterConfig: IBaseDBApiConfig = {
   modelName: 'AssetMaster',
   componentOptions: {
     title: 'Asset Masters',
+    excludeResetFields: ['date_id', 'date', 'category_id'],
     fields: [
       {
         fieldType: 'controlledText',

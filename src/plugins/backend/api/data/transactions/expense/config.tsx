@@ -30,6 +30,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
   modelName: 'Expenses',
   componentOptions: {
     title: 'Expense Transactions',
+    excludeResetFields: ['date_id', 'date', 'master_id', 'bank_id'],
     fields: [
       {
         fieldType: 'controlledText',

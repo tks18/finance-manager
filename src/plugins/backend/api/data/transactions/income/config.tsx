@@ -23,6 +23,7 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
   modelName: 'Incomes',
   componentOptions: {
     title: 'Income Transactions',
+    excludeResetFields: ['date_id', 'date', 'master_id', 'bank_id'],
     fields: [
       {
         fieldType: 'controlledText',
