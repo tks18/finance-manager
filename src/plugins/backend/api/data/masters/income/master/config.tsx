@@ -18,7 +18,7 @@ export const incomeMasterConfig: IBaseDBApiConfig = {
         name: 'name',
         constructedValue: 'name',
         baseProps: {
-          label: 'Name of Expense',
+          label: 'Name of Income',
           required: true,
         },
       },
@@ -27,7 +27,7 @@ export const incomeMasterConfig: IBaseDBApiConfig = {
         name: 'type',
         constructedValue: 'type',
         baseProps: {
-          label: 'Type of Expense',
+          label: 'Type of Income',
           required: true,
         },
       },
