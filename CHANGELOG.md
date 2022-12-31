@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/tks18/finance-manager/compare/v1.4.0...v1.4.1) (2022-12-31)
+
+
+### Bug Fixes 🛠
+
+* **plugins/backend:** fix typo on income field config ([55ee720](https://github.com/tks18/finance-manager/commit/55ee720316db57298b9aa2969b1e68a39e8a8c40))
+
 ## [1.4.0](https://github.com/tks18/finance-manager/compare/v1.3.0...v1.4.0) (2022-12-30)
 
 
