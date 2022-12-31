@@ -1,5 +1,9 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import {
+  CurrencyRupee as CurrencyRupeeIcon,
+  Percent as PercentIcon,
+} from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -7,7 +11,7 @@ import { ICreditCardMasterDocument } from '@plugins/backend/api/data/types';
 
 export const emiConfig: IBaseDBApiConfig = {
   path: '/masters/emi',
-  api: databaseHandlers.masters.emi,
+  api: apiHandlers.masters.emi,
   tableType: 'master',
   modelName: 'EMIMaster',
   componentOptions: {
@@ -41,7 +45,7 @@ export const emiConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.creditCards,
+          api: apiHandlers.masters.creditCards,
           valueField: '_id',
         },
       },
@@ -141,6 +145,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'Total EMI Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -156,6 +161,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'Total Product Cost',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -171,6 +177,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'Interest (%)',
           required: true,
         },
+        startIcon: <PercentIcon />,
       },
       {
         fieldType: 'amount',
@@ -186,6 +193,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'Total Interest Payable',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -201,6 +209,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'No Cost EMI Discount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -216,6 +225,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'EMI Amount per Installment',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -231,6 +241,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'Processing Cost',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -246,6 +257,7 @@ export const emiConfig: IBaseDBApiConfig = {
           label: 'Processing GST Component',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

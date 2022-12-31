@@ -25,6 +25,7 @@ export const routes = {
         investments: {
           categories: '/api/data/masters/investments/categories',
           master: '/api/data/masters/investments/master',
+          agent: '/api/data/masters/investments/agents',
         },
       },
       transactions: {

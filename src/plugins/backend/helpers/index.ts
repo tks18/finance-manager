@@ -1,2 +1,2 @@
-export * from './database-handler';
+export * from './api-handler';
 export * from './requester';

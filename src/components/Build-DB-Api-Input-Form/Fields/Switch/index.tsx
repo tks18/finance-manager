@@ -1,6 +1,7 @@
 import { FormControlLabel, Switch } from '@mui/material';
 
 import type { FormControlLabelProps, SwitchProps } from '@mui/material';
+import type { Dispatch, SetStateAction } from 'react';
 import type {
   IFieldBaseProps,
   TFieldSwitch,
@@ -11,30 +12,36 @@ type TCustomSwitch = IFieldBaseProps & TFieldSwitch;
 type TSwitchFieldProps = Omit<FormControlLabelProps, 'control' | 'label'> & {
   switchProps?: SwitchProps;
   field: TCustomSwitch;
-  fieldsState: {
-    [key: string]: any;
-  };
-  setFieldsState: React.Dispatch<
-    React.SetStateAction<{
+  fields: {
+    state: {
       [key: string]: any;
-    }>
-  >;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
 };
 
 export function CustomSwitchField(props: TSwitchFieldProps) {
-  const { switchProps, field, fieldsState, setFieldsState } = props;
+  const { switchProps, field, fields } = props;
 
   const onSwitchValueChange = (
     field: TCustomSwitch,
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    setFieldsState({
-      ...fieldsState,
+    fields.set({
+      ...fields.state,
       [field.constructedValue]: e.target.checked ? 1 : 0,
     });
   };
 
-  return (
+  const isStateUndefined = fields.state[field.constructedValue] === undefined;
+
+  return isStateUndefined ? (
+    <></>
+  ) : (
     <FormControlLabel
       {...field.baseProps}
       control={
@@ -42,7 +49,8 @@ export function CustomSwitchField(props: TSwitchFieldProps) {
           {...switchProps}
           {...field.switchProps}
           name={field.constructedValue}
-          value={fieldsState[field.constructedValue] === '1' ? true : false}
+          value={fields.state[field.constructedValue] === 1}
+          checked={fields.state[field.constructedValue] === 1}
           onChange={(e) => onSwitchValueChange(field, e)}
         />
       }

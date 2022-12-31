@@ -1,16 +1,18 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
 import {
   IInvestmentMasterDocument,
   IBankMasterDocument,
+  IInvestmentAgentMasterDocument,
 } from '@plugins/backend/api/data/types';
 
 export const investmentTransactionConfig: IBaseDBApiConfig = {
   path: '/transactions/investments',
-  api: databaseHandlers.transactions.investments,
+  api: apiHandlers.transactions.investments,
   tableType: 'transaction',
   modelName: 'Investments',
   componentOptions: {
@@ -73,7 +75,7 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.investments.master,
+          api: apiHandlers.masters.investments.master,
           valueField: '_id',
         },
       },
@@ -105,9 +107,60 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.banks,
+          api: apiHandlers.masters.banks,
           valueField: '_id',
         },
+      },
+      {
+        fieldType: 'autocomplete',
+        name: 'agent_id',
+        constructedValue: 'agent_id',
+        baseProps: {
+          renderOption: (props, option: IInvestmentAgentMasterDocument) => {
+            return (
+              <Box component="li" {...props} key={option._id}>
+                {option._id}. {option.name}({option.company_name})
+              </Box>
+            );
+          },
+          getOptionLabel: (option: IInvestmentAgentMasterDocument) => {
+            return option.name;
+          },
+          isOptionEqualToValue: (
+            option: IInvestmentAgentMasterDocument,
+            value: IInvestmentAgentMasterDocument,
+          ) => {
+            return option._id === value._id;
+          },
+        },
+        textProps: {
+          label: 'Agent ID',
+          required: true,
+        },
+        options: {
+          mode: 'api',
+          api: apiHandlers.masters.investments.agents,
+          valueField: '_id',
+        },
+      },
+      {
+        fieldType: 'text',
+        name: 'remarks',
+        constructedValue: 'remarks',
+        baseProps: {
+          label: 'Transaction Remarks',
+          required: true,
+        },
+      },
+      {
+        fieldType: 'helper',
+        name: 'costHelper',
+        constructedValue: 'costHelper',
+      },
+      {
+        fieldType: 'helper',
+        name: 'unitsHelper',
+        constructedValue: 'unitsHelper',
       },
       {
         fieldType: 'amount',
@@ -122,6 +175,18 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
         textProps: {
           label: 'Cost',
           required: true,
+        },
+        startIcon: <CurrencyRupeeIcon />,
+        affectsCalculatedField: {
+          operations: [
+            {
+              field1: 'cost',
+              field2: 'units',
+              operation: 'multiply',
+              affectedField: 'amount',
+              affectedFieldType: 'stateField',
+            },
+          ],
         },
       },
       {
@@ -138,9 +203,21 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
           label: 'Units',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
+        affectsCalculatedField: {
+          operations: [
+            {
+              field1: 'cost',
+              field2: 'units',
+              operation: 'multiply',
+              affectedField: 'amount',
+              affectedFieldType: 'stateField',
+            },
+          ],
+        },
       },
       {
-        fieldType: 'amount',
+        fieldType: 'controlledAmount',
         name: 'amount',
         constructedValue: 'amount',
         baseProps: {
@@ -153,6 +230,7 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
           label: 'Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -168,6 +246,7 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
           label: 'Tax Allowable Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

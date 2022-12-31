@@ -14,12 +14,20 @@ interface IStateFields {
   [key: string]: any;
 }
 
-interface IRenderModelInputFieldsProps extends PropsWithChildren {
+interface IAmountState {
+  [key: string]: number;
+}
+
+interface ICurrentAutoCompleteOptionSelected {
+  [key: string]: IStateFields | null;
+}
+
+interface IBuildDBApiInputForm extends PropsWithChildren {
   userToken: string;
   config: IBaseDBApiConfig;
 }
 
-export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
+export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
   const { userToken, config } = props;
   const location = useLocation();
   const {
@@ -30,20 +38,50 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
   const initialState = useMemo(
     () => ({
       constructedStateFields: fields
-        ? fields.reduce((prevValue, field) => {
-            if (field.fieldType === 'switch') {
+        ? fields
+            .filter((field) => field.fieldType !== 'helper')
+            .reduce((prevValue, field) => {
+              if (field.fieldType === 'switch') {
+                prevValue[field.constructedValue] = 0;
+              } else {
+                prevValue[field.constructedValue] = '';
+              }
+              return prevValue;
+            }, {} as { [key: string]: any })
+        : {},
+      operationalAmountFields: fields
+        ? fields
+            .filter((field) =>
+              ['amount', 'helper', 'controlledAmount'].includes(
+                field.fieldType,
+              ),
+            )
+            .reduce((prevValue, field) => {
               prevValue[field.constructedValue] = 0;
-            } else {
-              prevValue[field.constructedValue] = '';
-            }
-            return prevValue;
-          }, {} as { [key: string]: any })
+              return prevValue;
+            }, {} as { [key: string]: number })
         : {},
       amountFormattedFields: fields
         ? fields
             .filter((field) => field.fieldType === 'amount')
             .reduce((prevValue, field) => {
               prevValue[field.constructedValue] = '';
+              return prevValue;
+            }, {} as { [key: string]: any })
+        : {},
+      autoCompleteFieldsInput: fields
+        ? fields
+            .filter((field) => field.fieldType === 'autocomplete')
+            .reduce((prevValue, field) => {
+              prevValue[field.constructedValue] = '';
+              return prevValue;
+            }, {} as { [key: string]: any })
+        : {},
+      currentAutoCompleteOptionSelected: fields
+        ? fields
+            .filter((field) => field.fieldType === 'autocomplete')
+            .reduce((prevValue, field) => {
+              prevValue[field.constructedValue] = null;
               return prevValue;
             }, {} as { [key: string]: any })
         : {},
@@ -55,6 +93,16 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
     useState<IStateFields>(initialState.constructedStateFields);
   const [amountFormattedFields, setAmountFormattedFields] =
     useState<IStateFields>(initialState.amountFormattedFields);
+  const [operationalAmountFields, setOperationalAmountFields] =
+    useState<IAmountState>(initialState.operationalAmountFields);
+  const [autoCompleteFieldsInput, setAutoCompleteFieldsInput] =
+    useState<IStateFields>(initialState.autoCompleteFieldsInput);
+  const [
+    currentAutoCompleteOptionSelected,
+    setCurrentAutoCompleteOptionSelected,
+  ] = useState<ICurrentAutoCompleteOptionSelected>(
+    initialState.currentAutoCompleteOptionSelected,
+  );
 
   const getDateIdfromAPI = async (date: string) => {
     try {
@@ -89,22 +137,46 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
 
   useEffect(() => {
     setConstructedStateFields(initialState.constructedStateFields);
+    setAutoCompleteFieldsInput(initialState.autoCompleteFieldsInput);
     setAmountFormattedFields(initialState.amountFormattedFields);
+    setCurrentAutoCompleteOptionSelected(
+      initialState.currentAutoCompleteOptionSelected,
+    );
   }, [location, initialState]);
 
   const clearState = () => {
     setConstructedStateFields(initialState.constructedStateFields);
+    setAutoCompleteFieldsInput(initialState.autoCompleteFieldsInput);
     setAmountFormattedFields(initialState.amountFormattedFields);
+    setCurrentAutoCompleteOptionSelected(
+      initialState.currentAutoCompleteOptionSelected,
+    );
   };
 
   const HandleField = (field: TInputFieldType) => (
     <HandleFieldType
       userToken={userToken}
       field={field}
-      fieldsState={constructedStateFields}
-      setFieldsState={setConstructedStateFields}
-      amountFieldsState={amountFormattedFields}
-      setAmountFieldsState={setAmountFormattedFields}
+      fields={{
+        state: constructedStateFields,
+        set: setConstructedStateFields,
+      }}
+      autoCompleteInputFields={{
+        state: autoCompleteFieldsInput,
+        set: setAutoCompleteFieldsInput,
+      }}
+      amountFields={{
+        state: amountFormattedFields,
+        set: setAmountFormattedFields,
+      }}
+      operationalAmounts={{
+        state: operationalAmountFields,
+        set: setOperationalAmountFields,
+      }}
+      autoCompleteFieldOptions={{
+        state: currentAutoCompleteOptionSelected,
+        set: setCurrentAutoCompleteOptionSelected,
+      }}
       getDateIdfromAPI={getDateIdfromAPI}
     />
   );
@@ -142,21 +214,23 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
           </Typography>
         </Grid>
         {fields && fields.length > 0 ? (
-          fields.map((field, index) => {
-            return (
-              <Grid
-                key={index}
-                sx={{
-                  display: 'flex',
-                  alignContent: 'center',
-                  justifyContent: 'center',
-                }}
-                xs={3}
-              >
-                {HandleField(field)}
-              </Grid>
-            );
-          })
+          fields
+            .filter((field) => field.fieldType !== 'helper')
+            .map((field, index) => {
+              return (
+                <Grid
+                  key={index}
+                  sx={{
+                    display: 'flex',
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                  }}
+                  xs={3}
+                >
+                  {HandleField(field)}
+                </Grid>
+              );
+            })
         ) : (
           <Typography
             sx={{ fontWeight: 'bold', textAlign: 'center' }}
@@ -192,14 +266,6 @@ export function RenderModelInputFields(props: IRenderModelInputFieldsProps) {
           </Grid>
         </Grid>
       </Box>
-      <Grid
-        xs={12}
-        sx={{
-          width: '99%',
-          display: 'flex',
-          flexWrap: 'wrap',
-        }}
-      ></Grid>
     </Grid>
   );
 }

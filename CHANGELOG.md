@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/tks18/finance-manager/compare/v1.4.0...v1.4.1) (2022-12-31)
+
+
+### Bug Fixes 🛠
+
+* **plugins/backend:** fix typo on income field config ([55ee720](https://github.com/tks18/finance-manager/commit/55ee720316db57298b9aa2969b1e68a39e8a8c40))
+
+## [1.4.0](https://github.com/tks18/finance-manager/compare/v1.3.0...v1.4.0) (2022-12-30)
+
+
+### Features 🔥
+
+* **components:** write logic for calculated amount fields and to perform math operations ([3fcd68a](https://github.com/tks18/finance-manager/commit/3fcd68aac36f6efc1b42d3c3cf84560ae8293340))
+* **plugins/backend/api:** allow input config for calculated amount fields ([49cc0f7](https://github.com/tks18/finance-manager/commit/49cc0f71358484986aa9923153b852c7f8b28b45))
+
+
+### Code Refactoring 🖌
+
+* **components/render-input-fields:** rename the folder to a proper name: build api input form ([54e81b6](https://github.com/tks18/finance-manager/commit/54e81b63f3bc110acc036660cec5ec0ae981161b))
+* **plugins/backend:** refactor the databasehandler to a new name: apihandler ([8a26ddc](https://github.com/tks18/finance-manager/commit/8a26ddc8ba7f1f52acb4b97ed3c715894e8e217e))
+* **routes|router:** rename the components used to refactor names ([382f09a](https://github.com/tks18/finance-manager/commit/382f09a9326bfc0c682a16daac5b4f9f38c883ea))
+
+## [1.3.0](https://github.com/tks18/finance-manager/compare/v1.2.1...v1.3.0) (2022-12-28)
+
+
+### Bug Fixes 🛠
+
+* **components/render-fields:** fix uncontrolled input field error for all fields and refactor it ([6df1840](https://github.com/tks18/finance-manager/commit/6df18406c193661c34ed700bd62d739f5225c51a))
+* **plugins/backend:** fix the field config for credit and debit card ([a308a3a](https://github.com/tks18/finance-manager/commit/a308a3a3f556ddb32c562eac98a9bcd8174e1836))
+
+
+### Features 🔥
+
+* **plugins/backend:** write the api config for new investment-agent master and update related files ([39a7258](https://github.com/tks18/finance-manager/commit/39a7258e99596b252e544384870bec255cd251d9))
+
+### [1.2.1](https://github.com/tks18/finance-manager/compare/v1.2.0...v1.2.1) (2022-12-28)
+
+
+### Bug Fixes 🛠
+
+* **components/render-fields:** autocomplete: send the default api options to sort by _id ([8a2933f](https://github.com/tks18/finance-manager/commit/8a2933f7e26ea52089732fce7ca60e2e4e03b500))
+
 ## [1.2.0](https://github.com/tks18/finance-manager/compare/v1.1.0...v1.2.0) (2022-12-25)
 
 

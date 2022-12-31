@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -7,7 +7,7 @@ import { IInvestmentCategoryMasterDocument } from '@plugins/backend/api/data/typ
 
 export const investmentMasterConfig: IBaseDBApiConfig = {
   path: '/masters/investments/master',
-  api: databaseHandlers.masters.investments.master,
+  api: apiHandlers.masters.investments.master,
   tableType: 'master',
   modelName: 'InvestmentMaster',
   componentOptions: {
@@ -77,7 +77,7 @@ export const investmentMasterConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.investments.category,
+          api: apiHandlers.masters.investments.category,
           valueField: '_id',
         },
       },

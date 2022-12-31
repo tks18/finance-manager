@@ -17,6 +17,7 @@ export const dbApiConfig: IBaseDBApiConfig[] = [
   masterConfig.insurance,
   masterConfig.investment.category,
   masterConfig.investment.master,
+  masterConfig.investment.agents,
   transactionConfig.calendar,
   transactionConfig.expense,
   transactionConfig.income,

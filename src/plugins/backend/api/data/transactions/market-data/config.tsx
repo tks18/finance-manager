@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -7,7 +8,7 @@ import { IInvestmentMasterDocument } from '@plugins/backend/api/data/types';
 
 export const marketDataTransactionConfig: IBaseDBApiConfig = {
   path: '/transactions/market-data',
-  api: databaseHandlers.transactions.marketData,
+  api: apiHandlers.transactions.marketData,
   tableType: 'transaction',
   modelName: 'MarketData',
   componentOptions: {
@@ -70,7 +71,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.investments.master,
+          api: apiHandlers.masters.investments.master,
           valueField: '_id',
         },
       },
@@ -88,6 +89,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
           label: 'Open Price',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -103,6 +105,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
           label: 'High Price',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -118,6 +121,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
           label: 'Low Price',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -133,6 +137,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
           label: 'Close Price',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -148,6 +153,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
           label: 'Adjusted Close Price',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -163,6 +169,7 @@ export const marketDataTransactionConfig: IBaseDBApiConfig = {
           label: 'Trade Volume',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

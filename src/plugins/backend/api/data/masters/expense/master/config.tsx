@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -7,7 +7,7 @@ import { IExpenseCategoryMasterDocument } from '@plugins/backend/api/data/types'
 
 export const expenseMasterConfig: IBaseDBApiConfig = {
   path: '/masters/expenses/master',
-  api: databaseHandlers.masters.expenses.master,
+  api: apiHandlers.masters.expenses.master,
   tableType: 'master',
   modelName: 'ExpenseMaster',
   componentOptions: {
@@ -59,7 +59,7 @@ export const expenseMasterConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.expenses.category,
+          api: apiHandlers.masters.expenses.category,
           valueField: '_id',
         },
       },

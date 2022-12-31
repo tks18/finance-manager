@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import {
@@ -16,7 +17,7 @@ type TCustomEMIMasterDocument = WithRequiredProperty<
 
 export const assetMasterConfig: IBaseDBApiConfig = {
   path: '/masters/assets/master',
-  api: databaseHandlers.masters.assets.master,
+  api: apiHandlers.masters.assets.master,
   tableType: 'master',
   modelName: 'AssetMaster',
   componentOptions: {
@@ -88,7 +89,7 @@ export const assetMasterConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.assets.category,
+          api: apiHandlers.masters.assets.category,
           valueField: '_id',
         },
       },
@@ -121,7 +122,7 @@ export const assetMasterConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.emi,
+          api: apiHandlers.masters.emi,
           apiOptions: {
             options: {
               include: ['masterTables.others.emi.creditCard'],
@@ -144,6 +145,7 @@ export const assetMasterConfig: IBaseDBApiConfig = {
           label: 'Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

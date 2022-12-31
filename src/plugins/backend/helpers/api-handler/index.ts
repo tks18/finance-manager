@@ -13,7 +13,7 @@ import type {
 } from './types';
 import type { ICalendarDateIdInput } from '@plugins/backend/types';
 
-export class DatabaseHandler<ICreationAttributes, IDocumentAttributes> {
+export class ApiHandler<ICreationAttributes, IDocumentAttributes> {
   private route: string;
 
   constructor(route: string) {

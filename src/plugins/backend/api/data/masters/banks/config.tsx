@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
 
 export const bankConfig: IBaseDBApiConfig = {
   path: '/masters/banks',
-  api: databaseHandlers.masters.banks,
+  api: apiHandlers.masters.banks,
   tableType: 'master',
   modelName: 'BankMaster',
   componentOptions: {

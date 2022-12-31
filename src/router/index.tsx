@@ -1,12 +1,9 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { dbApiConfig } from '@plugins/backend/api';
+import { Root, Home, Access } from '@routes';
+import { AuthRoot } from '@routes';
+import { AuthDataRoot, AuthDataHome } from '@routes';
 import {
-  Root,
-  Home,
-  Access,
-  AuthRoot,
-  AuthDataRoot,
-  AuthDataHome,
   AuthSettingsRoot,
   AuthSettingsCalendar,
   AuthSettingsInvestmentMasterData,

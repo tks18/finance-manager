@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@/plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
@@ -24,7 +25,7 @@ type TCustomEmiMasterDocument = WithRequiredProperty<
 
 export const expenseTransactionConfig: IBaseDBApiConfig = {
   path: '/transactions/expenses',
-  api: databaseHandlers.transactions.expenses,
+  api: apiHandlers.transactions.expenses,
   tableType: 'transaction',
   modelName: 'Expenses',
   componentOptions: {
@@ -87,7 +88,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.expenses.master,
+          api: apiHandlers.masters.expenses.master,
           apiOptions: {
             options: {
               include: ['masterTables.expenses.master.category'],
@@ -124,7 +125,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.banks,
+          api: apiHandlers.masters.banks,
           valueField: '_id',
         },
       },
@@ -156,7 +157,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.assets.master,
+          api: apiHandlers.masters.assets.master,
           valueField: '_id',
         },
       },
@@ -189,7 +190,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.emi,
+          api: apiHandlers.masters.emi,
           apiOptions: {
             options: {
               include: ['masterTables.others.emi.creditCard'],
@@ -226,8 +227,26 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
         },
         options: {
           mode: 'api',
-          api: databaseHandlers.masters.insurances,
+          api: apiHandlers.masters.insurances,
           valueField: '_id',
+        },
+      },
+      {
+        fieldType: 'text',
+        name: 'vendor',
+        constructedValue: 'vendor',
+        baseProps: {
+          label: 'Vendor',
+          required: true,
+        },
+      },
+      {
+        fieldType: 'text',
+        name: 'remarks',
+        constructedValue: 'remarks',
+        baseProps: {
+          label: 'Transaction Remarks',
+          required: true,
         },
       },
       {
@@ -244,6 +263,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
           label: 'Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'amount',
@@ -259,6 +279,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
           label: 'Tax Allowable Amount',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

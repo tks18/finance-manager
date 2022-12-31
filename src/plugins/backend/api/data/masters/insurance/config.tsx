@@ -1,12 +1,13 @@
 import { Box } from '@mui/material';
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { CurrencyRupee as CurrencyRupeeIcon } from '@mui/icons-material';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
 
 export const insuranceConfig: IBaseDBApiConfig = {
   path: '/masters/insurances',
-  api: databaseHandlers.masters.insurances,
+  api: apiHandlers.masters.insurances,
   tableType: 'master',
   modelName: 'InsuranceMaster',
   componentOptions: {
@@ -122,6 +123,7 @@ export const insuranceConfig: IBaseDBApiConfig = {
           label: 'Amount Insured',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
       {
         fieldType: 'text',
@@ -210,6 +212,7 @@ export const insuranceConfig: IBaseDBApiConfig = {
           label: 'Premium Payable',
           required: true,
         },
+        startIcon: <CurrencyRupeeIcon />,
       },
     ],
   },

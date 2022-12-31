@@ -17,6 +17,7 @@ export interface IIncomeTransactionCreationAttributes {
   master_id: IIncomeMasterDocument['_id'];
   bank_id: IBankMasterDocument['_id'];
   investment_id?: IInvestmentMasterDocument['_id'];
+  remarks: string;
   amount: number;
   taxable_amount: number;
 }

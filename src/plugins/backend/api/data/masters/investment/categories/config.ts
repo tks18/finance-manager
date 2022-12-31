@@ -1,11 +1,11 @@
-import { databaseHandlers } from '@plugins/backend/api/data/database-handlers';
+import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 
 // Types
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
 
 export const investmentCategoryMasterConfig: IBaseDBApiConfig = {
   path: '/masters/investments/categories',
-  api: databaseHandlers.masters.investments.category,
+  api: apiHandlers.masters.investments.category,
   tableType: 'master',
   modelName: 'InvestmentCategoryMaster',
   componentOptions: {
