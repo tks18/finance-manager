@@ -1,6 +1,6 @@
 {
   "name": "finance-manager",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {

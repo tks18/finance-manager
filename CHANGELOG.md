@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/tks18/finance-manager/compare/v1.4.1...v1.5.0) (2022-12-31)
+
+
+### Features 🔥
+
+* **components/render-fields:** write the logic for excluding reset for fields ([e515c3f](https://github.com/tks18/finance-manager/commit/e515c3fde18d3de688959b239a7ce1857cd65ae4))
+* **plugins/backend:** add an option for excluding reset for some fields ([d7434f4](https://github.com/tks18/finance-manager/commit/d7434f492a5a35b10e850b69aeba638b8633fa82))
+* **plugins/backend:** add config for exclude reset fields for all the required models ([57f3c51](https://github.com/tks18/finance-manager/commit/57f3c510b8ae53462d3fdaa37b4241ceced5fd8c))
+
 ### [1.4.1](https://github.com/tks18/finance-manager/compare/v1.4.0...v1.4.1) (2022-12-31)
 
 
