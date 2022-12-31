@@ -9,6 +9,7 @@ export interface IBaseDBApiConfig {
   tableType: 'master' | 'transaction';
   componentOptions: {
     title: string;
+    excludeResetFields?: string[];
     fields?: TInputFieldType[];
   };
 }
