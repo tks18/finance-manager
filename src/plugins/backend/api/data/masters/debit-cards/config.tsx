@@ -127,8 +127,9 @@ export const debitCardConfig: IBaseDBApiConfig = {
         name: 'card_expiry_month',
         constructedValue: 'card_expiry_month',
         baseProps: {
-          inputFormat: 'L',
-          mask: '_',
+          format: 'L',
+          disableFuture: false,
+          disablePast: false,
           views: ['month'],
           openTo: 'month',
         },
@@ -145,8 +146,9 @@ export const debitCardConfig: IBaseDBApiConfig = {
         name: 'card_expiry_year',
         constructedValue: 'card_expiry_year',
         baseProps: {
-          inputFormat: 'yyyy',
-          mask: '____',
+          format: 'yyyy',
+          disableFuture: false,
+          disablePast: true,
           views: ['year'],
           openTo: 'year',
         },
