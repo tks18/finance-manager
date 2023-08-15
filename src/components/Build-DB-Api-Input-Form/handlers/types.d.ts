@@ -14,6 +14,16 @@ export type THandleFieldTypeProps = {
       }>
     >;
   };
+  dateRenderFields: {
+    state: {
+      [key: string]: any;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
   autoCompleteInputFields: {
     state: {
       [key: string]: any;
