@@ -131,11 +131,9 @@ export interface IDBGet<T> {
   docs: T[];
 }
 
-export interface IDBColumns {
-  data: {
-    column_name: string;
-    data_type: string;
-  }[];
+export interface IDBColumn {
+  column_name: string;
+  data_type: string;
 }
 
 export interface IDBEdit {

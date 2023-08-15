@@ -46,6 +46,10 @@ export const apiHandlers = {
         DataTypes.IIncomeCategoryMasterCreationAttributes,
         DataTypes.IIncomeCategoryMasterDocument
       >(routes.api.data.masters.incomes.categories),
+      source: new ApiHandler<
+        DataTypes.IIncomeSourceMasterCreationAttributes,
+        DataTypes.IIncomeSourceMasterDocument
+      >(routes.api.data.masters.incomes.sources),
       master: new ApiHandler<
         DataTypes.IIncomeMasterCreationAttributes,
         DataTypes.IIncomeMasterDocument

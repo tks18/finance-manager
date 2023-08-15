@@ -94,15 +94,16 @@ export const insuranceConfig: IBaseDBApiConfig = {
         name: 'purchase_date',
         constructedValue: 'purchase_date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: true,
+          disablePast: false,
         },
         textProps: {
           label: 'Purchase Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: true,
             fieldName: 'date_id',
@@ -142,15 +143,16 @@ export const insuranceConfig: IBaseDBApiConfig = {
         name: 'cover_period_start_date',
         constructedValue: 'cover_period_start_date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: false,
+          disablePast: false,
         },
         textProps: {
           label: 'Cover Period Start Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: false,
             fieldName: '',
@@ -162,15 +164,16 @@ export const insuranceConfig: IBaseDBApiConfig = {
         name: 'cover_period_end_date',
         constructedValue: 'cover_period_end_date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: false,
+          disablePast: false,
         },
         textProps: {
           label: 'Cover Period End Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: false,
             fieldName: '',

@@ -5,61 +5,31 @@ import { apiHandlers } from '@plugins/backend/api/data/api-handlers';
 import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
 import { IIncomeCategoryMasterDocument } from '@plugins/backend/api/data/types';
 
-export const incomeMasterConfig: IBaseDBApiConfig = {
-  path: '/masters/incomes/master',
-  api: apiHandlers.masters.incomes.master,
+export const incomeSourceMasterConfig: IBaseDBApiConfig = {
+  path: '/masters/incomes/sources',
+  api: apiHandlers.masters.incomes.source,
   tableType: 'master',
-  modelName: 'IncomeMaster',
+  modelName: 'IncomeSourceMaster',
   componentOptions: {
-    title: 'Income Masters',
+    title: 'Income Source Masters',
     excludeResetFields: ['category_id'],
     fields: [
       {
         fieldType: 'text',
-        name: 'name',
-        constructedValue: 'name',
+        name: 'source_name',
+        constructedValue: 'source_name',
         baseProps: {
-          label: 'Name of Income',
+          label: 'Source Name',
           required: true,
         },
       },
       {
         fieldType: 'text',
-        name: 'type',
-        constructedValue: 'type',
+        name: 'source_type',
+        constructedValue: 'source_type',
         baseProps: {
-          label: 'Type of Income',
+          label: 'Source Type',
           required: true,
-        },
-      },
-      {
-        fieldType: 'switch',
-        name: 'is_pf',
-        constructedValue: 'is_pf',
-        switchProps: {},
-        baseProps: {
-          label: 'Is PF ?',
-          labelPlacement: 'top',
-        },
-      },
-      {
-        fieldType: 'switch',
-        name: 'is_tds',
-        constructedValue: 'is_tds',
-        switchProps: {},
-        baseProps: {
-          label: 'Is TDS ?',
-          labelPlacement: 'top',
-        },
-      },
-      {
-        fieldType: 'switch',
-        name: 'is_mediclaim',
-        constructedValue: 'is_mediclaim',
-        switchProps: {},
-        baseProps: {
-          label: 'Is Mediclaim ?',
-          labelPlacement: 'top',
         },
       },
       {

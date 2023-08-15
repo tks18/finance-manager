@@ -14,7 +14,7 @@ type TCustomDateField = IFieldBaseProps & TFieldDate;
 type TCustomYearMonthField = IFieldBaseProps & TFieldYearorMonth;
 
 type TDateFieldProps = Omit<
-  DatePickerProps<any, any>,
+  DatePickerProps<any>,
   'renderInput' | 'value' | 'onChange'
 > & {
   field: TCustomDateField;
@@ -28,11 +28,21 @@ type TDateFieldProps = Omit<
       }>
     >;
   };
+  dateRenderFields: {
+    state: {
+      [key: string]: any;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
   getDateIdfromAPI: (date: string) => Promise<number | undefined>;
 };
 
 type TMonthYearFieldProps = Omit<
-  DatePickerProps<any, any>,
+  DatePickerProps<any>,
   'renderInput' | 'value' | 'onChange'
 > & {
   field: TCustomYearMonthField;
@@ -46,26 +56,45 @@ type TMonthYearFieldProps = Omit<
       }>
     >;
   };
+  dateRenderFields: {
+    state: {
+      [key: string]: any;
+    };
+    set: Dispatch<
+      SetStateAction<{
+        [key: string]: any;
+      }>
+    >;
+  };
 };
 
 export function CustomDateField(props: TDateFieldProps) {
-  const { field, fields, getDateIdfromAPI } = props;
+  const { field, fields, dateRenderFields, getDateIdfromAPI } = props;
+  const dateFormat = field.options.dateFormatter;
 
   const onDateValueChange = async (
     field: TCustomDateField,
     dateTime: DateTime,
   ) => {
     if (field.options.updateIdonOtherField.required) {
-      const dateId = await getDateIdfromAPI(dateTime.toISODate());
+      const dateId = await getDateIdfromAPI(String(dateTime.toISODate()));
       fields.set({
         ...fields.state,
         [field.constructedValue]: dateTime.toISODate(),
         [field.options.updateIdonOtherField.fieldName]: dateId,
       });
+      dateRenderFields.set({
+        ...dateRenderFields.state,
+        [field.constructedValue]: dateTime.toFormat(dateFormat),
+      });
     } else {
       fields.set({
         ...fields.state,
         [field.constructedValue]: dateTime.toISODate(),
+      });
+      dateRenderFields.set({
+        ...dateRenderFields.state,
+        [field.constructedValue]: dateTime.toFormat(dateFormat),
       });
     }
   };
@@ -75,45 +104,52 @@ export function CustomDateField(props: TDateFieldProps) {
   return isStateUndefined ? (
     <></>
   ) : (
-    <DatePicker
+    <DatePicker<DateTime>
       {...field.baseProps}
-      value={
-        fields.state[field.constructedValue] === ''
-          ? null
-          : fields.state[field.constructedValue]
-      }
+      sx={{ width: '100%' }}
       onChange={(newValue) => {
-        const dateValue = newValue as DateTime;
-        onDateValueChange(field, dateValue);
+        const dateValue = newValue;
+        if (dateValue) {
+          onDateValueChange(field, dateValue);
+        }
       }}
-      renderInput={(params) => (
-        <TextField
-          sx={{ width: '100%' }}
-          {...params}
-          {...field.textProps}
-          disabled={true}
-          InputLabelProps={{
-            shrink: fields.state[field.constructedValue] === '' ? false : true,
-          }}
-          inputProps={{ readOnly: true }}
-          value={fields.state[field.constructedValue]}
-        />
-      )}
+      slots={{
+        textField: (params) => (
+          <TextField
+            sx={{ width: '100%' }}
+            {...params}
+            {...field.textProps}
+            disabled={true}
+            InputLabelProps={{
+              shrink:
+                dateRenderFields.state[field.constructedValue] === ''
+                  ? false
+                  : true,
+            }}
+            inputProps={{ readOnly: true }}
+            value={dateRenderFields.state[field.constructedValue]}
+          />
+        ),
+      }}
     />
   );
 }
 
 export function CustomMonthYearField(props: TMonthYearFieldProps) {
-  const { field, fields } = props;
+  const { field, fields, dateRenderFields } = props;
+  const dateFormat = field.options.dateFormatter;
 
   const onMonthYearValueChange = (
     field: TCustomYearMonthField,
     dateTime: DateTime,
   ) => {
-    const { dateFormatter } = field.options;
     fields.set({
       ...fields.state,
-      [field.constructedValue]: dateTime.toFormat(dateFormatter),
+      [field.constructedValue]: dateTime.toFormat(dateFormat),
+    });
+    dateRenderFields.set({
+      ...dateRenderFields.state,
+      [field.constructedValue]: dateTime.toFormat(dateFormat),
     });
   };
 
@@ -122,31 +158,32 @@ export function CustomMonthYearField(props: TMonthYearFieldProps) {
   return isStateUndefined ? (
     <></>
   ) : (
-    <DatePicker
+    <DatePicker<DateTime>
       {...field.baseProps}
-      value={
-        fields.state[field.constructedValue] === ''
-          ? null
-          : fields.state[field.constructedValue]
-      }
+      sx={{ width: '100%' }}
       onChange={(newValue) => {
-        const dateValue = newValue as DateTime;
-        onMonthYearValueChange(field, dateValue);
+        const dateValue = newValue;
+        if (dateValue) {
+          onMonthYearValueChange(field, dateValue);
+        }
       }}
-      renderInput={(params) => (
-        <TextField
-          sx={{ width: '100%' }}
-          {...params}
-          {...field.textProps}
-          disabled={true}
-          InputLabelProps={{
-            ...params.InputLabelProps,
-            shrink: fields.state[field.constructedValue] === '' ? false : true,
-          }}
-          inputProps={{ ...params.inputProps, readOnly: true }}
-          value={fields.state[field.constructedValue]}
-        />
-      )}
+      slots={{
+        textField: (params) => (
+          <TextField
+            sx={{ width: '100%' }}
+            {...params}
+            {...field.textProps}
+            disabled={true}
+            InputLabelProps={{
+              ...params.InputLabelProps,
+              shrink:
+                fields.state[field.constructedValue] === '' ? false : true,
+            }}
+            inputProps={{ ...params.inputProps, readOnly: true }}
+            value={dateRenderFields.state[field.constructedValue]}
+          />
+        ),
+      }}
     />
   );
 }

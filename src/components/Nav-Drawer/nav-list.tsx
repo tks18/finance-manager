@@ -2,6 +2,7 @@ import {
   ReceiptLong as ReceiptLongIcon,
   CurrencyExchange as CurrencyExchangeIcon,
   PointOfSale as PointOfSaleIcon,
+  Payments as PaymentsIcon,
   ShowChart as ShowChartIcon,
   Hub as HubIcon,
   Apartment as ApartmentIcon,
@@ -74,6 +75,11 @@ export const authNavigationList: INavigationList[] = [
             name: 'Income Categories',
             icon: <CategoryIcon />,
             path: '/auth/masters/incomes/categories',
+          },
+          {
+            name: 'Income Sources',
+            icon: <PaymentsIcon />,
+            path: '/auth/masters/incomes/sources',
           },
           {
             name: 'Income Master',

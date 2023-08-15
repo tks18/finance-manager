@@ -19,6 +19,7 @@ export const routes = {
         },
         incomes: {
           categories: '/api/data/masters/incomes/categories',
+          sources: '/api/data/masters/incomes/sources',
           master: '/api/data/masters/incomes/master',
         },
         insurances: '/api/data/masters/insurances',

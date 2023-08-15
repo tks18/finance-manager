@@ -12,6 +12,7 @@ export const expenseMasterConfig: IBaseDBApiConfig = {
   modelName: 'ExpenseMaster',
   componentOptions: {
     title: 'Expense Masters',
+    excludeResetFields: ['category_id'],
     fields: [
       {
         fieldType: 'text',

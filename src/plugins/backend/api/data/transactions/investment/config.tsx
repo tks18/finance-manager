@@ -17,6 +17,7 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
   modelName: 'Investments',
   componentOptions: {
     title: 'Investment Transactions',
+    excludeResetFields: ['date_id', 'date', 'master_id', 'bank_id', 'agent_id'],
     fields: [
       {
         fieldType: 'controlledText',
@@ -32,15 +33,16 @@ export const investmentTransactionConfig: IBaseDBApiConfig = {
         name: 'date',
         constructedValue: 'date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: true,
+          disablePast: false,
         },
         textProps: {
           label: 'Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: true,
             fieldName: 'date_id',

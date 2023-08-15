@@ -30,6 +30,7 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
   modelName: 'Expenses',
   componentOptions: {
     title: 'Expense Transactions',
+    excludeResetFields: ['date_id', 'date', 'master_id', 'bank_id'],
     fields: [
       {
         fieldType: 'controlledText',
@@ -45,15 +46,16 @@ export const expenseTransactionConfig: IBaseDBApiConfig = {
         name: 'date',
         constructedValue: 'date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: true,
+          disablePast: false,
         },
         textProps: {
           label: 'Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: true,
             fieldName: 'date_id',

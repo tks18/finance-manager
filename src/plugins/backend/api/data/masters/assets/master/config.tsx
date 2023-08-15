@@ -22,6 +22,7 @@ export const assetMasterConfig: IBaseDBApiConfig = {
   modelName: 'AssetMaster',
   componentOptions: {
     title: 'Asset Masters',
+    excludeResetFields: ['date_id', 'date', 'category_id'],
     fields: [
       {
         fieldType: 'controlledText',
@@ -37,15 +38,16 @@ export const assetMasterConfig: IBaseDBApiConfig = {
         name: 'date',
         constructedValue: 'date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: true,
+          disablePast: false,
         },
         textProps: {
           label: 'Date of Purchase',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: true,
             fieldName: 'date_id',

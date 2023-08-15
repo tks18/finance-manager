@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/tks18/finance-manager/compare/v1.5.0...v2.0.0) (2023-08-15)
+
+
+### Build System 🏗
+
+* **packages:** update most of the packages to latest version ([9f739e2](https://github.com/tks18/finance-manager/commit/9f739e2df14b68693aaafd6ba7e1dea6eb7c1527))
+
+
+### Code Refactoring 🖌
+
+* update types and refactor ([5f7a7a9](https://github.com/tks18/finance-manager/commit/5f7a7a9540d8e5c7c007b97c84f643a8fc7b00cf))
+
+
+### Bug Fixes 🛠
+
+* **components/build-api-form:** update for the breaking changes ([96398be](https://github.com/tks18/finance-manager/commit/96398be5d46cf2f009bc14d6da238fcd9eb33e89))
+* **components/build-input-form:** code changes for the breaking changes in mui date-picker ([4a5fd46](https://github.com/tks18/finance-manager/commit/4a5fd46b80e6cdca3b032717151b118c64db0774))
+* **components/date-picker:** rewrite the date-picker component for the breaking changes ([37524aa](https://github.com/tks18/finance-manager/commit/37524aa6a318b69cc16c09707118dd5a6a15ee95))
+* **components/localization-provider:** refactor for the breaking changes ([3ba7958](https://github.com/tks18/finance-manager/commit/3ba79587bf45a94304fbe60ca07a14db23b5d45b))
+* **plugins/backend/api:** update all the configs for backend accordingly for breaking changes ([744ae1d](https://github.com/tks18/finance-manager/commit/744ae1da601f61be60f7e7c5bb2c7b03d315acba))
+* **plugins/backend/requester:** fix the response type for getcolumns promise ([139ea83](https://github.com/tks18/finance-manager/commit/139ea831123f1c3032e88e620dddec89de2bdff1))
+* **routes/settings:** fix for breaking changes in date-picker ([5e4b1af](https://github.com/tks18/finance-manager/commit/5e4b1afef78cd112674ee4fd40244263088ee6a5))
+
+
+### Features 🔥
+
+* **components/nav-bar:** update income source master in the nav list ([6e3d574](https://github.com/tks18/finance-manager/commit/6e3d574270a2453302e4f6d818d3a18b534f09bd))
+* **plugins/backend/api:** update all the api configs for income source master ([69ab221](https://github.com/tks18/finance-manager/commit/69ab22147795e5dd147a6b9478abcdfbb081a7ab))
+* **plugins/backend/api:** write config for income source master ([0fe1050](https://github.com/tks18/finance-manager/commit/0fe10506513bc256a2bd064cfeeccb1b9277de6e))
+* **plugins/backend:** rewrite the backend hook for filtering the paths ([38e567d](https://github.com/tks18/finance-manager/commit/38e567d6cdff1cfdb5c1953692c551b7cb21a86e))
+* **plugins/data-grid-helper:** write helper functions for contructing mui data grid object ([d4f35af](https://github.com/tks18/finance-manager/commit/d4f35af3b806948f80b5bb2eaaefb62f35cad294))
+* **router:** make changes for allowing sub routes under auth/data route ([b3ca398](https://github.com/tks18/finance-manager/commit/b3ca398b097bdb489f41e365de5a4eb28c0b0687))
+* **routes/auth/data:** move the db data form to a seperate sub route ([4e72f4a](https://github.com/tks18/finance-manager/commit/4e72f4aac3b8630154264b629d4ae66839b8648d))
+* **routes/auth/data:** write root, home and outletcontext for auth/data route ([6fd941b](https://github.com/tks18/finance-manager/commit/6fd941b08a736f2d742989a8c9089186543b44a1))
+* **routes/data/view:** write component for viewing data in a data-grid ([ba3ca66](https://github.com/tks18/finance-manager/commit/ba3ca66e9bb6035e764612fadb3d41b63df01fca))
+* **routes/home:** write seperate views for logged in and not logged in user ([c3c4a85](https://github.com/tks18/finance-manager/commit/c3c4a856e221fa69e6bca5e7e54b2c1af59704c5))
+
+## [1.5.0](https://github.com/tks18/finance-manager/compare/v1.4.1...v1.5.0) (2022-12-31)
+
+
+### Features 🔥
+
+* **components/render-fields:** write the logic for excluding reset for fields ([e515c3f](https://github.com/tks18/finance-manager/commit/e515c3fde18d3de688959b239a7ce1857cd65ae4))
+* **plugins/backend:** add an option for excluding reset for some fields ([d7434f4](https://github.com/tks18/finance-manager/commit/d7434f492a5a35b10e850b69aeba638b8633fa82))
+* **plugins/backend:** add config for exclude reset fields for all the required models ([57f3c51](https://github.com/tks18/finance-manager/commit/57f3c510b8ae53462d3fdaa37b4241ceced5fd8c))
+
 ### [1.4.1](https://github.com/tks18/finance-manager/compare/v1.4.0...v1.4.1) (2022-12-31)
 
 

@@ -7,12 +7,18 @@ import { IBaseDBApiConfig } from '@plugins/backend/api/data/types';
 import {
   WithRequiredProperty,
   IIncomeMasterDocument,
+  IIncomeSourceMasterDocument,
   IBankMasterDocument,
   IInvestmentMasterDocument,
 } from '@plugins/backend/api/data/types';
 
 type TCustomIncomeMasterDocument = WithRequiredProperty<
   IIncomeMasterDocument,
+  'incomeCategory'
+>;
+
+type TCustomIncomeSourceMasterDocument = WithRequiredProperty<
+  IIncomeSourceMasterDocument,
   'incomeCategory'
 >;
 
@@ -23,6 +29,13 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
   modelName: 'Incomes',
   componentOptions: {
     title: 'Income Transactions',
+    excludeResetFields: [
+      'date_id',
+      'date',
+      'master_id',
+      'source_id',
+      'bank_id',
+    ],
     fields: [
       {
         fieldType: 'controlledText',
@@ -38,15 +51,16 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
         name: 'date',
         constructedValue: 'date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: true,
+          disablePast: false,
         },
         textProps: {
           label: 'Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: true,
             fieldName: 'date_id',
@@ -85,6 +99,44 @@ export const incomeTransactionConfig: IBaseDBApiConfig = {
           apiOptions: {
             options: {
               include: ['masterTables.incomes.master.category'],
+            },
+          },
+          valueField: '_id',
+        },
+      },
+      {
+        fieldType: 'autocomplete',
+        name: 'source_id',
+        constructedValue: 'source_id',
+        baseProps: {
+          renderOption: (props, option: TCustomIncomeSourceMasterDocument) => {
+            return (
+              <Box component="li" {...props} key={option._id}>
+                {option._id}. {option.source_name} -{' '}
+                {option.incomeCategory.category}
+              </Box>
+            );
+          },
+          getOptionLabel: (option: TCustomIncomeSourceMasterDocument) => {
+            return option.source_name;
+          },
+          isOptionEqualToValue: (
+            option: TCustomIncomeSourceMasterDocument,
+            value: TCustomIncomeSourceMasterDocument,
+          ) => {
+            return option._id === value._id;
+          },
+        },
+        textProps: {
+          label: 'Income Source ID',
+          required: true,
+        },
+        options: {
+          mode: 'api',
+          api: apiHandlers.masters.incomes.source,
+          apiOptions: {
+            options: {
+              include: ['masterTables.incomes.source.category'],
             },
           },
           valueField: '_id',

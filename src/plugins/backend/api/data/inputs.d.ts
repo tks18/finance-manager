@@ -69,9 +69,9 @@ export type TFieldSwitch = {
 
 export type TFieldDate = {
   fieldType: 'date';
-  baseProps: Omit<
-    DatePickerProps<any, any>,
-    'renderInput' | 'value' | 'onChange'
+  baseProps: WithRequiredProperty<
+    Omit<DatePickerProps<DateTime>, 'renderInput' | 'value' | 'onChange'>,
+    'disableFuture' | 'disablePast'
   >;
   textProps: TextFieldProps;
   options: {
@@ -85,9 +85,9 @@ export type TFieldDate = {
 
 export type TFieldYearorMonth = {
   fieldType: 'year/month';
-  baseProps: Omit<
-    DatePickerProps<any, any>,
-    'renderInput' | 'value' | 'onChange'
+  baseProps: WithRequiredProperty<
+    Omit<DatePickerProps<DateTime>, 'renderInput' | 'value' | 'onChange'>,
+    'disableFuture' | 'disablePast'
   >;
   textProps: TextFieldProps;
   options: {

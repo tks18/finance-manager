@@ -6,7 +6,7 @@ import { cleanData } from './helpers';
 import { toast } from 'react-toastify';
 
 //Types
-import { PropsWithChildren, FormEvent } from 'react';
+import type { PropsWithChildren, FormEvent } from 'react';
 import type { TInputFieldType } from '@plugins/backend/api/data/inputs';
 import type { IBaseDBApiConfig } from '@plugins/backend/types';
 
@@ -31,7 +31,7 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
   const { userToken, config } = props;
   const location = useLocation();
   const {
-    componentOptions: { fields, title },
+    componentOptions: { fields, title, excludeResetFields },
     api,
   } = config;
 
@@ -40,14 +40,17 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
       constructedStateFields: fields
         ? fields
             .filter((field) => field.fieldType !== 'helper')
-            .reduce((prevValue, field) => {
-              if (field.fieldType === 'switch') {
-                prevValue[field.constructedValue] = 0;
-              } else {
-                prevValue[field.constructedValue] = '';
-              }
-              return prevValue;
-            }, {} as { [key: string]: any })
+            .reduce(
+              (prevValue, field) => {
+                if (field.fieldType === 'switch') {
+                  prevValue[field.constructedValue] = 0;
+                } else {
+                  prevValue[field.constructedValue] = '';
+                }
+                return prevValue;
+              },
+              {} as { [key: string]: any },
+            )
         : {},
       operationalAmountFields: fields
         ? fields
@@ -56,41 +59,177 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
                 field.fieldType,
               ),
             )
-            .reduce((prevValue, field) => {
-              prevValue[field.constructedValue] = 0;
-              return prevValue;
-            }, {} as { [key: string]: number })
+            .reduce(
+              (prevValue, field) => {
+                prevValue[field.constructedValue] = 0;
+                return prevValue;
+              },
+              {} as { [key: string]: number },
+            )
         : {},
       amountFormattedFields: fields
         ? fields
             .filter((field) => field.fieldType === 'amount')
-            .reduce((prevValue, field) => {
-              prevValue[field.constructedValue] = '';
-              return prevValue;
-            }, {} as { [key: string]: any })
+            .reduce(
+              (prevValue, field) => {
+                prevValue[field.constructedValue] = '';
+                return prevValue;
+              },
+              {} as { [key: string]: any },
+            )
+        : {},
+      dateRenderFields: fields
+        ? fields
+            .filter((field) => field.fieldType === 'date')
+            .reduce(
+              (prevValue, field) => {
+                prevValue[field.constructedValue] = '';
+                return prevValue;
+              },
+              {} as { [key: string]: any },
+            )
         : {},
       autoCompleteFieldsInput: fields
         ? fields
             .filter((field) => field.fieldType === 'autocomplete')
-            .reduce((prevValue, field) => {
-              prevValue[field.constructedValue] = '';
-              return prevValue;
-            }, {} as { [key: string]: any })
+            .reduce(
+              (prevValue, field) => {
+                prevValue[field.constructedValue] = '';
+                return prevValue;
+              },
+              {} as { [key: string]: any },
+            )
         : {},
       currentAutoCompleteOptionSelected: fields
         ? fields
             .filter((field) => field.fieldType === 'autocomplete')
-            .reduce((prevValue, field) => {
-              prevValue[field.constructedValue] = null;
-              return prevValue;
-            }, {} as { [key: string]: any })
+            .reduce(
+              (prevValue, field) => {
+                prevValue[field.constructedValue] = null;
+                return prevValue;
+              },
+              {} as { [key: string]: any },
+            )
         : {},
     }),
     [fields],
   );
 
+  const resetState = useMemo(
+    () => ({
+      constructedStateFields: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType !== 'helper')
+              .filter((field) => {
+                return !excludeResetFields.includes(field.constructedValue);
+              })
+              .reduce(
+                (prevValue, field) => {
+                  if (field.fieldType === 'switch') {
+                    prevValue[field.constructedValue] = 0;
+                  } else {
+                    prevValue[field.constructedValue] = '';
+                  }
+                  return prevValue;
+                },
+                {} as { [key: string]: any },
+              )
+          : {}
+        : initialState.constructedStateFields,
+      dateRenderFields: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType === 'date')
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce(
+                (prevValue, field) => {
+                  prevValue[field.constructedValue] = '';
+                  return prevValue;
+                },
+                {} as { [key: string]: any },
+              )
+          : {}
+        : initialState.dateRenderFields,
+      operationalAmountFields: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) =>
+                ['amount', 'helper', 'controlledAmount'].includes(
+                  field.fieldType,
+                ),
+              )
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce(
+                (prevValue, field) => {
+                  prevValue[field.constructedValue] = 0;
+                  return prevValue;
+                },
+                {} as { [key: string]: number },
+              )
+          : {}
+        : initialState.operationalAmountFields,
+      amountFormattedFields: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType === 'amount')
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce(
+                (prevValue, field) => {
+                  prevValue[field.constructedValue] = '';
+                  return prevValue;
+                },
+                {} as { [key: string]: any },
+              )
+          : {}
+        : initialState.amountFormattedFields,
+      autoCompleteFieldsInput: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType === 'autocomplete')
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce(
+                (prevValue, field) => {
+                  prevValue[field.constructedValue] = '';
+                  return prevValue;
+                },
+                {} as { [key: string]: any },
+              )
+          : {}
+        : initialState.autoCompleteFieldsInput,
+      currentAutoCompleteOptionSelected: excludeResetFields
+        ? fields
+          ? fields
+              .filter((field) => field.fieldType === 'autocomplete')
+              .filter(
+                (field) => !excludeResetFields.includes(field.constructedValue),
+              )
+              .reduce(
+                (prevValue, field) => {
+                  prevValue[field.constructedValue] = null;
+                  return prevValue;
+                },
+                {} as { [key: string]: any },
+              )
+          : {}
+        : initialState.currentAutoCompleteOptionSelected,
+    }),
+    [initialState, fields, excludeResetFields],
+  );
+
   const [constructedStateFields, setConstructedStateFields] =
     useState<IStateFields>(initialState.constructedStateFields);
+  const [dateRenderFields, setDateRenderFields] = useState<IStateFields>(
+    initialState.dateRenderFields,
+  );
   const [amountFormattedFields, setAmountFormattedFields] =
     useState<IStateFields>(initialState.amountFormattedFields);
   const [operationalAmountFields, setOperationalAmountFields] =
@@ -116,12 +255,37 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
     }
   };
 
+  const clearState = () => {
+    setConstructedStateFields((state) => ({
+      ...state,
+      ...resetState.constructedStateFields,
+    }));
+    setDateRenderFields((state) => ({
+      ...state,
+      ...resetState.dateRenderFields,
+    }));
+    setAutoCompleteFieldsInput((state) => ({
+      ...state,
+      ...resetState.autoCompleteFieldsInput,
+    }));
+    setAmountFormattedFields((state) => ({
+      ...state,
+      ...resetState.amountFormattedFields,
+    }));
+    setCurrentAutoCompleteOptionSelected((state) => ({
+      ...state,
+      ...resetState.currentAutoCompleteOptionSelected,
+    }));
+  };
+
   const handleDataSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       if (e.currentTarget.reportValidity()) {
-        const cleanedData = cleanData(constructedStateFields);
-        const dataToSubmit = { docsToAdd: [cleanedData] };
+        const cleanedData = cleanData<IStateFields>(constructedStateFields);
+        const dataToSubmit = {
+          docsToAdd: [cleanedData],
+        };
         const submitResponse = await api.add(userToken, dataToSubmit);
         if (submitResponse.status === 201) {
           toast.success(
@@ -137,21 +301,13 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
 
   useEffect(() => {
     setConstructedStateFields(initialState.constructedStateFields);
+    setDateRenderFields(initialState.dateRenderFields);
     setAutoCompleteFieldsInput(initialState.autoCompleteFieldsInput);
     setAmountFormattedFields(initialState.amountFormattedFields);
     setCurrentAutoCompleteOptionSelected(
       initialState.currentAutoCompleteOptionSelected,
     );
   }, [location, initialState]);
-
-  const clearState = () => {
-    setConstructedStateFields(initialState.constructedStateFields);
-    setAutoCompleteFieldsInput(initialState.autoCompleteFieldsInput);
-    setAmountFormattedFields(initialState.amountFormattedFields);
-    setCurrentAutoCompleteOptionSelected(
-      initialState.currentAutoCompleteOptionSelected,
-    );
-  };
 
   const HandleField = (field: TInputFieldType) => (
     <HandleFieldType
@@ -160,6 +316,10 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
       fields={{
         state: constructedStateFields,
         set: setConstructedStateFields,
+      }}
+      dateRenderFields={{
+        state: dateRenderFields,
+        set: setDateRenderFields,
       }}
       autoCompleteInputFields={{
         state: autoCompleteFieldsInput,
@@ -187,6 +347,7 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
         display: 'flex',
         alignContent: 'center',
         justifyContent: 'center',
+        flexWrap: 'wrap',
       }}
       xs={12}
       container
@@ -224,6 +385,8 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
                     display: 'flex',
                     alignContent: 'center',
                     justifyContent: 'center',
+                    px: 1,
+                    py: 1,
                   }}
                   xs={3}
                 >
@@ -239,13 +402,20 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
             No Fields to Render
           </Typography>
         )}
-        <Grid xs={12} container>
+        <Grid
+          xs={12}
+          container
+          sx={{
+            my: 2,
+          }}
+        >
           <Grid
             xs={6}
             sx={{
               display: 'flex',
               alignContent: 'center',
               justifyContent: 'right',
+              px: 1,
             }}
           >
             <Button variant="contained" type="submit">
@@ -258,6 +428,7 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
               display: 'flex',
               alignContent: 'center',
               justifyContent: 'left',
+              px: 1,
             }}
           >
             <Button variant="contained" type="reset" onClick={clearState}>

@@ -16,6 +16,7 @@ export function HandleFieldType(props: THandleFieldTypeProps) {
     userToken,
     field,
     fields,
+    dateRenderFields,
     autoCompleteInputFields,
     amountFields,
     operationalAmounts,
@@ -53,11 +54,18 @@ export function HandleFieldType(props: THandleFieldTypeProps) {
         <CustomDateField
           field={field}
           fields={fields}
+          dateRenderFields={dateRenderFields}
           getDateIdfromAPI={getDateIdfromAPI}
         />
       );
     case 'year/month':
-      return <CustomMonthYearField field={field} fields={fields} />;
+      return (
+        <CustomMonthYearField
+          field={field}
+          fields={fields}
+          dateRenderFields={dateRenderFields}
+        />
+      );
     case 'switch':
       return <CustomSwitchField field={field} fields={fields} />;
     case 'helper':

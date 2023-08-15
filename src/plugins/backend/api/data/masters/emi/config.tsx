@@ -63,15 +63,16 @@ export const emiConfig: IBaseDBApiConfig = {
         name: 'emi_start_date',
         constructedValue: 'emi_start_date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: false,
+          disablePast: false,
         },
         textProps: {
           label: 'EMI Start Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: true,
             fieldName: 'emi_start_date_id',
@@ -92,15 +93,16 @@ export const emiConfig: IBaseDBApiConfig = {
         name: 'emi_end_date',
         constructedValue: 'emi_end_date',
         baseProps: {
-          inputFormat: 'yyyy-LL-dd',
-          mask: '____-__-__',
+          format: 'dd-LL-yyyy',
+          disableFuture: false,
+          disablePast: false,
         },
         textProps: {
           label: 'EMI End Date',
           required: true,
         },
         options: {
-          dateFormatter: 'yyyy-LL-dd',
+          dateFormatter: 'dd-LL-yyyy',
           updateIdonOtherField: {
             required: true,
             fieldName: 'emi_end_date_id',
