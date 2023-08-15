@@ -9,7 +9,7 @@ import type {
   IDBGet,
   IDBEdit,
   IDBDelete,
-  IDBColumns,
+  IDBColumn,
 } from './types';
 import type { ICalendarDateIdInput } from '@plugins/backend/types';
 
@@ -31,7 +31,7 @@ export class ApiHandler<ICreationAttributes, IDocumentAttributes> {
   }
 
   public getColumns(token: string) {
-    return requester<any, IDBColumns>('post', {
+    return requester<any, IDBColumn[]>('post', {
       url: this.subRoutes.columns,
       token,
     });
