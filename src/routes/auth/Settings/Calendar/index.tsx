@@ -66,20 +66,22 @@ export function AuthSettingsCalendar() {
         <Grid sm={4} xs={12} rowSpacing={1}>
           <DatePicker
             value={endDate}
+            sx={{ width: '100%' }}
             onChange={(newValue) => {
               const dateValue = newValue as DateTime;
               onDateValueChange(dateValue);
             }}
-            inputFormat="yyyy-LL-dd"
-            mask="____-__-__"
-            renderInput={(params) => (
-              <TextField
-                label="Enter the End Date"
-                sx={{ width: '100%' }}
-                {...params}
-                required={true}
-              />
-            )}
+            format="yyyy-LL-dd"
+            slots={{
+              textField: (params) => (
+                <TextField
+                  label="Enter the End Date"
+                  sx={{ width: '100%' }}
+                  {...params}
+                  required={true}
+                />
+              ),
+            }}
           />
         </Grid>
         <Grid
