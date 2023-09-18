@@ -116,7 +116,7 @@ export function Register() {
           component="form"
           onSubmit={handleLogin}
         >
-          <Grid xs={12}>
+          <Grid xs={12} sx={{ my: 0.5 }}>
             <TextField
               fullWidth
               label="Name"
@@ -128,7 +128,7 @@ export function Register() {
               onChange={handleChange}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid xs={12} sx={{ my: 0.5 }}>
             <TextField
               fullWidth
               label="Email"
@@ -140,7 +140,7 @@ export function Register() {
               onChange={handleChange}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid xs={12} sx={{ my: 0.5 }}>
             <TextField
               fullWidth
               label="Password"
@@ -152,7 +152,7 @@ export function Register() {
               onChange={handleChange}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid xs={12} sx={{ my: 0.5 }}>
             <TextField
               fullWidth
               label="Confirm Password"
@@ -164,7 +164,7 @@ export function Register() {
               onChange={handleChange}
             />
           </Grid>
-          <Grid xs={12} sx={{ textAlign: 'center' }}>
+          <Grid xs={12} sx={{ textAlign: 'center', my: 0.5 }}>
             <ButtonGroup size="large">
               <LoadingButton
                 loading={loaderState.register || loaderState.verify}

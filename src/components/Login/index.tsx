@@ -107,7 +107,7 @@ export function Login() {
           component="form"
           onSubmit={handleLogin}
         >
-          <Grid xs={12}>
+          <Grid xs={12} sx={{ my: 0.5 }}>
             <TextField
               fullWidth
               label="Email"
@@ -119,7 +119,7 @@ export function Login() {
               onChange={handleChange}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid xs={12} sx={{ my: 0.5 }}>
             <TextField
               fullWidth
               label="Password"
@@ -131,7 +131,7 @@ export function Login() {
               onChange={handleChange}
             />
           </Grid>
-          <Grid xs={12} sx={{ textAlign: 'center' }}>
+          <Grid xs={12} sx={{ textAlign: 'center', my: 0.5 }}>
             <ButtonGroup size="large">
               <LoadingButton
                 loading={loaderState.login || loaderState.verify}
