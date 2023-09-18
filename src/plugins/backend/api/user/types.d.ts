@@ -23,6 +23,11 @@ export interface IUserDoc {
   email: string;
 }
 
+export interface IUserAllowRegistrationResponse {
+  login: boolean;
+  register: boolean;
+}
+
 export interface IUserAuth extends IUserDoc {
   email: string;
   token: string;

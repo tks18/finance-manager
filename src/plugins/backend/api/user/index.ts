@@ -5,6 +5,7 @@ export const userMethods = {
   add: methods.addUser,
   login: methods.loginUser,
   verify: methods.verifyUser,
+  checkRegistration: methods.checkRegistration,
 };
 
 export * from './methods';

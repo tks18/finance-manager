@@ -52,6 +52,7 @@ export const routes = {
       login: '/api/user/login',
       get: '/api/user/get',
       verify: '/api/user/verify',
+      allowRegistration: '/api/user/allow-registration',
     },
   },
 };
