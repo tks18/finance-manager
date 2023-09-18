@@ -14,7 +14,6 @@ import {
   Category as CategoryIcon,
   Storage as StorageIcon,
   Person as PersonIcon,
-  Login as LoginIcon,
   VpnKey as VpnKeyIcon,
   BarChart as BarChartIcon,
   Settings as SettingsIcon,
@@ -199,17 +198,12 @@ export const authNavigationList: INavigationList[] = [
 
 export const nonAuthNavigationList: INavigationList[] = [
   {
-    name: 'Login / Register',
+    name: 'Access',
     path: '/access',
     icon: <PersonIcon />,
     list: [
       {
-        name: 'Login',
-        icon: <LoginIcon />,
-        path: '/access',
-      },
-      {
-        name: 'Register',
+        name: 'Login / Register',
         icon: <VpnKeyIcon />,
         path: '/access',
       },
