@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/tks18/finance-manager/compare/v2.0.0...v2.1.0) (2023-09-18)
+
+
+### Build System 🏗
+
+* **packages:** update caniuse-lite ([dd79dc8](https://github.com/tks18/finance-manager/commit/dd79dc888339cde36a6ebdd4b6fb165641b28d9c))
+
+
+### Code Refactoring 🖌
+
+* **components:** fix margins on login and register component ([f7a0f5b](https://github.com/tks18/finance-manager/commit/f7a0f5ba05a87f3e101244c481840c9ecce701b0))
+* **components:** refactor nav-list component ([782e46a](https://github.com/tks18/finance-manager/commit/782e46a7410c210668adfbc455480cc8137e1b0a))
+
+
+### Features 🔥
+
+* **plugins/backend:** add a new method in the backend for checking registration ([8d7af33](https://github.com/tks18/finance-manager/commit/8d7af33433170582d03662e8741696983806f755))
+* **routes/access:** implement the new registration backend api for login / register ([6887ca5](https://github.com/tks18/finance-manager/commit/6887ca58fd7442fb1fa0964315861c1283fc0fff))
+
 ## [2.0.0](https://github.com/tks18/finance-manager/compare/v1.5.0...v2.0.0) (2023-08-15)
 
 
