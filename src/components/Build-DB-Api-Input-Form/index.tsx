@@ -288,8 +288,16 @@ export function BuildDBApiInputForm(props: IBuildDBApiInputForm) {
         };
         const submitResponse = await api.add(userToken, dataToSubmit);
         if (submitResponse.status === 201) {
+          let ids: string = '';
+          submitResponse.data.docs.forEach((doc, index) => {
+            if (index === 0) {
+              ids += `${doc._id}`;
+            } else {
+              ids += `, ${doc._id}`;
+            }
+          });
           toast.success(
-            `Succesfully Posted ${submitResponse.data.docs.length} number of Documents to Database`,
+            `Succesfully Posted ${submitResponse.data.docs.length} number of Documents with ID's: ${ids} to Database`,
           );
           clearState();
         }
