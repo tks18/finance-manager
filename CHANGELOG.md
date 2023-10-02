@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/tks18/finance-manager/compare/v2.1.0...v2.2.0) (2023-10-02)
+
+
+### Code Refactoring 🖌
+
+* **components/render-fields:** add id numbers to the success message ([2c675b6](https://github.com/tks18/finance-manager/commit/2c675b63c6149c5ee2965e6cd5d0d544ff6eea85))
+
 ## [2.1.0](https://github.com/tks18/finance-manager/compare/v2.0.0...v2.1.0) (2023-09-18)
 
 
